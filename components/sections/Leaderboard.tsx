@@ -79,8 +79,8 @@ export default function Leaderboard() {
 
   return (
     <section className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 relative">
-      {/* DEMO Badge - Top Right */}
-      <div className="absolute top-8 right-8 z-20">
+      {/* DEMO Badge - Top Right - Hidden on Mobile */}
+      <div className="hidden md:block absolute top-8 right-8 z-20">
         <div className="px-6 py-3 rounded-full bg-accent-purple/20 border-2 border-accent-purple backdrop-blur-sm">
           <span className="text-accent-purple font-bold text-sm uppercase tracking-wider">📊 Demo Data</span>
         </div>
@@ -127,7 +127,7 @@ export default function Leaderboard() {
             <div className="col-span-1 text-center">Badges</div>
           </div>
 
-          {/* Leaderboard entries */}
+          {/* Leaderboard entries - Responsive */}
           <div className="divide-y divide-white/5">
             {leaders.map((leader, index) => (
               <motion.div
@@ -137,81 +137,147 @@ export default function Leaderboard() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.02)' }}
-                className="grid grid-cols-1 md:grid-cols-12 gap-4 px-4 md:px-8 py-6 items-center"
+                className="px-3 sm:px-4 md:px-8 py-4 md:py-6"
               >
-                {/* Rank */}
-                <div className="col-span-1 flex items-center gap-3 md:block">
-                  <div className="flex items-center justify-center">
-                    {getRankIcon(leader.rank)}
-                  </div>
-                  <span className="md:hidden text-sm text-white/50">Rank #{leader.rank}</span>
-                </div>
+                {/* Mobile Layout - Card Style */}
+                <div className="md:hidden">
+                  {/* Top Row: Rank + Player */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex-shrink-0">
+                      {getRankIcon(leader.rank)}
+                    </div>
+                    
+                    {/* Player info */}
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      {/* Avatar */}
+                      <div className="relative flex-shrink-0">
+                        <div className={`p-[2px] rounded-xl bg-gradient-to-br ${getTierColor(leader.tier)}`}>
+                          <div className="w-12 h-12 rounded-xl overflow-hidden bg-neutral-900">
+                            <Image 
+                              src={leader.avatar}
+                              alt={leader.username}
+                              width={48}
+                              height={48}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                        {leader.rank === 1 && (
+                          <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center">
+                            <Trophy className="w-3 h-3 text-white" />
+                          </div>
+                        )}
+                      </div>
 
-                {/* Player info */}
-                <div className="col-span-1 md:col-span-4 flex items-center gap-4">
-                  {/* NFT Avatar */}
-                  <div className="relative">
-                    <div className={`p-[2px] rounded-2xl bg-gradient-to-br ${getTierColor(leader.tier)}`}>
-                      <div className="w-14 h-14 rounded-2xl overflow-hidden bg-neutral-900">
-                        <Image 
-                          src={leader.avatar}
-                          alt={leader.username}
-                          width={56}
-                          height={56}
-                          className="w-full h-full object-cover"
-                        />
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-white text-sm truncate">{leader.username}</div>
+                        <div className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium
+                                       bg-gradient-to-r ${getTierColor(leader.tier)} text-white`}>
+                          {leader.tier}
+                        </div>
                       </div>
                     </div>
-                    {leader.rank === 1 && (
-                      <motion.div
-                        animate={{ rotate: [0, 360] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="absolute -top-1 -right-1"
-                      >
-                        <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center">
-                          <Trophy className="w-4 h-4 text-white" />
-                        </div>
-                      </motion.div>
-                    )}
                   </div>
 
-                  <div>
-                    <div className="font-semibold text-white mb-1">{leader.username}</div>
-                    <div className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium
-                                   bg-gradient-to-r ${getTierColor(leader.tier)} text-white`}>
-                      {leader.tier}
+                  {/* Stats Grid - 3 Columns */}
+                  <div className="grid grid-cols-3 gap-2 mb-2">
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <div className="text-xs text-white/50 mb-1">Predictions</div>
+                      <div className="font-semibold text-sm">{leader.predictions}</div>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <div className="text-xs text-white/50 mb-1">Win Rate</div>
+                      <div className="font-semibold text-sm text-accent-green">{leader.winRate}%</div>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <div className="text-xs text-white/50 mb-1">Earnings</div>
+                      <div className="font-bold text-sm text-primary-500">${leader.earnings.toLocaleString()}</div>
                     </div>
                   </div>
+
+                  {/* Badges Row */}
+                  {leader.badges.length > 0 && (
+                    <div className="flex gap-1.5 justify-center">
+                      {leader.badges.map((badge, i) => (
+                        <span key={i} className="text-lg">
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                {/* Predictions */}
-                <div className="col-span-1 md:col-span-2 flex items-center gap-2 md:justify-center">
-                  <TrendingUp className="w-4 h-4 text-primary-500 md:hidden" />
-                  <span className="font-semibold">{leader.predictions}</span>
-                  <span className="text-xs text-white/50 md:hidden">predictions</span>
-                </div>
+                {/* Desktop Layout - Grid */}
+                <div className="hidden md:grid md:grid-cols-12 gap-4 items-center">
+                  {/* Rank */}
+                  <div className="col-span-1 flex items-center justify-center">
+                    {getRankIcon(leader.rank)}
+                  </div>
 
-                {/* Win Rate */}
-                <div className="col-span-1 md:col-span-2 md:text-center">
-                  <span className="font-semibold text-accent-green">{leader.winRate}%</span>
-                </div>
+                  {/* Player info */}
+                  <div className="col-span-4 flex items-center gap-4">
+                    {/* NFT Avatar */}
+                    <div className="relative">
+                      <div className={`p-[2px] rounded-2xl bg-gradient-to-br ${getTierColor(leader.tier)}`}>
+                        <div className="w-14 h-14 rounded-2xl overflow-hidden bg-neutral-900">
+                          <Image 
+                            src={leader.avatar}
+                            alt={leader.username}
+                            width={56}
+                            height={56}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      {leader.rank === 1 && (
+                        <motion.div
+                          animate={{ rotate: [0, 360] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                          className="absolute -top-1 -right-1"
+                        >
+                          <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center">
+                            <Trophy className="w-4 h-4 text-white" />
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
 
-                {/* Earnings */}
-                <div className="col-span-1 md:col-span-2 md:text-center">
-                  <span className="font-bold text-primary-500">${leader.earnings.toLocaleString()}</span>
-                </div>
+                    <div>
+                      <div className="font-semibold text-white mb-1">{leader.username}</div>
+                      <div className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium
+                                     bg-gradient-to-r ${getTierColor(leader.tier)} text-white`}>
+                        {leader.tier}
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Badges */}
-                <div className="col-span-1 md:col-span-1 flex gap-1 md:justify-center">
-                  {leader.badges.map((badge, i) => (
-                    <motion.span
-                      key={i}
-                      whileHover={{ scale: 1.3, rotate: 10 }}
-                      className="text-xl cursor-pointer"
-                    >
-                      {badge}
-                    </motion.span>
-                  ))}
+                  {/* Predictions */}
+                  <div className="col-span-2 text-center">
+                    <span className="font-semibold">{leader.predictions}</span>
+                  </div>
+
+                  {/* Win Rate */}
+                  <div className="col-span-2 text-center">
+                    <span className="font-semibold text-accent-green">{leader.winRate}%</span>
+                  </div>
+
+                  {/* Earnings */}
+                  <div className="col-span-2 text-center">
+                    <span className="font-bold text-primary-500">${leader.earnings.toLocaleString()}</span>
+                  </div>
+
+                  {/* Badges */}
+                  <div className="col-span-1 flex gap-1 justify-center">
+                    {leader.badges.map((badge, i) => (
+                      <motion.span
+                        key={i}
+                        whileHover={{ scale: 1.3, rotate: 10 }}
+                        className="text-xl cursor-pointer"
+                      >
+                        {badge}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}

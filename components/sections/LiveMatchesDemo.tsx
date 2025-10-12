@@ -84,8 +84,8 @@ export default function LiveMatchesDemo() {
 
   return (
     <section className="py-16 sm:py-20 md:py-24 px-3 sm:px-4 md:px-6 relative overflow-hidden">
-      {/* DEMO Badge - Top Right */}
-      <div className="absolute top-8 right-8 z-20">
+      {/* DEMO Badge - Top Right - Mobile Hidden */}
+      <div className="hidden md:block absolute top-8 right-8 z-20">
         <div className="px-6 py-3 rounded-full bg-accent-amber/20 border-2 border-accent-amber backdrop-blur-sm">
           <span className="text-accent-amber font-bold text-sm uppercase tracking-wider">📺 Demo Preview</span>
         </div>
@@ -150,55 +150,84 @@ export default function LiveMatchesDemo() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="glass-effect-strong rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group border border-white/5"
             >
-              {/* Match Header */}
-              <div className="bg-gradient-to-r from-base-blue/10 to-accent-cyan/5 px-6 py-3 flex items-center justify-between border-b border-white/5">
-                <div className="flex items-center gap-3">
-                  <LeagueLogo league={match.leagueId} size={28} />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-white">
-                    {match.league}
-                  </span>
-                  <span className="text-xs text-muted">•</span>
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-muted" />
-                    <span className="text-xs text-muted">Starts in {timeLeft[match.id]}</span>
+              {/* Match Header - Responsive */}
+              <div className="bg-gradient-to-r from-base-blue/10 to-accent-cyan/5 px-3 sm:px-4 md:px-6 py-3 border-b border-white/5">
+                {/* Mobile: Stacked Layout */}
+                <div className="flex flex-col gap-2 sm:hidden">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <LeagueLogo league={match.leagueId} size={24} />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-white">
+                        {match.league}
+                      </span>
+                    </div>
+                    <div className="glass-effect px-2.5 py-1 rounded-full flex items-center gap-1">
+                      <DollarSign className="w-3 h-3 text-accent-green" />
+                      <span className="text-xs font-bold text-white">{match.entryFee}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-1.5 text-muted">
+                      <Clock className="w-3 h-3" />
+                      <span>{timeLeft[match.id]}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Users className="w-3 h-3 text-accent-purple" />
+                      <span className="font-medium text-white">{match.participants}</span>
+                    </div>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1.5">
-                    <Users className="w-3.5 h-3.5 text-accent-purple" />
-                    <span className="text-xs font-medium text-white">{match.participants}</span>
+                
+                {/* Desktop: Single Row */}
+                <div className="hidden sm:flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <LeagueLogo league={match.leagueId} size={28} />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-white">
+                      {match.league}
+                    </span>
+                    <span className="text-xs text-muted hidden md:inline">•</span>
+                    <div className="hidden md:flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-muted" />
+                      <span className="text-xs text-muted">Starts in {timeLeft[match.id]}</span>
+                    </div>
                   </div>
-                  <div className="glass-effect px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <DollarSign className="w-3.5 h-3.5 text-accent-green" />
-                    <span className="text-xs font-bold text-white">{match.entryFee} USDC</span>
+
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <div className="flex items-center gap-1.5">
+                      <Users className="w-3.5 h-3.5 text-accent-purple" />
+                      <span className="text-xs font-medium text-white">{match.participants}</span>
+                    </div>
+                    <div className="glass-effect px-3 py-1 rounded-full flex items-center gap-1.5">
+                      <DollarSign className="w-3.5 h-3.5 text-accent-green" />
+                      <span className="text-xs font-bold text-white">{match.entryFee} USDC</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Match Content */}
-              <div className="p-8">
-                <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-8">
+              {/* Match Content - Responsive */}
+              <div className="p-4 sm:p-6 md:p-8">
+                <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6 md:gap-8">
                   {/* Home Team */}
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-24 h-24 md:w-28 md:h-28 mb-4 flex items-center justify-center">
-                      <TeamLogo team={match.homeTeamId} size={96} />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mb-2 sm:mb-3 md:mb-4 flex items-center justify-center">
+                      <TeamLogo team={match.homeTeamId} size={64} className="sm:!w-20 sm:!h-20 md:!w-24 md:!h-24" />
                     </div>
-                    <h3 className="text-base md:text-lg font-bold text-white mb-1">
+                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1">
                       {match.homeTeam}
                     </h3>
-                    <span className="text-xs text-muted uppercase tracking-wider">Home</span>
+                    <span className="text-xs text-muted uppercase tracking-wider hidden sm:inline">Home</span>
                   </div>
 
-                  {/* VS Divider */}
-                  <div className="flex flex-col items-center gap-4">
+                  {/* VS Divider - Responsive */}
+                  <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4">
                     <motion.div
                       className="relative"
                       animate={{ rotate: [0, 180, 360] }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     >
-                      <div className="w-16 h-16 rounded-full glass-effect border-2 border-accent-cyan/30 flex items-center justify-center">
-                        <span className="text-sm font-black text-accent-cyan">VS</span>
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full glass-effect border-2 border-accent-cyan/30 flex items-center justify-center">
+                        <span className="text-xs sm:text-sm font-black text-accent-cyan">VS</span>
                       </div>
                       <motion.div
                         className="absolute inset-0 rounded-full bg-accent-cyan/20 blur-xl"
@@ -213,39 +242,39 @@ export default function LiveMatchesDemo() {
                       />
                     </motion.div>
 
-                    {/* Prize Pool */}
-                    <div className="glass-effect px-4 py-2 rounded-lg border border-accent-green/20">
-                      <div className="text-xs text-muted mb-0.5 text-center">Prize Pool</div>
-                      <div className="text-lg font-bold text-accent-green flex items-center gap-1">
-                        <DollarSign className="w-4 h-4" />
-                        {match.prizePool.toLocaleString()}
+                    {/* Prize Pool - Compact on Mobile */}
+                    <div className="glass-effect px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg border border-accent-green/20">
+                      <div className="text-xs text-muted mb-0.5 text-center hidden sm:block">Prize Pool</div>
+                      <div className="text-sm sm:text-base md:text-lg font-bold text-accent-green flex items-center gap-1">
+                        <DollarSign className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="text-xs sm:text-base">{match.prizePool.toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Away Team */}
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-24 h-24 md:w-28 md:h-28 mb-4 flex items-center justify-center">
-                      <TeamLogo team={match.awayTeamId} size={96} />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mb-2 sm:mb-3 md:mb-4 flex items-center justify-center">
+                      <TeamLogo team={match.awayTeamId} size={64} className="sm:!w-20 sm:!h-20 md:!w-24 md:!h-24" />
                     </div>
-                    <h3 className="text-base md:text-lg font-bold text-white mb-1">
+                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1">
                       {match.awayTeam}
                     </h3>
-                    <span className="text-xs text-muted uppercase tracking-wider">Away</span>
+                    <span className="text-xs text-muted uppercase tracking-wider hidden sm:inline">Away</span>
                   </div>
                 </div>
 
                 {/* Action Button - Modern Predict Button */}
-                <div className="mt-8">
+                <div className="mt-4 sm:mt-6 md:mt-8">
                   <ModernPredictButton entryFee={match.entryFee} />
                 </div>
               </div>
 
-              {/* Footer Info */}
-              <div className="bg-gradient-to-r from-base-blue/5 to-transparent px-6 py-3 flex items-center justify-between border-t border-white/5">
+              {/* Footer Info - Responsive */}
+              <div className="bg-gradient-to-r from-base-blue/5 to-transparent px-3 sm:px-4 md:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-white/5">
                 <div className="flex items-center gap-2 text-xs text-muted">
                   <div className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
-                  <span>Powered by Base Network</span>
+                  <span className="text-xs">Powered by Base Network</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
                   <Zap className="w-3.5 h-3.5 text-accent-orange" />
