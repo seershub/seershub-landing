@@ -206,7 +206,7 @@ export default function LiveMatchesDemo() {
                   {/* Home Team */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mb-2 sm:mb-3 md:mb-4 flex items-center justify-center">
-                      <TeamLogo team={match.homeTeamId} size={64} className="sm:!w-20 sm:!h-20 md:!w-24 md:!h-24" />
+                      <TeamLogo team={match.homeTeamId} size={64} />
                     </div>
                     <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1">
                       {match.homeTeam}
@@ -250,7 +250,7 @@ export default function LiveMatchesDemo() {
                   {/* Away Team */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mb-2 sm:mb-3 md:mb-4 flex items-center justify-center">
-                      <TeamLogo team={match.awayTeamId} size={64} className="sm:!w-20 sm:!h-20 md:!w-24 md:!h-24" />
+                      <TeamLogo team={match.awayTeamId} size={64} />
                     </div>
                     <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1">
                       {match.awayTeam}
