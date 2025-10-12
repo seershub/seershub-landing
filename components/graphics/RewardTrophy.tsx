@@ -190,7 +190,6 @@ export default function RewardTrophy() {
             initial={{ scale: 0, y: 20, opacity: 0 }}
             whileInView={{ scale: 1, y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: coin.delay, type: "spring" }}
             animate={{
               y: [0, -10, 0],
               rotate: [0, 180, 360],
