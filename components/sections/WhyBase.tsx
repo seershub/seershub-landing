@@ -286,7 +286,7 @@ export default function WhyBase() {
                           loop 
                           muted 
                           playsInline
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="hidden md:block absolute inset-0 w-full h-full object-cover"
                           style={{
                             transform: 'scale(2.5)',
                             filter: 'brightness(1.2) contrast(1.15)',
