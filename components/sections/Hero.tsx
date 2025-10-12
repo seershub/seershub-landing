@@ -43,15 +43,15 @@ export default function Hero() {
       </motion.div>
       
       {/* Content */}
-      <div className="relative z-10 container-responsive py-32 text-center">
+      <div className="relative z-10 container-responsive py-20 sm:py-24 md:py-32 text-center">
         
-        {/* Badge - Balanced & Modern */}
+        {/* Badge - Balanced & Modern - Mobile Optimized */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full 
+          className="inline-flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full 
                      bg-gradient-to-r from-primary-500/10 to-accent-cyan/10 
-                     border border-primary-500/30 backdrop-blur-md mb-8
+                     border border-primary-500/30 backdrop-blur-md mb-6 sm:mb-8
                      hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(0,82,255,0.25)]
                      transition-all duration-300
                      shadow-[0_0_20px_rgba(0,82,255,0.15)]"
@@ -68,10 +68,10 @@ export default function Hero() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="w-6 h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-cyan 
+              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-cyan 
                          flex items-center justify-center shadow-[0_0_12px_rgba(0,82,255,0.5)]"
             >
-              <span className="text-white text-sm font-bold">B</span>
+              <span className="text-white text-xs sm:text-sm font-bold">B</span>
             </motion.div>
             {/* Pulse ring */}
             <motion.div
@@ -87,9 +87,9 @@ export default function Hero() {
             />
           </div>
           
-          {/* Text + Logo Group - Aligned */}
-          <div className="flex items-center gap-2">
-            <span className="text-base font-medium text-white tracking-wide">
+          {/* Text + Logo Group - Aligned - Mobile Optimized */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="text-sm sm:text-base font-medium text-white tracking-wide">
               Built on
             </span>
             
@@ -101,14 +101,14 @@ export default function Hero() {
               <img 
                 src="/Base_Logo_1.png" 
                 alt="Base" 
-                className="h-[18px] w-auto object-contain"
+                className="h-[14px] sm:h-[18px] w-auto object-contain"
                 style={{
                   filter: 'brightness(1.15) contrast(1.05) drop-shadow(0 2px 8px rgba(0, 82, 255, 0.4))'
                 }}
               />
             </motion.div>
             
-            <span className="text-base font-medium text-white tracking-wide">
+            <span className="text-sm sm:text-base font-medium text-white tracking-wide">
               Network
             </span>
           </div>
@@ -125,18 +125,18 @@ export default function Hero() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="text-accent-cyan text-base flex-shrink-0"
+            className="text-accent-cyan text-sm sm:text-base flex-shrink-0"
           >
             ✨
           </motion.div>
         </motion.div>
         
-        {/* MASSIVE headline */}
+        {/* MASSIVE headline - Mobile Optimized */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-hero mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6"
         >
           Predict Sports.
           <br />
@@ -145,12 +145,12 @@ export default function Hero() {
           </span>
         </motion.h1>
         
-        {/* Subheadline */}
+        {/* Subheadline - Mobile Optimized */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-body-lg max-w-2xl mx-auto mb-12"
+          className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4 sm:px-0"
         >
           Skill-based sports prediction competitions on Base. 
           Transparent, verifiable, and rewarding. No gambling, pure strategy.
@@ -174,23 +174,23 @@ export default function Hero() {
           </Link>
         </motion.div>
         
-        {/* Trust indicators */}
+        {/* Trust indicators - Mobile Optimized */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-white/50"
+          className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-white/50 px-4"
         >
-          <div className="flex items-center gap-2">
-            <Check className="w-4 h-4 text-green-500" />
-            <span>Audited Smart Contracts</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
+            <span>Audited Contracts</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Check className="w-4 h-4 text-green-500" />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
             <span>Non-Custodial</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Check className="w-4 h-4 text-green-500" />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
             <span>10,000+ Predictions</span>
           </div>
         </motion.div>

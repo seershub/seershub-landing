@@ -18,13 +18,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="py-16 px-6 border-t border-white/5 relative overflow-hidden">
+    <footer className="py-12 sm:py-16 px-4 sm:px-6 border-t border-white/5 relative overflow-hidden">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-t from-base-blue/5 to-transparent pointer-events-none" />
       
       <div className="container mx-auto max-w-[1024px] relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Brand */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
+          {/* Brand - Mobile Optimized */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -32,36 +32,36 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-2"
           >
-            <div className="text-xl font-semibold">SEERSHUB</div>
-            <span className="text-muted text-sm">© 2025</span>
+            <div className="text-lg sm:text-xl font-semibold">SEERSHUB</div>
+            <span className="text-muted text-xs sm:text-sm">© 2025</span>
           </motion.div>
 
-          {/* Links */}
+          {/* Links - Mobile Optimized */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-wrap items-center justify-center gap-6"
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6"
           >
             {links.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className="text-sm text-subtle hover:text-white transition-colors duration-300"
+                className="text-xs sm:text-sm text-subtle hover:text-white transition-colors duration-300"
               >
                 {link.label}
               </a>
             ))}
           </motion.div>
 
-          {/* Social Links */}
+          {/* Social Links - Mobile Optimized */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex gap-3"
+            className="flex gap-2.5 sm:gap-3"
           >
             {socialLinks.map((social, index) => (
                      <motion.a
@@ -69,12 +69,12 @@ export default function Footer() {
                        href={social.href}
                        target="_blank"
                        rel="noopener noreferrer"
-                       className="w-9 h-9 rounded-lg glass-effect hover:glass-effect-strong flex items-center justify-center transition-all duration-300 group"
+                       className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg glass-effect hover:glass-effect-strong flex items-center justify-center transition-all duration-300 group"
                        aria-label={social.label}
                        whileHover={{ scale: 1.1, y: -3 }}
                        whileTap={{ scale: 0.95 }}
                      >
-                       <social.icon className="w-4 h-4 text-muted group-hover:text-base-blue transition-colors" />
+                       <social.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted group-hover:text-base-blue transition-colors" />
                      </motion.a>
             ))}
           </motion.div>

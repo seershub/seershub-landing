@@ -61,50 +61,41 @@ export default function ProblemSolution() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 md:mb-20 px-4"
         >
-          {/* Badge */}
+          {/* Badge - Mobile Optimized */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                       bg-red-500/10 border border-red-500/30 mb-6"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full 
+                       bg-red-500/10 border border-red-500/30 mb-4 sm:mb-6 text-sm"
           >
-            <X className="w-4 h-4 text-red-400" />
-            <span className="text-sm font-semibold text-red-400">The Old Way is Broken</span>
+            <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
+            <span className="text-xs sm:text-sm font-semibold text-red-400">The Old Way is Broken</span>
           </motion.div>
           
-          <h2 style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-            lineHeight: '1.2',
-            letterSpacing: '-0.02em',
-            fontWeight: 600
-          }} className="mb-6">
-            <strong className="bg-[#0052FF] text-white px-3 py-1 rounded mr-2">Why</strong>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
+            <strong className="bg-[#0052FF] text-white px-2 sm:px-3 py-1 rounded mr-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Why</strong>
             <span className="text-gradient">decentralize</span>
             <br />
-            sports betting?
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">sports betting?</span>
           </h2>
-          <p style={{
-            fontSize: 'clamp(1.125rem, 1.5vw, 1.25rem)',
-            lineHeight: '1.6',
-            letterSpacing: '-0.011em'
-          }} className="text-white/70 max-w-[680px] mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-[680px] mx-auto leading-relaxed">
             Traditional platforms have failed bettors. We're building a better way with blockchain—transparent, 
             secure, and truly fair.
           </p>
         </motion.div>
 
-        {/* Two column layout - Enhanced cards */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* Two column layout - Mobile Optimized */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
           {/* Problem card - Enhanced */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
                  transition={{ duration: 0.6, delay: 0.1 }}
-                 className="relative p-8 rounded-3xl overflow-hidden group"
+                 className="relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl overflow-hidden group"
                  style={{
                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(127, 29, 29, 0.05) 100%)',
                    border: '1px solid rgba(239, 68, 68, 0.2)',
@@ -129,36 +120,36 @@ export default function ProblemSolution() {
                  </div>
                  
                  <div className="relative">
-                   <div className="flex items-center justify-between mb-8">
-                     <div className="flex items-center gap-3">
+                   <div className="flex items-center justify-between mb-6 sm:mb-8 flex-wrap gap-3">
+                     <div className="flex items-center gap-2 sm:gap-3">
                        <motion.div 
-                         className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center
+                         className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-red-500/20 flex items-center justify-center
                                     border border-red-500/30"
                          whileHover={{ rotate: 180, scale: 1.1 }}
                          transition={{ duration: 0.4 }}
                        >
-                         <X className="w-6 h-6 text-red-400" />
+                         <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-400" />
                        </motion.div>
-                       <h3 className="text-2xl font-bold text-white">The Problem</h3>
+                       <h3 className="text-xl sm:text-2xl font-bold text-white">The Problem</h3>
                      </div>
-                     <span className="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-xs text-red-400 font-semibold">
+                     <span className="px-2.5 sm:px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-xs text-red-400 font-semibold">
                        Centralized
                      </span>
                    </div>
-                  <ul className="space-y-5">
+                  <ul className="space-y-3 sm:space-y-5">
                     <motion.li 
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.2 }}
-                      className="flex items-start gap-4 p-3 rounded-xl hover:bg-red-500/5 transition-colors"
+                      className="flex items-start gap-3 sm:gap-4 p-2.5 sm:p-3 rounded-xl hover:bg-red-500/5 transition-colors"
                     >
-                      <div className="w-6 h-6 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <X className="w-4 h-4 text-red-400" />
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
                       </div>
                       <div>
-                        <span className="text-white font-medium">Platforms control your funds</span>
-                        <p className="text-white/40 text-sm mt-1">Your money is locked in their custody</p>
+                        <span className="text-white font-medium text-sm sm:text-base">Platforms control your funds</span>
+                        <p className="text-white/40 text-xs sm:text-sm mt-1">Your money is locked in their custody</p>
                       </div>
                     </motion.li>
                     <motion.li 
