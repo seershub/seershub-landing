@@ -83,7 +83,7 @@ export default function LiveMatchesDemo() {
   }, []);
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 px-3 sm:px-4 md:px-6 relative overflow-hidden">
       {/* DEMO Badge - Top Right */}
       <div className="absolute top-8 right-8 z-20">
         <div className="px-6 py-3 rounded-full bg-accent-amber/20 border-2 border-accent-amber backdrop-blur-sm">

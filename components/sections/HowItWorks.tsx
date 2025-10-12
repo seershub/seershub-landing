@@ -26,9 +26,9 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden">
+    <section id="how-it-works" className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 md:px-6 relative overflow-hidden">
 
-      <div className="container mx-auto max-w-[1200px] relative z-10">
+      <div className="container mx-auto max-w-[1200px] relative z-10 w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div

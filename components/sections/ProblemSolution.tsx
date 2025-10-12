@@ -6,7 +6,7 @@ import BlockchainNetwork from '@/components/graphics/BlockchainNetwork';
 
 export default function ProblemSolution() {
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
+    <section className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 md:px-6 relative overflow-hidden">
       {/* Floating blockchain graphic */}
       <motion.div
         className="absolute top-20 right-10 opacity-20"
@@ -54,7 +54,7 @@ export default function ProblemSolution() {
         <Shield className="w-32 h-32 text-base-blue" />
       </motion.div>
 
-      <div className="container mx-auto max-w-[1200px] relative z-10">
+      <div className="container mx-auto max-w-[1200px] relative z-10 w-full">
         {/* Section title - Enhanced */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

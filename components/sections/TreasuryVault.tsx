@@ -10,18 +10,18 @@ import VaultSecurityFooter from '@/components/vault/VaultSecurityFooter';
 
 export default function TreasuryVault() {
   return (
-    <section className="relative py-24 md:py-32 px-4 overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950">
+    <section className="relative py-16 md:py-24 lg:py-32 px-3 sm:px-4 overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950">
       
       {/* Dramatic background */}
       <VaultBackground />
       
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         
         {/* Section Header */}
         <VaultHeader />
         
         {/* Main 3-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 mt-12 md:mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 mt-8 md:mt-12 lg:mt-16">
           
           {/* LEFT: Live Deposit Stream (4 cols) */}
           <div className="lg:col-span-4 order-2 lg:order-1">

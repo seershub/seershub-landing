@@ -10,9 +10,9 @@ export default function VaultHeader() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl mb-8
+        className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl mb-6 sm:mb-8
                    bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10
-                   border border-blue-500/30 backdrop-blur-xl"
+                   border border-blue-500/30 backdrop-blur-xl text-sm sm:text-base"
       >
         <Lock className="w-5 h-5 text-blue-400" />
         <span className="text-blue-400 font-semibold tracking-wide">
@@ -27,7 +27,7 @@ export default function VaultHeader() {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4"
       >
         <span className="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200 
                        bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(0,82,255,0.5)]">

@@ -78,7 +78,7 @@ export default function VaultCenterpiece() {
       
       {/* Main vault container */}
       <div className="relative bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900
-                      rounded-3xl border-2 border-blue-500/30 p-6 md:p-8 overflow-hidden
+                      rounded-2xl sm:rounded-3xl border-2 border-blue-500/30 p-4 sm:p-6 md:p-8 overflow-hidden
                       shadow-[0_0_80px_rgba(0,82,255,0.3)]">
         
         {/* Vault door background pattern */}
@@ -144,7 +144,7 @@ export default function VaultCenterpiece() {
             transition={{ duration: 0.3 }}
             className="relative"
           >
-            <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-2">
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-2">
               <span className="bg-gradient-to-b from-white via-blue-100 to-blue-400 
                             bg-clip-text text-transparent
                             drop-shadow-[0_0_40px_rgba(251,191,36,0.6)]">

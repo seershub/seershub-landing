@@ -6,7 +6,7 @@ import { Check } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 py-16 sm:py-20">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 gradient-subtle" />
       

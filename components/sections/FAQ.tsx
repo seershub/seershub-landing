@@ -79,7 +79,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-32 px-4 relative overflow-hidden">
+    <section className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
@@ -108,7 +108,7 @@ export default function FAQ() {
             <span className="text-sm font-semibold text-blue-400">Got Questions?</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <strong className="bg-[#0052FF] text-white px-3 py-1 rounded mr-2">Frequently</strong>
             Asked Questions
           </h2>
@@ -136,10 +136,10 @@ export default function FAQ() {
                 {/* Question Button */}
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left
+                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-3 sm:gap-4 text-left
                              focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-2xl"
                 >
-                  <span className="text-lg md:text-xl font-semibold text-white pr-4">
+                  <span className="text-base sm:text-lg md:text-xl font-semibold text-white pr-2 sm:pr-4">
                     {faq.question}
                   </span>
                   

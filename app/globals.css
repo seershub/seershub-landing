@@ -189,6 +189,7 @@ body {
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
+    width: 100%;
   }
   
   @media (min-width: 768px) {
@@ -202,6 +203,19 @@ body {
     .container-responsive {
       padding-left: 3rem;
       padding-right: 3rem;
+    }
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    section {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
   

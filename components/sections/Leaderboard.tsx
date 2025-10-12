@@ -78,7 +78,7 @@ export default function Leaderboard() {
   };
 
   return (
-    <section className="py-32 px-4 relative">
+    <section className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 relative">
       {/* DEMO Badge - Top Right */}
       <div className="absolute top-8 right-8 z-20">
         <div className="px-6 py-3 rounded-full bg-accent-purple/20 border-2 border-accent-purple backdrop-blur-sm">

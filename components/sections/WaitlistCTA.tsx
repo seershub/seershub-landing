@@ -65,7 +65,7 @@ export default function WaitlistCTA() {
   };
 
   return (
-    <section id="waitlist" className="py-32 px-6 relative">
+    <section id="waitlist" className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 md:px-6 relative">
       <div className="container mx-auto max-w-[1024px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

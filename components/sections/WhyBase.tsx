@@ -26,7 +26,7 @@ export default function WhyBase() {
   ];
 
   return (
-    <section id="why-base" className="py-32 px-6 relative overflow-hidden">
+    <section id="why-base" className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 md:px-6 relative overflow-hidden">
       {/* Soccer Ball - Top Right */}
       <motion.div
         className="absolute top-16 right-16 text-8xl opacity-10 pointer-events-none"
