@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "hardhat.config.ts",
+    "contracts/**/*.sol",
+    "test/**/*.ts",
+    "scripts/**/*.ts",
+    "ignition/**/*.ts"
+  ],
+  "files": ["hardhat.config.ts"]
+}
+

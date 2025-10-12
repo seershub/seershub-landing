@@ -1,3 +1,35 @@
+# Seershub - Sports Prediction Competition on Base
+
+Transparent, skill-based sports predictions on Base Network.
+
+## 🔵 Deployed on Base Sepolia
+
+**Smart Contract:** [0xYOUR_CONTRACT_ADDRESS](https://sepolia.basescan.org/address/0x0E446140121605f898e8Ca84f40FFC75384305d0)
+
+**Network:** Base Sepolia (Testnet)  
+**Status:** ✅ Active  
+**Predictions:** 10+ on-chain  
+
+## 🚀 Quick Links
+
+- **Live Site:** [seershub.com](https://seershub.com)
+- **Contract:** [BaseScan](https://sepolia.basescan.org/address/0x0E446140121605f898e8Ca84f40FFC75384305d0)
+- **Documentation:** See [docs](./pitch-deck)
+
+## 🛠️ Tech Stack
+
+- **Blockchain:** Base (Ethereum L2)
+- **Smart Contracts:** Solidity 0.8.20
+- **Frontend:** Next.js 14, TypeScript, Tailwind
+- **Web3:** Wagmi, Viem, RainbowKit
+- **Development:** Hardhat
+
+## 📜 Smart Contract
+```solidity
+contract SeershubPredictions {
+    // On-chain sports predictions
+    // Transparent, verifiable, skill-based
+}
 # Seershub Landing Page
 
 ![Seershub](https://img.shields.io/badge/Built%20on-Base%20Network-0052FF)
