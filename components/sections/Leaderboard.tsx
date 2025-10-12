@@ -79,14 +79,9 @@ export default function Leaderboard() {
 
   return (
     <section className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 relative">
-      {/* DEMO Badge - Top Right - Hidden on Mobile */}
-      <div className="hidden md:block absolute top-8 right-8 z-20">
-        <div className="px-6 py-3 rounded-full bg-accent-purple/20 border-2 border-accent-purple backdrop-blur-sm">
-          <span className="text-accent-purple font-bold text-sm uppercase tracking-wider">📊 Demo Data</span>
-        </div>
-      </div>
+      {/* DEMO Badge - REMOVED (Better UX) */}
 
-      <div className="container-responsive">
+      <div className="container-responsive max-w-5xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-16">
@@ -127,9 +122,9 @@ export default function Leaderboard() {
             <div className="col-span-1 text-center">Badges</div>
           </div>
 
-          {/* Leaderboard entries - Responsive */}
+          {/* Leaderboard entries - Responsive - Show only top 4 on mobile */}
           <div className="divide-y divide-white/5">
-            {leaders.map((leader, index) => (
+            {leaders.slice(0, 4).map((leader, index) => (
               <motion.div
                 key={leader.rank}
                 initial={{ opacity: 0, x: -20 }}

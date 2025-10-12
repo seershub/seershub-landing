@@ -854,14 +854,14 @@ export default function PitchDeckPage() {
                   <Users className="w-5 h-5" />
                   Join Waitlist
                 </Link>
-                <a href="mailto:hello@seershub.com" className="btn-secondary inline-flex items-center gap-2">
+                <a href="mailto:info@seershub.com" className="btn-secondary inline-flex items-center gap-2">
                   <DollarSign className="w-5 h-5" />
                   Contact for Investment
                 </a>
               </div>
 
               <div className="text-sm text-white/50">
-                <p>📧 hello@seershub.com • 🐦 @seershub</p>
+                <p>📧 info@seershub.com • 🐦 @seershub</p>
                 <p className="mt-2">Built on Base Network • Committed to Ecosystem Success</p>
               </div>
             </div>

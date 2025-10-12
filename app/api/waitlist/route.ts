@@ -85,7 +85,7 @@ export async function POST(request: Request) {
     if (resend) {
       try {
         await resend.emails.send({
-          from: process.env.EMAIL_FROM || 'Seershub <onboarding@seershub.com>',
+          from: process.env.EMAIL_FROM || 'Seershub <info@seershub.com>',
           to: email,
           subject: '🎉 Welcome to Seershub - You\'re on the Waitlist!',
           html: getWelcomeEmailHTML(email),

@@ -84,12 +84,7 @@ export default function LiveMatchesDemo() {
 
   return (
     <section className="py-16 sm:py-20 md:py-24 px-3 sm:px-4 md:px-6 relative overflow-hidden">
-      {/* DEMO Badge - Top Right - Mobile Hidden */}
-      <div className="hidden md:block absolute top-8 right-8 z-20">
-        <div className="px-6 py-3 rounded-full bg-accent-amber/20 border-2 border-accent-amber backdrop-blur-sm">
-          <span className="text-accent-amber font-bold text-sm uppercase tracking-wider">📺 Demo Preview</span>
-        </div>
-      </div>
+      {/* DEMO Badge - REMOVED (Too distracting on mobile) */}
 
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
@@ -139,8 +134,8 @@ export default function LiveMatchesDemo() {
           </p>
         </motion.div>
 
-        {/* Matches Grid */}
-        <div className="grid gap-6">
+        {/* Matches Grid - Single column on mobile for better fit */}
+        <div className="grid gap-4 sm:gap-6 max-w-4xl mx-auto">
           {matches.map((match, index) => (
             <motion.div
               key={match.id}
@@ -148,7 +143,7 @@ export default function LiveMatchesDemo() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass-effect-strong rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group border border-white/5"
+              className="glass-effect-strong rounded-xl sm:rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group border border-white/5 w-full"
             >
               {/* Match Header - Responsive */}
               <div className="bg-gradient-to-r from-base-blue/10 to-accent-cyan/5 px-3 sm:px-4 md:px-6 py-3 border-b border-white/5">
