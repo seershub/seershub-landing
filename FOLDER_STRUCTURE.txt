@@ -1,0 +1,177 @@
+seershub-landing/
+│
+├── 📁 app/                                 # Next.js App Router
+│   ├── 📁 api/
+│   │   └── 📁 waitlist/
+│   │       └── route.ts                   # Waitlist API endpoint (POST/GET)
+│   ├── layout.tsx                         # Root layout with metadata
+│   ├── page.tsx                           # Home page (imports all sections)
+│   └── globals.css                        # Global styles + Tailwind
+│
+├── 📁 components/                          # React components
+│   ├── 📁 sections/                       # Landing page sections
+│   │   ├── Hero.tsx                       # 🎯 Hero with gradient background
+│   │   ├── ProblemSolution.tsx            # 🆚 Old way vs New way
+│   │   ├── HowItWorks.tsx                 # 📋 3-step process
+│   │   ├── WhyBase.tsx                    # ⚡ Why Base Network (3 cards)
+│   │   ├── LiveMatches.tsx                # ⚽ Match preview with odds
+│   │   ├── Roadmap.tsx                    # 🗺️ Timeline (Q4 2024 - Q3 2025)
+│   │   ├── WaitlistCTA.tsx                # 📧 Email signup form
+│   │   └── Footer.tsx                     # 📄 Footer with links
+│   └── 📁 ui/                             # Reusable UI components
+│       └── .gitkeep
+│
+├── 📁 scripts/                             # Utility scripts
+│   └── setup-db.sql                       # PostgreSQL database setup
+│
+├── 📁 public/                              # Static files (served at /)
+│   ├── robots.txt                         # SEO - search engine rules
+│   └── .gitkeep
+│
+├── 📄 Configuration Files
+├── .env.example                           # Environment variables template
+├── .env.local.example                     # Local development env template
+├── .gitignore                             # Git ignore patterns
+├── .npmrc                                 # NPM configuration
+├── .eslintrc.json                         # ESLint rules
+├── next.config.mjs                        # Next.js configuration
+├── next-env.d.ts                          # Next.js TypeScript declarations
+├── tailwind.config.ts                     # Tailwind CSS configuration
+├── postcss.config.mjs                     # PostCSS configuration
+├── tsconfig.json                          # TypeScript configuration
+├── package.json                           # Dependencies & scripts
+│
+└── 📄 Documentation
+    ├── README.md                          # 📚 Full documentation
+    ├── SETUP.md                           # 🚀 Quick setup guide
+    ├── PROJECT_SUMMARY.md                 # 📋 Complete project overview
+    ├── FOLDER_STRUCTURE.txt               # 🗂️ This file
+    └── LICENSE                            # ⚖️ MIT License
+
+
+════════════════════════════════════════════════════════════════════
+KEY FILES TO EDIT FOR CUSTOMIZATION
+════════════════════════════════════════════════════════════════════
+
+🎨 BRANDING & DESIGN
+├── tailwind.config.ts                     → Update brand colors
+├── components/sections/Hero.tsx           → Add your logo
+└── app/globals.css                        → Custom styles
+
+📝 CONTENT
+├── components/sections/*.tsx              → Update text & content
+├── components/sections/LiveMatches.tsx    → Update match data
+└── components/sections/Footer.tsx         → Update social links
+
+🔧 FUNCTIONALITY
+├── app/api/waitlist/route.ts              → Email template & logic
+├── .env.local                             → Environment variables
+└── scripts/setup-db.sql                   → Database schema
+
+📚 DOCUMENTATION
+├── README.md                              → Project documentation
+└── SETUP.md                               → Setup instructions
+
+
+════════════════════════════════════════════════════════════════════
+TECH STACK
+════════════════════════════════════════════════════════════════════
+
+⚛️  Framework:          Next.js 14 (App Router)
+📘 Language:            TypeScript 5.5
+🎨 Styling:             Tailwind CSS 3.4
+✨ Animations:          Framer Motion
+🎯 Icons:              Lucide React
+🗄️  Database:           Vercel Postgres
+📧 Email:              Resend API
+✅ Validation:          Zod
+
+
+════════════════════════════════════════════════════════════════════
+SCRIPTS (package.json)
+════════════════════════════════════════════════════════════════════
+
+npm run dev             → Start development server (localhost:3000)
+npm run build           → Build for production
+npm run start           → Start production server
+npm run lint            → Run ESLint
+
+
+════════════════════════════════════════════════════════════════════
+ENVIRONMENT VARIABLES NEEDED
+════════════════════════════════════════════════════════════════════
+
+✅ POSTGRES_URL                  → Vercel Postgres connection
+✅ POSTGRES_PRISMA_URL          → Prisma connection
+✅ POSTGRES_URL_NO_SSL          → Non-SSL connection
+✅ POSTGRES_URL_NON_POOLING     → Non-pooling connection
+✅ POSTGRES_USER                → Database user
+✅ POSTGRES_HOST                → Database host
+✅ POSTGRES_PASSWORD            → Database password
+✅ POSTGRES_DATABASE            → Database name
+✅ RESEND_API_KEY               → Resend email API key
+✅ EMAIL_FROM                   → Sender email address
+   NEXT_PUBLIC_APP_URL          → Application URL (optional)
+
+
+════════════════════════════════════════════════════════════════════
+LANDING PAGE SECTIONS (IN ORDER)
+════════════════════════════════════════════════════════════════════
+
+1. 🎯 Hero                      → Large headline, CTA, stats
+2. 🆚 Problem/Solution          → Old way vs Seershub way
+3. 📋 How It Works              → 3-step process explanation
+4. ⚡ Why Base                  → 3 feature cards (Fast, Cheap, Secure)
+5. ⚽ Live Matches              → Match previews with odds
+6. 🗺️  Roadmap                  → Timeline with milestones
+7. 📧 Waitlist CTA             → Email signup form
+8. 📄 Footer                   → Links, social, disclaimer
+
+
+════════════════════════════════════════════════════════════════════
+API ENDPOINTS
+════════════════════════════════════════════════════════════════════
+
+POST /api/waitlist              → Add email to waitlist
+GET  /api/waitlist              → Get waitlist count
+
+
+════════════════════════════════════════════════════════════════════
+DESIGN FEATURES
+════════════════════════════════════════════════════════════════════
+
+✨ Glass morphism effects
+🌈 Gradient backgrounds & text
+🎬 Framer Motion animations
+📱 Fully responsive design
+🌙 Dark theme (navy/black)
+🎨 Large typography (72px headlines)
+📏 Generous spacing (160px sections)
+🎯 Hover effects & transitions
+🎨 Base Network branding
+
+
+════════════════════════════════════════════════════════════════════
+WHAT'S NEXT?
+════════════════════════════════════════════════════════════════════
+
+1. Install Node.js (if needed)
+2. cd seershub-landing
+3. npm install
+4. Set up Vercel Postgres (see SETUP.md)
+5. Set up Resend API (see SETUP.md)
+6. Create .env.local file
+7. npm run dev
+8. Open http://localhost:3000
+9. Test the waitlist
+10. Customize & deploy!
+
+
+════════════════════════════════════════════════════════════════════
+For detailed instructions, see:
+- SETUP.md (Quick start guide)
+- README.md (Full documentation)
+- PROJECT_SUMMARY.md (Complete overview)
+════════════════════════════════════════════════════════════════════
+
+
