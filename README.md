@@ -10,7 +10,7 @@
 
 *Not gambling. Not betting. Pure skill.*
 
-[![Contract](https://img.shields.io/badge/Contract-Base%20Sepolia-0052FF)](https://sepolia.basescan.org/address/0x76267C394BeBA8367C6AB439452988219Aac82c7)
+[![Contract](https://img.shields.io/badge/Contract-Base%20Sepolia-0052FF)](https://sepolia.basescan.org/address/0x718430F546A7e7b74b1BA4a13e0C391e36108D8b)
 [![Status](https://img.shields.io/badge/Status-Live-success)](https://seershub.com)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
@@ -21,7 +21,7 @@
 Seershub lets sports fans compete based on prediction accuracy - no gambling mechanics, no odds, no house edge. Just transparent, on-chain skill competition.
 
 **Live on Base Sepolia:**  
-Contract: `0x76267C394BeBA8367C6AB439452988219Aac82c7`  
+Contract: `0x718430F546A7e7b74b1BA4a13e0C391e36108D8b`  
 Platform: [seershub.com](https://seershub.com)
 
 ---
@@ -69,7 +69,7 @@ contract SeershubPredictions {
 }
 ```
 
-Full contract: [View on BaseScan](https://sepolia.basescan.org/address/0x76267C394BeBA8367C6AB439452988219Aac82c7)
+Full contract: [View on BaseScan](https://sepolia.basescan.org/address/0x718430F546A7e7b74b1BA4a13e0C391e36108D8b)
 
 ---
 
@@ -104,7 +104,7 @@ Full contract: [View on BaseScan](https://sepolia.basescan.org/address/0x76267C3
 **Testnet Deployment:**
 ```
 Network: Base Sepolia
-Contract: 0x76267C394BeBA8367C6AB439452988219Aac82c7
+Contract: 0x718430F546A7e7b74b1BA4a13e0C391e36108D8b
 Predictions: 10+ on-chain
 Users: Active testing
 Status: ✅ Verified on BaseScan
@@ -112,7 +112,7 @@ Status: ✅ Verified on BaseScan
 
 **Live Links:**
 - Landing: [seershub.com](https://seershub.com)
-- Contract: [BaseScan](https://sepolia.basescan.org/address/0x76267C394BeBA8367C6AB439452988219Aac82c7)
+- Contract: [BaseScan](https://sepolia.basescan.org/address/0x718430F546A7e7b74b1BA4a13e0C391e36108D8b)
 - GitHub: You're here!
 
 ---
@@ -188,7 +188,7 @@ seershub-landing/
 
 1. Get testnet ETH: [Base Faucet](https://www.coinbase.com/faucets/base-ethereum-goerli-faucet)
 2. Run: `npx hardhat run scripts/test-predictions.ts --network baseSepolia`
-3. View on [BaseScan](https://sepolia.basescan.org/address/0x76267C394BeBA8367C6AB439452988219Aac82c7)
+3. View on [BaseScan](https://sepolia.basescan.org/address/0x718430F546A7e7b74b1BA4a13e0C391e36108D8b)
 
 ---
 
