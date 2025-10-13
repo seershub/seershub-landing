@@ -125,6 +125,15 @@ export default function MatchCard({
         </div>
       )}
 
+      {/* Entry Fee */}
+      <div className="flex items-center justify-between p-2 rounded-lg bg-white/[0.02] border border-white/5 mb-3">
+        <span className="text-xs text-white/60">Entry Fee</span>
+        <div className="flex items-center gap-1">
+          <span className="text-lg">💵</span>
+          <span className="text-sm font-bold text-[#00D4FF]">3 USDC</span>
+        </div>
+      </div>
+
       {isPredicted && predictionData ? (
         <div className="space-y-2">
           <div className="w-full py-3 rounded-xl bg-green-500/20 border border-green-500 text-center">

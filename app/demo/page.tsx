@@ -12,6 +12,7 @@ import PlatformStats from '@/components/demo/PlatformStats';
 import ActivityFeed from '@/components/demo/ActivityFeed';
 import Achievements from '@/components/demo/Achievements';
 import PrizeVault from '@/components/demo/PrizeVault';
+import ProfileView from '@/components/demo/ProfileView';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
 
@@ -22,10 +23,13 @@ interface PredictionData {
   timestamp: number;
 }
 
+type TabType = 'matches' | 'profile' | 'leaderboard';
+
 export default function DemoPage() {
   const { isConnected } = useAccount();
   const [selectedMatch, setSelectedMatch] = useState<MatchData | null>(null);
   const [userPredictions, setUserPredictions] = useState<Map<number, PredictionData>>(new Map());
+  const [activeTab, setActiveTab] = useState<TabType>('matches');
 
   const handlePredictionSuccess = (matchId: number, txHash: string, outcome: 0 | 1 | 2) => {
     const predictionData: PredictionData = {
@@ -96,47 +100,106 @@ export default function DemoPage() {
 
         {isConnected && (
           <>
-            <SectionHeader title="🔥 Live Matches" subtitle="Predict upcoming games on Base" />
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {MOCK_MATCHES.map((match) => (
-                <MatchCard 
-                  key={match.id} 
-                  match={match} 
-                  onPredict={setSelectedMatch}
-                  isPredicted={userPredictions.has(match.id)}
-                  predictionData={userPredictions.get(match.id)}
-                />
-              ))}
+            {/* Tab Navigation */}
+            <div className="mb-8">
+              <div className="flex gap-3 overflow-x-auto pb-2">
+                {[
+                  { id: 'matches' as TabType, label: '🏟️ Live Matches', count: MOCK_MATCHES.length },
+                  { id: 'profile' as TabType, label: '👤 My Profile', count: null },
+                  { id: 'leaderboard' as TabType, label: '🏆 Leaderboard', count: null }
+                ].map(tab => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all whitespace-nowrap ${
+                      activeTab === tab.id
+                        ? 'bg-[#0052FF] text-white shadow-lg shadow-[#0052FF]/30'
+                        : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    {tab.label}
+                    {tab.count && (
+                      <span className="ml-2 px-2 py-0.5 bg-white/20 rounded-full text-xs">
+                        {tab.count}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2">
-                <SectionHeader title="🏆 Top Predictors" subtitle="Leaderboard rankings" />
-                <div className="mt-4">
+            {/* Tab Content */}
+            {activeTab === 'matches' && (
+              <>
+                <SectionHeader title="🔥 Live Matches" subtitle="Predict upcoming games on Base" />
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  {MOCK_MATCHES.map((match) => (
+                    <MatchCard 
+                      key={match.id} 
+                      match={match} 
+                      onPredict={setSelectedMatch}
+                      isPredicted={userPredictions.has(match.id)}
+                      predictionData={userPredictions.get(match.id)}
+                    />
+                  ))}
+                </div>
+
+                <div className="grid lg:grid-cols-3 gap-6 mb-8">
+                  <div className="lg:col-span-2">
+                    <SectionHeader title="🏆 Top Predictors" subtitle="Leaderboard rankings" />
+                    <div className="mt-4">
+                      <Leaderboard />
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div>
+                      <SectionHeader title="💰 Prize Vault" subtitle="USDC rewards" />
+                      <div className="mt-4">
+                        <PrizeVault />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <SectionHeader title="📊 Platform Stats" subtitle="On-chain metrics" />
+                      <div className="mt-4">
+                        <PlatformStats />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <ActivityFeed />
+                </div>
+
+                <Achievements />
+              </>
+            )}
+
+            {activeTab === 'profile' && (
+              <div className="grid lg:grid-cols-3 gap-6">
+                <div className="lg:col-span-2">
+                  <ProfileView />
+                </div>
+                <div className="space-y-6">
+                  <Achievements />
+                  <PlatformStats />
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'leaderboard' && (
+              <div className="grid lg:grid-cols-3 gap-6">
+                <div className="lg:col-span-2">
                   <Leaderboard />
                 </div>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <SectionHeader title="💰 Prize Vault" subtitle="USDC rewards" />
-                  <div className="mt-4">
-                    <PrizeVault />
-                  </div>
-                </div>
-                
-                <div>
-                  <SectionHeader title="📊 Platform Stats" subtitle="On-chain metrics" />
-                  <div className="mt-4">
-                    <PlatformStats />
-                  </div>
+                <div className="space-y-6">
+                  <PlatformStats />
+                  <ActivityFeed />
                 </div>
               </div>
-            </div>
-
-            <ActivityFeed />
-
-            <Achievements />
+            )}
           </>
         )}
       </main>

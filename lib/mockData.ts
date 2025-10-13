@@ -327,3 +327,92 @@ export const generateRandomActivity = () => {
   };
 };
 
+// Mock User Prediction History
+export const MOCK_USER_PREDICTIONS = [
+  {
+    id: 1,
+    matchId: 1001,
+    homeTeam: { name: 'Man City', flag: '🔵' },
+    awayTeam: { name: 'Arsenal', flag: '🔴' },
+    league: 'Premier League',
+    outcome: 'Home Win',
+    outcomeValue: 0,
+    timestamp: Date.now() - 2 * 24 * 60 * 60 * 1000,
+    txHash: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
+    reasoning: 'Man City has strong home form and Arsenal has key injuries in defense',
+    result: true,
+    correct: true,
+    confidence: 4
+  },
+  {
+    id: 2,
+    matchId: 1002,
+    homeTeam: { name: 'Real Madrid', flag: '⚪' },
+    awayTeam: { name: 'Barcelona', flag: '🔵' },
+    league: 'La Liga',
+    outcome: 'Away Win',
+    outcomeValue: 2,
+    timestamp: Date.now() - 3 * 24 * 60 * 60 * 1000,
+    txHash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+    reasoning: 'Barcelona in excellent form, Real Madrid missing key players',
+    result: true,
+    correct: false,
+    confidence: 3
+  },
+  {
+    id: 3,
+    matchId: 1003,
+    homeTeam: { name: 'Bayern', flag: '🔴' },
+    awayTeam: { name: 'Dortmund', flag: '🟡' },
+    league: 'Bundesliga',
+    outcome: 'Home Win',
+    outcomeValue: 0,
+    timestamp: Date.now() - 5 * 24 * 60 * 60 * 1000,
+    txHash: '0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba',
+    reasoning: 'Bayern dominant at home, Dortmund weak away record',
+    result: true,
+    correct: true,
+    confidence: 5
+  },
+  {
+    id: 4,
+    matchId: 1004,
+    homeTeam: { name: 'Inter', flag: '🔵' },
+    awayTeam: { name: 'Juventus', flag: '⚫' },
+    league: 'Serie A',
+    outcome: 'Draw',
+    outcomeValue: 1,
+    timestamp: Date.now() - 1 * 60 * 60 * 1000,
+    txHash: '0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210',
+    reasoning: 'Derby match, both teams playing cautiously',
+    result: false,
+    correct: null,
+    confidence: 2
+  },
+];
+
+// Mock User Insights
+export const MOCK_USER_INSIGHTS = [
+  {
+    id: 1,
+    match: 'Real Madrid vs Barcelona',
+    date: '3 days ago',
+    reasoning: 'Real Madrid\'s recent form and home advantage make them favorites despite Barcelona\'s attacking strength',
+    correct: false
+  },
+  {
+    id: 2,
+    match: 'Man City vs Arsenal',
+    date: '2 days ago',
+    reasoning: 'Man City unbeaten at home this season. Arsenal missing Saliba and Partey - huge defensive gap',
+    correct: true
+  },
+  {
+    id: 3,
+    match: 'Bayern vs Dortmund',
+    date: '5 days ago',
+    reasoning: 'Bayern 85% win rate at Allianz Arena. Dortmund only 1 win in last 10 away Der Klassiker matches',
+    correct: true
+  },
+];
+
