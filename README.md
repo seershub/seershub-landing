@@ -1,6 +1,6 @@
 # Seershub
 
-![Seershub Banner](./seershub-banner.png)
+![Seershub Banner](./public/seershub-banner.png)
 
 **Skill-based sports prediction competitions on Base Network.**
 ```markdown
