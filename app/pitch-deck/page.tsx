@@ -741,7 +741,7 @@ export default function PitchDeckPage() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold mb-1 text-accent-cyan">15,000</div>
-                    <p className="text-sm text-white/60">Break-even users (Q4 2025)</p>
+                    <p className="text-sm text-white/60">Break-even users (Q4 2026)</p>
                   </div>
                 </div>
               </div>
