@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/navigation/Header";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Seershub - Web3 Sports Prediction Platform",
@@ -21,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <Header />
-        <main className="pt-20">
-          {children}
-        </main>
+        <Providers>
+          <Header />
+          <main className="pt-20">
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
