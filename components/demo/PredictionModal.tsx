@@ -18,18 +18,45 @@ export default function PredictionModal({
 }: { 
   match: MatchData | null; 
   onClose: () => void;
-  onSuccess?: (matchId: number) => void;
+  onSuccess?: (matchId: number, txHash: string, outcome: 0 | 1 | 2) => void;
 }) {
   const { address } = useAccount();
   const [outcome, setOutcome] = useState<0 | 1 | 2 | null>(null);
   const [confidence, setConfidence] = useState(3);
   const [reasoning, setReasoning] = useState('');
+  const [entryAmount, setEntryAmount] = useState(3);
+  const [hasShownConfetti, setHasShownConfetti] = useState(false);
+  const [currentTxHash, setCurrentTxHash] = useState<string | null>(null);
 
-  const { data: hash, writeContract, isPending: isWriting, error: writeError } = useWriteContract();
-  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash, chainId: baseSepolia.id });
+  const { data: hash, writeContract, isPending: isWriting, error: writeError, reset: resetWrite } = useWriteContract();
+  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ 
+    hash: hash || undefined, 
+    chainId: baseSepolia.id 
+  });
+
+  // Reset all state when modal closes or match changes
+  const resetPredictionState = () => {
+    setOutcome(null);
+    setConfidence(3);
+    setReasoning('');
+    setEntryAmount(3);
+    setHasShownConfetti(false);
+    setCurrentTxHash(null);
+    resetWrite();
+  };
+
+  // Reset when match changes
+  useEffect(() => {
+    if (match) {
+      resetPredictionState();
+    }
+  }, [match?.id]);
 
   useEffect(() => {
-    if (isSuccess && match) {
+    if (isSuccess && hash && !hasShownConfetti && match && outcome !== null) {
+      setCurrentTxHash(hash);
+      setHasShownConfetti(true);
+      
       confetti({ 
         particleCount: 200, 
         spread: 80, 
@@ -39,13 +66,14 @@ export default function PredictionModal({
       
       // Auto-close and callback after 3 seconds
       const timer = setTimeout(() => {
-        if (onSuccess) onSuccess(match.id);
+        if (onSuccess) onSuccess(match.id, hash, outcome);
         onClose();
+        resetPredictionState();
       }, 3000);
       
       return () => clearTimeout(timer);
     }
-  }, [isSuccess, match, onSuccess, onClose]);
+  }, [isSuccess, hash, hasShownConfetti, match, outcome, onSuccess, onClose]);
 
   const handleSubmit = () => {
     if (!match || outcome === null || !address) return;
@@ -88,7 +116,13 @@ export default function PredictionModal({
                   <p className="text-white/60 text-sm">{match.homeTeam.name} vs {match.awayTeam.name}</p>
                   <p className="text-white/40 text-xs mt-1">{match.venue} · {match.weather}</p>
                 </div>
-                <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition">
+                <button 
+                  onClick={() => {
+                    resetPredictionState();
+                    onClose();
+                  }} 
+                  className="p-2 hover:bg-white/10 rounded-full transition"
+                >
                   <X className="w-5 h-5" />
                 </button>
               </div>
@@ -144,6 +178,55 @@ export default function PredictionModal({
                         </div>
                       ))}
                     </div>
+                  </div>
+                </div>
+
+                {/* Prize Pool Display */}
+                <div className="p-4 rounded-xl bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-white/60 mb-1">Current Prize Pool</div>
+                      <div className="text-xl font-bold text-yellow-500 flex items-center gap-2">
+                        💵 ${(127 * entryAmount).toLocaleString()}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs text-white/60 mb-1">Your Potential Win</div>
+                      <div className="text-lg font-bold text-green-500">
+                        ${(entryAmount * 2.5).toFixed(2)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Entry Amount Selector */}
+                <div>
+                  <label className="text-sm text-white/60 mb-3 block">
+                    Select Entry Amount (USDC)
+                  </label>
+                  <div className="grid grid-cols-3 gap-3">
+                    {[1, 3, 5].map((amount) => (
+                      <button
+                        key={amount}
+                        onClick={() => setEntryAmount(amount)}
+                        className={`p-4 rounded-xl border-2 transition-all ${
+                          entryAmount === amount
+                            ? 'border-[#0052FF] bg-[#0052FF]/20 scale-105'
+                            : 'border-white/10 hover:border-white/30'
+                        }`}
+                      >
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <span className="text-2xl">💵</span>
+                          <span className="text-2xl font-bold">{amount}</span>
+                        </div>
+                        <div className="text-xs text-white/60">
+                          Win: ${(amount * 2.5).toFixed(2)}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                  <div className="text-xs text-white/40 mt-2 text-center">
+                    💡 Entry fee goes to prize pool
                   </div>
                 </div>
 
@@ -234,7 +317,8 @@ function OutcomeButton({ label, selected, onClick }: { label: string; selected: 
   );
 }
 
-function SuccessState({ hash, onClose }: { hash: `0x${string}`; onClose: () => void; }) {
+function SuccessState({ hash, onClose }: { hash: `0x${string}` | null; onClose: () => void; }) {
+  if (!hash) return null;
   const shortHash = `${hash.slice(0, 10)}...${hash.slice(-8)}`;
   const [copied, setCopied] = useState(false);
 

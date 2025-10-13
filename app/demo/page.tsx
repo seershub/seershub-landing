@@ -11,16 +11,30 @@ import Leaderboard from '@/components/demo/Leaderboard';
 import PlatformStats from '@/components/demo/PlatformStats';
 import ActivityFeed from '@/components/demo/ActivityFeed';
 import Achievements from '@/components/demo/Achievements';
+import PrizeVault from '@/components/demo/PrizeVault';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
+
+interface PredictionData {
+  matchId: number;
+  outcome: 0 | 1 | 2;
+  txHash: string;
+  timestamp: number;
+}
 
 export default function DemoPage() {
   const { isConnected } = useAccount();
   const [selectedMatch, setSelectedMatch] = useState<MatchData | null>(null);
-  const [predictedMatches, setPredictedMatches] = useState<Set<number>>(new Set());
+  const [userPredictions, setUserPredictions] = useState<Map<number, PredictionData>>(new Map());
 
-  const handlePredictionSuccess = (matchId: number) => {
-    setPredictedMatches(prev => new Set(prev).add(matchId));
+  const handlePredictionSuccess = (matchId: number, txHash: string, outcome: 0 | 1 | 2) => {
+    const predictionData: PredictionData = {
+      matchId,
+      outcome,
+      txHash,
+      timestamp: Date.now()
+    };
+    setUserPredictions(prev => new Map(prev).set(matchId, predictionData));
   };
 
   return (
@@ -89,23 +103,33 @@ export default function DemoPage() {
                   key={match.id} 
                   match={match} 
                   onPredict={setSelectedMatch}
-                  isPredicted={predictedMatches.has(match.id)}
+                  isPredicted={userPredictions.has(match.id)}
+                  predictionData={userPredictions.get(match.id)}
                 />
               ))}
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div>
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
                 <SectionHeader title="🏆 Top Predictors" subtitle="Leaderboard rankings" />
                 <div className="mt-4">
                   <Leaderboard />
                 </div>
               </div>
 
-              <div>
-                <SectionHeader title="📊 Platform Stats" subtitle="Global metrics from the contract" />
-                <div className="mt-4">
-                  <PlatformStats />
+              <div className="space-y-6">
+                <div>
+                  <SectionHeader title="💰 Prize Vault" subtitle="USDC rewards" />
+                  <div className="mt-4">
+                    <PrizeVault />
+                  </div>
+                </div>
+                
+                <div>
+                  <SectionHeader title="📊 Platform Stats" subtitle="On-chain metrics" />
+                  <div className="mt-4">
+                    <PlatformStats />
+                  </div>
                 </div>
               </div>
             </div>

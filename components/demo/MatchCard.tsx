@@ -1,19 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Clock, TrendingUp, Users } from 'lucide-react';
+import { Clock, TrendingUp, Users, ExternalLink } from 'lucide-react';
 import { MatchData } from '@/lib/mockData';
 import Image from 'next/image';
+
+interface PredictionData {
+  matchId: number;
+  outcome: 0 | 1 | 2;
+  txHash: string;
+  timestamp: number;
+}
 
 export default function MatchCard({ 
   match, 
   onPredict,
-  isPredicted 
+  isPredicted,
+  predictionData
 }: { 
   match: MatchData; 
   onPredict: (match: MatchData) => void;
   isPredicted?: boolean;
+  predictionData?: PredictionData;
 }) {
+  const getOutcomeName = (outcome: 0 | 1 | 2) => {
+    return ['Home Win', 'Draw', 'Away Win'][outcome];
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -113,12 +125,23 @@ export default function MatchCard({
         </div>
       )}
 
-      {isPredicted ? (
-        <div className="w-full py-3 rounded-xl bg-green-500/20 border border-green-500 text-green-500 font-semibold text-center flex items-center justify-center gap-2">
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-          Prediction Submitted
+      {isPredicted && predictionData ? (
+        <div className="space-y-2">
+          <div className="w-full py-3 rounded-xl bg-green-500/20 border border-green-500 text-center">
+            <div className="flex items-center justify-center gap-2 text-green-500 font-semibold">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Predicted: {getOutcomeName(predictionData.outcome)}
+            </div>
+          </div>
+          <button
+            onClick={() => window.open(`https://sepolia.basescan.org/tx/${predictionData.txHash}`, '_blank')}
+            className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium transition-all flex items-center justify-center gap-2"
+          >
+            <ExternalLink className="w-4 h-4" />
+            View Transaction
+          </button>
         </div>
       ) : (
         <button
