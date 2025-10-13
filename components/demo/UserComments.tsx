@@ -32,7 +32,7 @@ const MOCK_COMMENTS = [
     user: 'carol.base',
     avatar: '/avatar/79e0ce7f58179293cc2dc4f061e4444a.png',
     match: 'Bayern vs Dortmund',
-    comment: 'Der Klassiker! Bayern at Allianz Arena = 90% win rate. Stats don't lie 📊',
+    comment: "Der Klassiker! Bayern at Allianz Arena = 90% win rate. Stats don't lie 📊",
     likes: 31,
     prediction: 'Home Win',
     accuracy: 94,
