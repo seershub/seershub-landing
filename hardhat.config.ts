@@ -44,9 +44,6 @@ const config: HardhatUserConfig = {
       }
     ]
   },
-  sourcify: {
-    enabled: false
-  },
   paths: {
     sources: "./contracts",
     tests: "./test",
