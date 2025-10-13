@@ -51,10 +51,10 @@ export default function PlatformStats() {
   ];
 
   return (
-    <div className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur">
+    <div className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur flex flex-col h-full">
       <h3 className="text-2xl font-bold mb-6">Platform Statistics</h3>
 
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-2 gap-4 mb-6 flex-1">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}

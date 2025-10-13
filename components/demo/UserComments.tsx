@@ -67,7 +67,7 @@ export default function UserComments() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur h-full"
+      className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur flex flex-col"
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function UserComments() {
         </div>
       </div>
 
-      <div className="space-y-3 max-h-[600px] overflow-y-auto scrollbar-hide">
+      <div className="space-y-3 flex-1 overflow-y-auto scrollbar-hide">
         {MOCK_COMMENTS.map((comment, i) => (
           <motion.div
             key={comment.id}
