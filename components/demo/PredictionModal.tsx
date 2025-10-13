@@ -29,10 +29,25 @@ export default function PredictionModal({
   const [currentTxHash, setCurrentTxHash] = useState<string | null>(null);
 
   const { data: hash, writeContract, isPending: isWriting, error: writeError, reset: resetWrite } = useWriteContract();
-  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ 
+  const { isLoading: isConfirming, isSuccess, error: receiptError } = useWaitForTransactionReceipt({ 
     hash: hash || undefined, 
     chainId: baseSepolia.id 
   });
+
+  // Debug logging
+  useEffect(() => {
+    if (writeError) {
+      console.error('❌ Write Error:', writeError);
+      console.error('Error message:', writeError.message);
+      console.error('Error cause:', writeError.cause);
+    }
+  }, [writeError]);
+
+  useEffect(() => {
+    if (receiptError) {
+      console.error('❌ Receipt Error:', receiptError);
+    }
+  }, [receiptError]);
 
   // Reset all state when modal closes or match changes
   const resetPredictionState = () => {
@@ -77,14 +92,29 @@ export default function PredictionModal({
   }, [isSuccess, hash, hasShownConfetti, match, outcome]);
 
   const handleSubmit = () => {
-    if (!match || outcome === null || !address) return;
-    writeContract({
-      address: CONTRACT_ADDRESS,
-      abi: ABI,
-      functionName: 'submitPrediction',
-      args: [BigInt(match.id), outcome],
-      chainId: baseSepolia.id,
+    if (!match || outcome === null || !address) {
+      console.warn('⚠️ Cannot submit:', { match: !!match, outcome, address });
+      return;
+    }
+    
+    console.log('📝 Submitting prediction:', {
+      matchId: match.id,
+      outcome,
+      address,
+      contractAddress: CONTRACT_ADDRESS
     });
+    
+    try {
+      writeContract({
+        address: CONTRACT_ADDRESS,
+        abi: ABI,
+        functionName: 'submitPrediction',
+        args: [BigInt(match.id), outcome],
+        chainId: baseSepolia.id,
+      });
+    } catch (error) {
+      console.error('❌ Submit error:', error);
+    }
   };
 
   if (!match) return null;
@@ -241,9 +271,25 @@ export default function PredictionModal({
                   </div>
                 </div>
 
-                {writeError && (
-                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
-                    {writeError.message.includes('Already predicted') ? 'You already predicted this match' : 'Error submitting prediction'}
+                {(writeError || receiptError) && (
+                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm space-y-1">
+                    <div className="font-semibold">
+                      {writeError?.message.includes('Already predicted') 
+                        ? '⚠️ You already predicted this match' 
+                        : writeError?.message.includes('insufficient') || writeError?.message.includes('gas')
+                        ? '⚠️ Insufficient funds for gas'
+                        : writeError?.message.includes('rejected') || writeError?.message.includes('denied')
+                        ? '⚠️ Transaction rejected'
+                        : '⚠️ Error submitting prediction'}
+                    </div>
+                    {writeError && (
+                      <div className="text-xs opacity-75 font-mono">
+                        {writeError.message.slice(0, 150)}{writeError.message.length > 150 ? '...' : ''}
+                      </div>
+                    )}
+                    {receiptError && (
+                      <div className="text-xs opacity-75">Receipt error occurred</div>
+                    )}
                   </div>
                 )}
 
