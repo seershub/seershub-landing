@@ -50,6 +50,7 @@ export default function PredictionModal({
     if (match) {
       resetPredictionState();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match?.id]);
 
   useEffect(() => {
@@ -73,7 +74,8 @@ export default function PredictionModal({
       
       return () => clearTimeout(timer);
     }
-  }, [isSuccess, hash, hasShownConfetti, match, outcome, onSuccess, onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess, hash, hasShownConfetti, match, outcome]);
 
   const handleSubmit = () => {
     if (!match || outcome === null || !address) return;
@@ -318,9 +320,11 @@ function OutcomeButton({ label, selected, onClick }: { label: string; selected: 
 }
 
 function SuccessState({ hash, onClose }: { hash: `0x${string}` | null; onClose: () => void; }) {
-  if (!hash) return null;
-  const shortHash = `${hash.slice(0, 10)}...${hash.slice(-8)}`;
   const [copied, setCopied] = useState(false);
+  
+  if (!hash) return null;
+  
+  const shortHash = `${hash.slice(0, 10)}...${hash.slice(-8)}`;
 
   const copyHash = () => {
     navigator.clipboard.writeText(hash);
