@@ -6,12 +6,20 @@ import { X, Check, Loader2, ExternalLink, Copy, Sparkles } from 'lucide-react';
 import { useWriteContract, useWaitForTransactionReceipt, useAccount } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
 import confetti from 'canvas-confetti';
-import { Match } from './MatchCard';
+import { MatchData } from '@/lib/mockData';
 import ABI from '@/public/contract-abi.json';
 
 const CONTRACT_ADDRESS = '0x718430F546A7e7b74b1BA4a13e0C391e36108D8b' as `0x${string}`;
 
-export default function PredictionModal({ match, onClose }: { match: Match | null; onClose: () => void; }) {
+export default function PredictionModal({ 
+  match, 
+  onClose,
+  onSuccess 
+}: { 
+  match: MatchData | null; 
+  onClose: () => void;
+  onSuccess?: (matchId: number) => void;
+}) {
   const { address } = useAccount();
   const [outcome, setOutcome] = useState<0 | 1 | 2 | null>(null);
   const [confidence, setConfidence] = useState(3);
@@ -21,10 +29,23 @@ export default function PredictionModal({ match, onClose }: { match: Match | nul
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash, chainId: baseSepolia.id });
 
   useEffect(() => {
-    if (isSuccess) {
-      confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
+    if (isSuccess && match) {
+      confetti({ 
+        particleCount: 200, 
+        spread: 80, 
+        origin: { y: 0.6 },
+        colors: ['#0052FF', '#00D4FF', '#ffffff']
+      });
+      
+      // Auto-close and callback after 3 seconds
+      const timer = setTimeout(() => {
+        if (onSuccess) onSuccess(match.id);
+        onClose();
+      }, 3000);
+      
+      return () => clearTimeout(timer);
     }
-  }, [isSuccess]);
+  }, [isSuccess, match, onSuccess, onClose]);
 
   const handleSubmit = () => {
     if (!match || outcome === null || !address) return;
@@ -64,7 +85,8 @@ export default function PredictionModal({ match, onClose }: { match: Match | nul
               <div className="sticky top-0 bg-[#000814] border-b border-white/10 p-6 flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold">Submit Prediction</h2>
-                  <p className="text-white/60 text-sm">{match.homeTeam} vs {match.awayTeam}</p>
+                  <p className="text-white/60 text-sm">{match.homeTeam.name} vs {match.awayTeam.name}</p>
+                  <p className="text-white/40 text-xs mt-1">{match.venue} · {match.weather}</p>
                 </div>
                 <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition">
                   <X className="w-5 h-5" />
@@ -72,6 +94,59 @@ export default function PredictionModal({ match, onClose }: { match: Match | nul
               </div>
 
               <div className="p-6 space-y-6">
+                {/* Head to Head */}
+                <div>
+                  <div className="text-sm text-white/60 mb-3">Head to Head (Last 10 matches)</div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="text-center p-3 rounded-xl bg-green-500/10 border border-green-500/30">
+                      <div className="text-2xl font-bold text-green-500">{match.headToHead.home}</div>
+                      <div className="text-xs text-white/60 mt-1">Home Wins</div>
+                    </div>
+                    <div className="text-center p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30">
+                      <div className="text-2xl font-bold text-yellow-500">{match.headToHead.draw}</div>
+                      <div className="text-xs text-white/60 mt-1">Draws</div>
+                    </div>
+                    <div className="text-center p-3 rounded-xl bg-blue-500/10 border border-blue-500/30">
+                      <div className="text-2xl font-bold text-blue-500">{match.headToHead.away}</div>
+                      <div className="text-xs text-white/60 mt-1">Away Wins</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Team Form */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm text-white/60 mb-2">{match.homeTeam.name} - Last 5</div>
+                    <div className="flex gap-1">
+                      {match.homeTeam.form.map((result, i) => (
+                        <div 
+                          key={i}
+                          className={`flex-1 aspect-square rounded flex items-center justify-center text-xs font-bold
+                            ${result === 'W' ? 'bg-green-500 text-white' : 
+                              result === 'L' ? 'bg-red-500 text-white' : 'bg-yellow-500 text-black'}`}
+                        >
+                          {result}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-white/60 mb-2">{match.awayTeam.name} - Last 5</div>
+                    <div className="flex gap-1">
+                      {match.awayTeam.form.map((result, i) => (
+                        <div 
+                          key={i}
+                          className={`flex-1 aspect-square rounded flex items-center justify-center text-xs font-bold
+                            ${result === 'W' ? 'bg-green-500 text-white' : 
+                              result === 'L' ? 'bg-red-500 text-white' : 'bg-yellow-500 text-black'}`}
+                        >
+                          {result}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 <div>
                   <div className="text-sm text-white/60 mb-3">Select Outcome</div>
                   <div className="grid grid-cols-3 gap-3">
@@ -82,7 +157,10 @@ export default function PredictionModal({ match, onClose }: { match: Match | nul
                 </div>
 
                 <div>
-                  <label className="text-sm text-white/60 mb-3 block">Confidence: {confidence}/5</label>
+                  <label className="text-sm text-white/60 mb-3 block flex items-center gap-2">
+                    Confidence: 
+                    <span className="text-[#00D4FF] font-bold">{confidence}/5 ⭐</span>
+                  </label>
                   <input
                     type="range"
                     min="1"
@@ -94,16 +172,21 @@ export default function PredictionModal({ match, onClose }: { match: Match | nul
                 </div>
 
                 <div>
-                  <label className="text-sm text-white/60 mb-2 block">Reasoning (optional, off-chain)</label>
+                  <label className="text-sm text-white/60 mb-2 block">
+                    Reasoning (optional, stored off-chain)
+                  </label>
                   <textarea
                     value={reasoning}
                     onChange={(e) => setReasoning(e.target.value)}
-                    placeholder="Why do you think this outcome will happen?"
+                    placeholder="Why do you think this outcome will happen? Share your analysis..."
                     maxLength={200}
                     rows={3}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm placeholder:text-white/40 focus:border-[#0052FF] focus:outline-none"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm placeholder:text-white/40 focus:border-[#0052FF] focus:outline-none resize-none"
                   />
-                  <div className="text-xs text-white/40 mt-1 text-right">{reasoning.length}/200</div>
+                  <div className="flex items-center justify-between mt-1">
+                    <div className="text-xs text-white/40">💡 Reasoning is not stored on blockchain</div>
+                    <div className="text-xs text-white/40">{reasoning.length}/200</div>
+                  </div>
                 </div>
 
                 {writeError && (

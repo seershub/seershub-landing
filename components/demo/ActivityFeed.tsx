@@ -1,26 +1,38 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Clock, TrendingUp, DollarSign, Users } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Clock, TrendingUp, DollarSign, Users, Award } from 'lucide-react';
+import { generateRandomActivity } from '@/lib/mockData';
 
-const MOCK_ACTIVITIES = [
-  { id: 1, type: 'prediction', text: 'alice.base predicted Barcelona Win', time: '2m ago', icon: TrendingUp },
-  { id: 2, type: 'match', text: 'Match 1042 starts in 30 minutes', time: '5m ago', icon: Clock },
-  { id: 3, type: 'reward', text: 'bob.base earned $45 prize!', time: '12m ago', icon: DollarSign },
-  { id: 4, type: 'stat', text: '10 new predictions in last hour', time: '20m ago', icon: Users },
-  { id: 5, type: 'prediction', text: 'carol.base predicted Draw', time: '25m ago', icon: TrendingUp },
-  { id: 6, type: 'reward', text: 'dave.base earned $30 prize!', time: '32m ago', icon: DollarSign },
-  { id: 7, type: 'prediction', text: 'eve.base predicted Home Win', time: '38m ago', icon: TrendingUp },
-  { id: 8, type: 'match', text: 'Match 1041 concluded', time: '45m ago', icon: Clock },
-  { id: 9, type: 'prediction', text: 'frank.base predicted Away Win', time: '50m ago', icon: TrendingUp },
-  { id: 10, type: 'stat', text: '50+ active users right now', time: '1h ago', icon: Users },
-];
+const getIconForType = (type: string) => {
+  switch (type) {
+    case 'prediction': return TrendingUp;
+    case 'match': return Clock;
+    case 'reward': return DollarSign;
+    case 'achievement': return Award;
+    default: return Users;
+  }
+};
 
 export default function ActivityFeed() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [activities, setActivities] = useState(() => 
+    Array.from({ length: 10 }, generateRandomActivity)
+  );
 
+  // Add new activity every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newActivity = generateRandomActivity();
+      setActivities(prev => [newActivity, ...prev.slice(0, 9)]);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-scroll
   useEffect(() => {
     const scroll = scrollRef.current;
     if (!scroll || isPaused) return;
@@ -39,7 +51,13 @@ export default function ActivityFeed() {
 
   return (
     <div className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur">
-      <h3 className="text-2xl font-bold mb-4">Live Activity</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-2xl font-bold">Live Activity</h3>
+        <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-500/20 border border-green-500">
+          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+          <span className="text-xs text-green-500 font-semibold">LIVE</span>
+        </div>
+      </div>
 
       <div
         ref={scrollRef}
@@ -47,23 +65,32 @@ export default function ActivityFeed() {
         onMouseLeave={() => setIsPaused(false)}
         className="space-y-3 max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
       >
-        {[...MOCK_ACTIVITIES, ...MOCK_ACTIVITIES].map((activity, i) => (
-          <motion.div
-            key={`${activity.id}-${i}`}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: (i % 10) * 0.05 }}
-            className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition"
-          >
-            <div className="p-2 rounded-lg bg-[#0052FF]/20">
-              <activity.icon className="w-4 h-4 text-[#00D4FF]" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm truncate">{activity.text}</p>
-            </div>
-            <div className="text-xs text-white/40 whitespace-nowrap">{activity.time}</div>
-          </motion.div>
-        ))}
+        <AnimatePresence mode="popLayout">
+          {activities.map((activity) => {
+            const Icon = getIconForType(activity.type);
+            return (
+              <motion.div
+                key={activity.id}
+                initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 20, scale: 0.95 }}
+                className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition"
+              >
+                <div className="p-2 rounded-lg bg-[#0052FF]/20">
+                  <Icon className="w-4 h-4 text-[#00D4FF]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm truncate">{activity.text}</p>
+                </div>
+                <div className="text-xs text-white/40 whitespace-nowrap">{activity.time}</div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+
+      <div className="mt-3 text-xs text-white/40 text-center">
+        Hover to pause auto-scroll
       </div>
     </div>
   );

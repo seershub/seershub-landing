@@ -5,101 +5,23 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useAccount } from 'wagmi';
 import UserProfile from '@/components/demo/UserProfile';
-import MatchCard, { Match } from '@/components/demo/MatchCard';
+import MatchCard from '@/components/demo/MatchCard';
 import PredictionModal from '@/components/demo/PredictionModal';
 import Leaderboard from '@/components/demo/Leaderboard';
 import PlatformStats from '@/components/demo/PlatformStats';
 import ActivityFeed from '@/components/demo/ActivityFeed';
 import Achievements from '@/components/demo/Achievements';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
-
-const MOCK_MATCHES: Match[] = [
-  {
-    id: 1,
-    league: 'Premier League',
-    round: 'Round 15',
-    homeTeam: 'Man City',
-    awayTeam: 'Arsenal',
-    homeFlag: '🔵',
-    awayFlag: '🔴',
-    time: 'in 2 hours',
-    homePct: 45,
-    drawPct: 25,
-    awayPct: 30,
-    aiSuggestion: 0,
-  },
-  {
-    id: 2,
-    league: 'La Liga',
-    round: 'Round 12',
-    homeTeam: 'Real Madrid',
-    awayTeam: 'Barcelona',
-    homeFlag: '⚪',
-    awayFlag: '🔵',
-    time: 'tomorrow',
-    homePct: 40,
-    drawPct: 20,
-    awayPct: 40,
-    aiSuggestion: 2,
-  },
-  {
-    id: 3,
-    league: 'Bundesliga',
-    round: 'Round 10',
-    homeTeam: 'Bayern',
-    awayTeam: 'Dortmund',
-    homeFlag: '🔴',
-    awayFlag: '🟡',
-    time: 'in 5 hours',
-    homePct: 55,
-    drawPct: 20,
-    awayPct: 25,
-  },
-  {
-    id: 4,
-    league: 'Serie A',
-    round: 'Round 14',
-    homeTeam: 'Inter',
-    awayTeam: 'Juventus',
-    homeFlag: '🔵',
-    awayFlag: '⚫',
-    time: 'tomorrow',
-    homePct: 38,
-    drawPct: 30,
-    awayPct: 32,
-  },
-  {
-    id: 5,
-    league: 'Ligue 1',
-    round: 'Round 11',
-    homeTeam: 'PSG',
-    awayTeam: 'Marseille',
-    homeFlag: '🔴',
-    awayFlag: '⚪',
-    time: 'in 8 hours',
-    homePct: 60,
-    drawPct: 22,
-    awayPct: 18,
-  },
-  {
-    id: 6,
-    league: 'Süper Lig',
-    round: 'Round 13',
-    homeTeam: 'Galatasaray',
-    awayTeam: 'Fenerbahçe',
-    homeFlag: '🟡',
-    awayFlag: '🟡',
-    time: 'in 12 hours',
-    homePct: 42,
-    drawPct: 28,
-    awayPct: 30,
-    aiSuggestion: 1,
-  },
-];
+import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
 
 export default function DemoPage() {
   const { isConnected } = useAccount();
-  const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
+  const [selectedMatch, setSelectedMatch] = useState<MatchData | null>(null);
+  const [predictedMatches, setPredictedMatches] = useState<Set<number>>(new Set());
+
+  const handlePredictionSuccess = (matchId: number) => {
+    setPredictedMatches(prev => new Set(prev).add(matchId));
+  };
 
   return (
     <div className="min-h-screen bg-[#000814] text-white">
@@ -163,7 +85,12 @@ export default function DemoPage() {
             <SectionHeader title="🔥 Live Matches" subtitle="Predict upcoming games on Base" />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {MOCK_MATCHES.map((match) => (
-                <MatchCard key={match.id} match={match} onPredict={setSelectedMatch} />
+                <MatchCard 
+                  key={match.id} 
+                  match={match} 
+                  onPredict={setSelectedMatch}
+                  isPredicted={predictedMatches.has(match.id)}
+                />
               ))}
             </div>
 
@@ -191,7 +118,11 @@ export default function DemoPage() {
       </main>
 
       {/* Prediction Modal */}
-      <PredictionModal match={selectedMatch} onClose={() => setSelectedMatch(null)} />
+      <PredictionModal 
+        match={selectedMatch} 
+        onClose={() => setSelectedMatch(null)}
+        onSuccess={handlePredictionSuccess}
+      />
     </div>
   );
 }

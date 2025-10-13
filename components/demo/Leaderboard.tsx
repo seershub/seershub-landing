@@ -1,20 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Trophy, TrendingUp, Target } from 'lucide-react';
-
-const MOCK_LEADERS = [
-  { rank: 1, name: 'alice.base', accuracy: 94, predictions: 127, earnings: 450 },
-  { rank: 2, name: 'bob.base', accuracy: 91, predictions: 89, earnings: 380 },
-  { rank: 3, name: 'carol.base', accuracy: 87, predictions: 156, earnings: 290 },
-  { rank: 4, name: 'dave.base', accuracy: 85, predictions: 78, earnings: 240 },
-  { rank: 5, name: 'eve.base', accuracy: 82, predictions: 134, earnings: 215 },
-  { rank: 6, name: 'frank.base', accuracy: 80, predictions: 92, earnings: 180 },
-  { rank: 7, name: 'grace.base', accuracy: 78, predictions: 67, earnings: 145 },
-  { rank: 8, name: 'henry.base', accuracy: 76, predictions: 103, earnings: 120 },
-  { rank: 9, name: 'iris.base', accuracy: 74, predictions: 54, earnings: 95 },
-  { rank: 10, name: 'jack.base', accuracy: 73, predictions: 81, earnings: 80 },
-];
+import { Trophy, Target } from 'lucide-react';
+import { MOCK_LEADERBOARD } from '@/lib/mockData';
+import Image from 'next/image';
 
 export default function Leaderboard() {
   return (
@@ -31,7 +20,7 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
-            {MOCK_LEADERS.map((user, i) => (
+            {MOCK_LEADERBOARD.map((user, i) => (
               <motion.tr
                 key={user.rank}
                 initial={{ opacity: 0, x: -20 }}
@@ -48,9 +37,25 @@ export default function Leaderboard() {
                   </div>
                 </td>
                 <td className="py-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0052FF] to-[#00D4FF]" />
-                    <span className="font-semibold">{user.name}</span>
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10">
+                      <Image
+                        src={user.avatar}
+                        alt={user.baseName || user.address}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <div className="font-semibold">{user.baseName || `${user.address.slice(0, 6)}...${user.address.slice(-4)}`}</div>
+                      {user.badges.length > 0 && (
+                        <div className="flex gap-0.5 mt-0.5">
+                          {user.badges.map((badge, idx) => (
+                            <span key={idx} className="text-xs">{badge}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </td>
                 <td className="py-4 text-right">
