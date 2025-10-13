@@ -24,7 +24,6 @@ export default function PredictionModal({
   const [outcome, setOutcome] = useState<0 | 1 | 2 | null>(null);
   const [confidence, setConfidence] = useState(3);
   const [reasoning, setReasoning] = useState('');
-  const [entryAmount, setEntryAmount] = useState(3);
   const [hasShownConfetti, setHasShownConfetti] = useState(false);
   const [currentTxHash, setCurrentTxHash] = useState<string | null>(null);
 
@@ -39,7 +38,6 @@ export default function PredictionModal({
     setOutcome(null);
     setConfidence(3);
     setReasoning('');
-    setEntryAmount(3);
     setHasShownConfetti(false);
     setCurrentTxHash(null);
     resetWrite();
@@ -183,52 +181,20 @@ export default function PredictionModal({
                   </div>
                 </div>
 
-                {/* Prize Pool Display */}
-                <div className="p-4 rounded-xl bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-xs text-white/60 mb-1">Current Prize Pool</div>
-                      <div className="text-xl font-bold text-yellow-500 flex items-center gap-2">
-                        💵 ${(127 * entryAmount).toLocaleString()}
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xs text-white/60 mb-1">Your Potential Win</div>
-                      <div className="text-lg font-bold text-green-500">
-                        ${(entryAmount * 2.5).toFixed(2)}
-                      </div>
+                {/* Entry Fee Display - FIXED: No odds/multipliers */}
+                <div className="p-4 rounded-xl bg-[#0052FF]/10 border border-[#0052FF]/30">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-white/60">Entry Fee</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl">💵</span>
+                      <span className="text-2xl font-bold text-[#00D4FF]">3</span>
+                      <span className="text-sm text-white/60">USDC</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Entry Amount Selector */}
-                <div>
-                  <label className="text-sm text-white/60 mb-3 block">
-                    Select Entry Amount (USDC)
-                  </label>
-                  <div className="grid grid-cols-3 gap-3">
-                    {[1, 3, 5].map((amount) => (
-                      <button
-                        key={amount}
-                        onClick={() => setEntryAmount(amount)}
-                        className={`p-4 rounded-xl border-2 transition-all ${
-                          entryAmount === amount
-                            ? 'border-[#0052FF] bg-[#0052FF]/20 scale-105'
-                            : 'border-white/10 hover:border-white/30'
-                        }`}
-                      >
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <span className="text-2xl">💵</span>
-                          <span className="text-2xl font-bold">{amount}</span>
-                        </div>
-                        <div className="text-xs text-white/60">
-                          Win: ${(amount * 2.5).toFixed(2)}
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="text-xs text-white/40 mt-2 text-center">
-                    💡 Entry fee goes to prize pool
+                  <div className="text-xs text-white/60 space-y-1">
+                    <div>✓ Entry goes to weekly prize pool</div>
+                    <div>✓ Win by being in top 10% accuracy</div>
+                    <div>✓ No odds, pure skill-based competition</div>
                   </div>
                 </div>
 
