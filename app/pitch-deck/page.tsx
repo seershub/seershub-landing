@@ -528,40 +528,40 @@ export default function PitchDeckPage() {
             </div>
 
             <div className="space-y-6">
-              {/* Q1 2025 */}
+              {/* Immediate (This Week) */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="glass-card p-6 rounded-2xl"
+                className="glass-card p-6 rounded-2xl border-2 border-primary-500/30"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="px-4 py-2 rounded-full bg-primary-500/20 border border-primary-500 text-primary-500 font-bold">
-                    Q1 2025
+                    NOW
                   </div>
-                  <h3 className="text-2xl font-bold">Foundation</h3>
+                  <h3 className="text-2xl font-bold">Immediate (This Week)</h3>
                 </div>
                 <ul className="space-y-2 text-white/70 ml-4">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-green mt-1">✓</span>
-                    <span>Landing page and community building</span>
+                    <span>Smart contract deployed</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-green mt-1">✓</span>
-                    <span>Base Sepolia testnet deployment</span>
+                    <span>Landing page live</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-green mt-1">✓</span>
-                    <span>Smart contract development</span>
+                    <span className="text-white/40 mt-1">○</span>
+                    <span>Demo app (wallet connect + predictions)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-green mt-1">✓</span>
-                    <span>Beta waitlist (target: 1,000+ signups)</span>
+                    <span className="text-white/40 mt-1">○</span>
+                    <span>Base Builder grant application</span>
                   </li>
                 </ul>
               </motion.div>
 
-              {/* Q2 2025 */}
+              {/* Q2 2026 */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -571,31 +571,31 @@ export default function PitchDeckPage() {
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="px-4 py-2 rounded-full bg-accent-cyan/20 border border-accent-cyan text-accent-cyan font-bold">
-                    Q2 2025
+                    Q2 2026
                   </div>
-                  <h3 className="text-2xl font-bold">Beta Launch</h3>
+                  <h3 className="text-2xl font-bold">Mainnet Launch</h3>
                 </div>
                 <ul className="space-y-2 text-white/70 ml-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-white/40 mt-1">○</span>
+                    <span>Complete contract suite (Treasury, Oracle, Premium)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-white/40 mt-1">○</span>
+                    <span>Security audit</span>
+                  </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
                     <span>Base Mainnet deployment</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span>Smart contract security audit</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-white/40 mt-1">○</span>
-                    <span>Public beta with Football & Basketball</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-white/40 mt-1">○</span>
-                    <span>500+ active beta testers</span>
+                    <span>Public beta (500 users)</span>
                   </li>
                 </ul>
               </motion.div>
 
-              {/* Q3 2025 */}
+              {/* Q3 2026 */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -605,31 +605,31 @@ export default function PitchDeckPage() {
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="px-4 py-2 rounded-full bg-accent-green/20 border border-accent-green text-accent-green font-bold">
-                    Q3 2025
+                    Q3 2026
                   </div>
-                  <h3 className="text-2xl font-bold">Growth + BASE Integration</h3>
+                  <h3 className="text-2xl font-bold">Growth & Expansion</h3>
                 </div>
                 <ul className="space-y-2 text-white/70 ml-4">
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span>10,000+ active users milestone</span>
+                    <span>Multi-sport expansion (basketball, cricket)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span><strong className="text-white">BASE Token Bonus Program Launch</strong></span>
+                    <span>Mobile app</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span>Multi-sport expansion (Cricket, E-sports)</span>
+                    <span>10K+ active users</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span>Guild system (team competitions)</span>
+                    <span><strong className="text-white">BASE token integration</strong></span>
                   </li>
                 </ul>
               </motion.div>
 
-              {/* Q4 2025 */}
+              {/* 2026 */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -639,14 +639,14 @@ export default function PitchDeckPage() {
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="px-4 py-2 rounded-full bg-accent-purple/20 border border-accent-purple text-accent-purple font-bold">
-                    Q4 2025
+                    2026+
                   </div>
-                  <h3 className="text-2xl font-bold">Scale</h3>
+                  <h3 className="text-2xl font-bold">Ecosystem & Governance</h3>
                 </div>
                 <ul className="space-y-2 text-white/70 ml-4">
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span>50,000+ users target</span>
+                    <span><strong className="text-white">DAO governance (SEER token)</strong></span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
@@ -654,11 +654,7 @@ export default function PitchDeckPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white/40 mt-1">○</span>
-                    <span>Advanced analytics features</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-white/40 mt-1">○</span>
-                    <span>Seed fundraising round</span>
+                    <span>Cross-chain expansion</span>
                   </li>
                 </ul>
               </motion.div>
