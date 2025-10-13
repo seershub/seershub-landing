@@ -523,7 +523,7 @@ export default function PitchDeckPage() {
             className="mb-20"
           >
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Roadmap 2025-2026</h2>
+              <h2 className="text-4xl font-bold mb-4">🚀 What's Next</h2>
               <p className="text-white/60 text-lg">Building the future of skill-based sports competition</p>
             </div>
 
