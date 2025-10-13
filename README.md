@@ -146,7 +146,7 @@ Status: ✅ Verified on BaseScan
 
 ```bash
 # Clone
-git clone https://github.com/yourusername/seershub-landing.git
+git clone https://github.com/seershub/seershub-landing.git
 cd seershub-landing
 
 # Install
@@ -270,7 +270,7 @@ MIT License - build on top of this freely.
 
 ## 🙏 Credits
 
-Built by [@seershub](https://twitter.com/seershub) team.
+Built by [@seershub](https://x.com/seershub) team.
 
 **Technology:**
 - Base Network for L2 infrastructure
@@ -287,8 +287,8 @@ Built by [@seershub](https://twitter.com/seershub) team.
 ## 📞 Contact
 
 - **Web:** [seershub.com](https://seershub.com)
-- **Twitter:** [@seershub](https://twitter.com/seershub)
-- **Email:** info@seershub.com
+- **X:** [@seershub](https://x.com/seershub)
+- **Email:** (info@seershub.com)
 - **Base Discord:** Find us in #builders
 
 ---
