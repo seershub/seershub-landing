@@ -164,18 +164,20 @@ export default function DemoPage() {
                         <PrizeVault />
                       </div>
                     </div>
-                    
-                    <div>
-                      <SectionHeader title="📊 Platform Stats" subtitle="On-chain metrics" />
-                      <div className="mt-4">
-                        <PlatformStats />
-                      </div>
-                    </div>
                   </div>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-6 mb-8">
+                  <div>
+                    <SectionHeader title="📊 Platform Stats" subtitle="On-chain metrics" />
+                    <div className="mt-4">
+                      <PlatformStats />
+                    </div>
+                  </div>
                   <UserComments />
+                </div>
+
+                <div className="mb-8">
                   <ActivityFeed />
                 </div>
 
