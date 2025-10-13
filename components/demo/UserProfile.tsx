@@ -18,7 +18,7 @@ export default function UserProfile() {
   
   // Try to get ENS avatar
   const { data: avatar } = useEnsAvatar({
-    name: ensName,
+    name: ensName || undefined,
     chainId: 8453,
   });
 
