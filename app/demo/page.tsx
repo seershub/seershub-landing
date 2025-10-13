@@ -13,6 +13,7 @@ import ActivityFeed from '@/components/demo/ActivityFeed';
 import Achievements from '@/components/demo/Achievements';
 import PrizeVault from '@/components/demo/PrizeVault';
 import ProfileView from '@/components/demo/ProfileView';
+import UserComments from '@/components/demo/UserComments';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
 
@@ -173,7 +174,8 @@ export default function DemoPage() {
                   </div>
                 </div>
 
-                <div className="mb-8">
+                <div className="grid lg:grid-cols-2 gap-6 mb-8">
+                  <UserComments />
                   <ActivityFeed />
                 </div>
 

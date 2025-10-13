@@ -8,6 +8,7 @@ import { baseSepolia } from 'wagmi/chains';
 import confetti from 'canvas-confetti';
 import { MatchData } from '@/lib/mockData';
 import ABI from '@/public/contract-abi.json';
+import Image from 'next/image';
 
 const CONTRACT_ADDRESS = '0x718430F546A7e7b74b1BA4a13e0C391e36108D8b' as `0x${string}`;
 
@@ -186,7 +187,7 @@ export default function PredictionModal({
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm text-white/60">Entry Fee</span>
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl">💵</span>
+                      <Image src="/usdc-logo.png" alt="USDC" width={28} height={28} className="w-7 h-7" />
                       <span className="text-2xl font-bold text-[#00D4FF]">3</span>
                       <span className="text-sm text-white/60">USDC</span>
                     </div>

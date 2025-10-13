@@ -7,6 +7,10 @@ import Image from 'next/image';
 import { ExternalLink, TrendingUp, TrendingDown } from 'lucide-react';
 import { MOCK_USER_PREDICTIONS, MOCK_USER_INSIGHTS } from '@/lib/mockData';
 
+const USDCIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className={className} />
+);
+
 export default function ProfileView() {
   const { address } = useAccount();
   
@@ -83,7 +87,7 @@ export default function ProfileView() {
           <div className="text-center sm:text-right shrink-0 w-full sm:w-auto pt-4 sm:pt-0 border-t sm:border-t-0 border-white/10">
             <div className="text-xs sm:text-sm text-white/60 mb-1">Total Earnings</div>
             <div className="text-2xl sm:text-3xl font-bold text-green-500 flex items-center justify-center sm:justify-end gap-1.5 sm:gap-2">
-              <span className="text-xl sm:text-2xl">💵</span>
+              <USDCIcon className="w-6 h-6 sm:w-7 sm:h-7" />
               <span>450</span>
             </div>
             <div className="text-xs text-white/60 mt-1">From 12 wins</div>

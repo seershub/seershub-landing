@@ -5,6 +5,23 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+// Avatar pool from /public/avatar
+const AVATAR_POOL = [
+  '/avatar/0a16668c89dfc9920789891b2c13891c.png',
+  '/avatar/31cc024c00da0d1d8d0337120142b52d.png',
+  '/avatar/79e0ce7f58179293cc2dc4f061e4444a.png',
+  '/avatar/b35e3ae275ce74427ca3e8690d55b945.png',
+  '/avatar/ca7158ba2cf3398875dd67933e6da3f8.png',
+];
+
+// Deterministic avatar selection based on address
+const getAvatarForAddress = (address?: string) => {
+  if (!address) return AVATAR_POOL[0];
+  // Convert address to number and use modulo to select avatar
+  const addressNum = parseInt(address.slice(2, 10), 16);
+  return AVATAR_POOL[addressNum % AVATAR_POOL.length];
+};
+
 export default function UserProfile() {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
@@ -23,7 +40,8 @@ export default function UserProfile() {
   });
 
   const displayName = ensName || (address ? `${address.slice(0, 6)}...${address.slice(-4)}` : '—');
-  const avatarUrl = avatar || `https://api.dicebear.com/7.x/identicon/svg?seed=${address}`;
+  // Use avatar pool from /public/avatar instead of Dicebear
+  const avatarUrl = avatar || getAvatarForAddress(address);
 
   return (
     <motion.div 

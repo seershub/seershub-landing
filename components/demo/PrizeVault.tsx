@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, DollarSign } from 'lucide-react';
+import Image from 'next/image';
 
 export default function PrizeVault() {
   const totalPool = 12450;
@@ -42,7 +43,7 @@ export default function PrizeVault() {
         >
           <div className="text-sm text-white/60 mb-2">Total Prize Pool</div>
           <div className="text-4xl font-bold text-yellow-500 flex items-center gap-3 mb-2">
-            <span className="text-5xl">💵</span>
+            <Image src="/usdc-logo.png" alt="USDC" width={48} height={48} className="w-12 h-12" />
             <span>{totalPool.toLocaleString()}</span>
             <span className="text-xl text-white/60">USDC</span>
           </div>
