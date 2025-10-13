@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 
 async function main() {
   // BURAYA CONTRACT ADRESİNİ YAPIŞTIRIN
-  const CONTRACT_ADDRESS = "0x0E446140121605f898e8Ca84f40FFC75384305d0";
+  const CONTRACT_ADDRESS = "0xaC949453Aaa56f21b816EDBc96Ae4606E861C79E";
   
   console.log("🎯 Submitting test predictions to Seershub...\n");
 
