@@ -38,12 +38,12 @@ export default function ProfileView() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
       >
-        <div className="flex items-start gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
           {/* Avatar */}
-          <div className="relative">
-            <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-[#0052FF]">
+          <div className="relative shrink-0">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden ring-4 ring-[#0052FF]">
               <Image
                 src={avatarUrl}
                 alt={displayName}
@@ -52,38 +52,38 @@ export default function ProfileView() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-sm font-bold border-4 border-[#000814]">
+            <div className="absolute -bottom-2 -right-2 w-9 h-9 sm:w-10 sm:h-10 bg-green-500 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-3 sm:border-4 border-[#000814]">
               73
             </div>
           </div>
           
           {/* Info */}
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-2">{displayName}</h2>
-            <div className="flex items-center gap-4 mb-3 flex-wrap">
-              <div className="flex items-center gap-2 text-sm">
+          <div className="flex-1 text-center sm:text-left w-full sm:w-auto">
+            <h2 className="text-xl sm:text-2xl font-bold mb-2">{displayName}</h2>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 mb-3">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm">
                 <span className="text-white/60">Rank:</span>
                 <span className="text-[#00D4FF] font-bold">#127</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm">
                 <span className="text-white/60">Level:</span>
                 <span className="text-yellow-500 font-bold">Pro ⭐⭐</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm">
                 <span className="text-white/60">Streak:</span>
                 <span className="text-orange-500 font-bold">🔥 3</span>
               </div>
             </div>
-            <div className="text-sm text-white/60">
-              Member since: January 2025 • Base Sepolia Testnet
+            <div className="text-xs sm:text-sm text-white/60">
+              Member since: January 2025 • Base Sepolia
             </div>
           </div>
           
           {/* Total Earnings */}
-          <div className="text-right">
-            <div className="text-sm text-white/60 mb-1">Total Earnings</div>
-            <div className="text-3xl font-bold text-green-500 flex items-center gap-2">
-              <span className="text-2xl">💵</span>
+          <div className="text-center sm:text-right shrink-0 w-full sm:w-auto pt-4 sm:pt-0 border-t sm:border-t-0 border-white/10">
+            <div className="text-xs sm:text-sm text-white/60 mb-1">Total Earnings</div>
+            <div className="text-2xl sm:text-3xl font-bold text-green-500 flex items-center justify-center sm:justify-end gap-1.5 sm:gap-2">
+              <span className="text-xl sm:text-2xl">💵</span>
               <span>450</span>
             </div>
             <div className="text-xs text-white/60 mt-1">From 12 wins</div>
@@ -123,11 +123,11 @@ export default function ProfileView() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold">📊 Recent Predictions</h3>
-          <button className="text-sm text-[#00D4FF] hover:underline">
+          <h3 className="text-lg sm:text-xl font-bold">📊 Recent Predictions</h3>
+          <button className="text-xs sm:text-sm text-[#00D4FF] hover:underline">
             View All →
           </button>
         </div>
@@ -136,35 +136,35 @@ export default function ProfileView() {
           {MOCK_USER_PREDICTIONS.map((pred) => (
             <div
               key={pred.id}
-              className="flex items-center justify-between p-4 bg-white/[0.02] hover:bg-white/[0.05] rounded-xl transition-colors border border-white/5"
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 p-3 sm:p-4 bg-white/[0.02] hover:bg-white/[0.05] rounded-xl transition-colors border border-white/5"
             >
               {/* Match Info */}
-              <div className="flex items-center gap-4 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{pred.homeTeam.flag}</span>
-                  <span className="text-sm text-white/40">vs</span>
-                  <span className="text-2xl">{pred.awayTeam.flag}</span>
+              <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <span className="text-xl sm:text-2xl">{pred.homeTeam.flag}</span>
+                  <span className="text-xs sm:text-sm text-white/40">vs</span>
+                  <span className="text-xl sm:text-2xl">{pred.awayTeam.flag}</span>
                 </div>
-                <div>
-                  <div className="text-sm font-semibold">
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm font-semibold truncate">
                     {pred.homeTeam.name} vs {pred.awayTeam.name}
                   </div>
-                  <div className="text-xs text-white/50">
+                  <div className="text-[10px] sm:text-xs text-white/50">
                     {pred.league} • {formatDate(pred.timestamp)}
                   </div>
                 </div>
               </div>
               
-              {/* Prediction */}
-              <div className="flex items-center gap-4">
-                <div className="text-right">
-                  <div className="text-xs text-white/60">Your Prediction</div>
-                  <div className="text-sm font-bold">{pred.outcome}</div>
+              {/* Prediction & Result */}
+              <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-4">
+                <div className="text-left sm:text-right">
+                  <div className="text-[10px] sm:text-xs text-white/60">Your Prediction</div>
+                  <div className="text-xs sm:text-sm font-bold">{pred.outcome}</div>
                 </div>
                 
                 {/* Result */}
                 {pred.correct !== null ? (
-                  <div className={`px-3 py-1.5 rounded-lg font-semibold text-sm ${
+                  <div className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg font-semibold text-xs sm:text-sm whitespace-nowrap ${
                     pred.correct 
                       ? 'bg-green-500/20 text-green-500' 
                       : 'bg-red-500/20 text-red-500'
@@ -172,7 +172,7 @@ export default function ProfileView() {
                     {pred.correct ? '✓ Correct' : '✗ Incorrect'}
                   </div>
                 ) : (
-                  <div className="px-3 py-1.5 rounded-lg bg-yellow-500/20 text-yellow-500 font-semibold text-sm">
+                  <div className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-yellow-500/20 text-yellow-500 font-semibold text-xs sm:text-sm whitespace-nowrap">
                     ⏳ Pending
                   </div>
                 )}
@@ -180,10 +180,10 @@ export default function ProfileView() {
                 {/* TX Link */}
                 <button
                   onClick={() => window.open(`https://sepolia.basescan.org/tx/${pred.txHash}`, '_blank')}
-                  className="p-2 hover:bg-[#00D4FF]/20 rounded-lg transition-colors"
+                  className="p-1.5 sm:p-2 hover:bg-[#00D4FF]/20 rounded-lg transition-colors shrink-0"
                   title="View on BaseScan"
                 >
-                  <ExternalLink className="w-5 h-5 text-[#00D4FF]" />
+                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-[#00D4FF]" />
                 </button>
               </div>
             </div>
@@ -195,11 +195,11 @@ export default function ProfileView() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold">💬 Your Insights</h3>
-          <div className="text-sm text-white/60">
+          <h3 className="text-lg sm:text-xl font-bold">💬 Your Insights</h3>
+          <div className="text-xs sm:text-sm text-white/60">
             {MOCK_USER_INSIGHTS.length} saved
           </div>
         </div>
@@ -235,9 +235,9 @@ export default function ProfileView() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur"
       >
-        <h3 className="text-xl font-bold mb-4">⚙️ Settings</h3>
+        <h3 className="text-lg sm:text-xl font-bold mb-4">⚙️ Settings</h3>
         
         <div className="space-y-4">
           {/* Notification Preferences */}
