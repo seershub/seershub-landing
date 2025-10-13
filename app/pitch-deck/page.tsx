@@ -639,7 +639,7 @@ export default function PitchDeckPage() {
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="px-4 py-2 rounded-full bg-accent-purple/20 border border-accent-purple text-accent-purple font-bold">
-                    2026+
+                    2026
                   </div>
                   <h3 className="text-2xl font-bold">Ecosystem & Governance</h3>
                 </div>
