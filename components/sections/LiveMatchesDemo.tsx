@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Users, DollarSign, Zap } from 'lucide-react';
+import { usePerformanceMode } from '@/hooks/usePerformanceMode';
 import LeagueLogo from '@/components/graphics/LeagueLogo';
 import TeamLogo from '@/components/graphics/TeamLogo';
 import ModernPredictButton from '@/components/graphics/ModernPredictButton';
@@ -22,6 +23,7 @@ interface Match {
 }
 
 export default function LiveMatchesDemo() {
+  const { shouldReduceAnimations } = usePerformanceMode();
   const [timeLeft, setTimeLeft] = useState<{ [key: number]: string }>({});
 
   const matches: Match[] = [
@@ -96,7 +98,7 @@ export default function LiveMatchesDemo() {
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
-        transition={{
+        transition={shouldReduceAnimations ? {} : {
           duration: 8,
           repeat: Infinity,
         }}
@@ -118,7 +120,7 @@ export default function LiveMatchesDemo() {
           >
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              transition={shouldReduceAnimations ? {} : { duration: 2, repeat: Infinity, ease: "linear" }}
             >
               <Zap className="w-4 h-4 text-accent-cyan" />
             </motion.div>
@@ -219,7 +221,7 @@ export default function LiveMatchesDemo() {
                     <motion.div
                       className="relative"
                       animate={{ rotate: [0, 180, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      transition={shouldReduceAnimations ? {} : { duration: 20, repeat: Infinity, ease: "linear" }}
                     >
                       <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full glass-effect border-2 border-accent-cyan/30 flex items-center justify-center">
                         <span className="text-xs sm:text-sm font-black text-accent-cyan">VS</span>
@@ -230,7 +232,7 @@ export default function LiveMatchesDemo() {
                           scale: [1, 1.3, 1],
                           opacity: [0.3, 0.6, 0.3],
                         }}
-                        transition={{
+                        transition={shouldReduceAnimations ? {} : {
                           duration: 2,
                           repeat: Infinity,
                         }}
@@ -298,7 +300,7 @@ export default function LiveMatchesDemo() {
             Get Early Access
             <motion.span
               animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              transition={shouldReduceAnimations ? {} : { duration: 1.5, repeat: Infinity }}
             >
               →
             </motion.span>

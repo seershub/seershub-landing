@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 import { Lock, Unlock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { usePerformanceMode } from '@/hooks/usePerformanceMode';
 
 // Floating USDC coins around vault
 function FloatingUSDCCoins() {
+  const { shouldReduceAnimations } = usePerformanceMode();
   const coins = Array.from({ length: 6 });
   
   return (
@@ -18,14 +20,14 @@ function FloatingUSDCCoins() {
             scale: 0,
             opacity: 0 
           }}
-          animate={{
+          animate={shouldReduceAnimations ? {} : {
             x: [0, Math.cos(i * 60 * Math.PI / 180) * 150, Math.cos(i * 60 * Math.PI / 180) * 150],
             y: [0, Math.sin(i * 60 * Math.PI / 180) * 150, Math.sin(i * 60 * Math.PI / 180) * 150],
             scale: [0, 1, 0],
             opacity: [0, 0.6, 0],
             rotate: [0, 360]
           }}
-          transition={{
+          transition={shouldReduceAnimations ? {} : {
             duration: 4,
             repeat: Infinity,
             delay: i * 0.7,
@@ -47,6 +49,7 @@ function FloatingUSDCCoins() {
 }
 
 export default function VaultCenterpiece() {
+  const { shouldReduceAnimations } = usePerformanceMode();
   const [vaultAmount, setVaultAmount] = useState(87650);
   const isLocked = true; // true until Sunday
   
@@ -67,11 +70,11 @@ export default function VaultCenterpiece() {
     >
       {/* Outer glow */}
       <motion.div 
-        animate={{ 
+        animate={shouldReduceAnimations ? {} : { 
           opacity: [0.3, 0.6, 0.3],
           scale: [1, 1.1, 1]
         }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        transition={shouldReduceAnimations ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 bg-gradient-radial from-blue-500/30 via-cyan-500/10 to-transparent 
                     blur-3xl"
       />
@@ -109,8 +112,8 @@ export default function VaultCenterpiece() {
         {/* Central lock icon - HUGE */}
         <div className="relative text-center mb-6 md:mb-8">
           <motion.div
-            animate={isLocked ? { rotate: [0, -5, 5, 0] } : { rotate: 90 }}
-            transition={isLocked ? { duration: 2, repeat: Infinity, repeatDelay: 3 } : { duration: 1 }}
+            animate={shouldReduceAnimations ? {} : (isLocked ? { rotate: [0, -5, 5, 0] } : { rotate: 90 })}
+            transition={shouldReduceAnimations ? {} : (isLocked ? { duration: 2, repeat: Infinity, repeatDelay: 3 } : { duration: 1 })}
             className="inline-flex"
           >
             {isLocked ? (

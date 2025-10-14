@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Zap, Shield, DollarSign } from 'lucide-react';
+import { usePerformanceMode } from '@/hooks/usePerformanceMode';
 
 export default function WhyBase() {
+  const { shouldReduceAnimations } = usePerformanceMode();
+  
   const features = [
     {
       icon: Zap,
@@ -30,11 +33,11 @@ export default function WhyBase() {
       {/* Soccer Ball - Top Right */}
       <motion.div
         className="absolute top-16 right-16 text-8xl opacity-10 pointer-events-none"
-        animate={{
+        animate={shouldReduceAnimations ? {} : {
           rotate: [0, 360],
           y: [0, -20, 0]
         }}
-        transition={{
+        transition={shouldReduceAnimations ? {} : {
           rotate: { duration: 20, repeat: Infinity, ease: "linear" },
           y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
         }}
@@ -45,11 +48,11 @@ export default function WhyBase() {
       {/* Trophy - Bottom Left */}
       <motion.div
         className="absolute bottom-20 left-16 text-7xl opacity-10 pointer-events-none"
-        animate={{
+        animate={shouldReduceAnimations ? {} : {
           rotate: [-5, 5, -5],
           scale: [1, 1.1, 1]
         }}
-        transition={{
+        transition={shouldReduceAnimations ? {} : {
           duration: 3,
           repeat: Infinity,
           ease: "easeInOut"
@@ -61,11 +64,11 @@ export default function WhyBase() {
       {/* Target - Top Left */}
       <motion.div
         className="absolute top-32 left-20 text-6xl opacity-8 pointer-events-none"
-        animate={{
+        animate={shouldReduceAnimations ? {} : {
           scale: [1, 1.2, 1],
           opacity: [0.08, 0.12, 0.08]
         }}
-        transition={{
+        transition={shouldReduceAnimations ? {} : {
           duration: 2.5,
           repeat: Infinity,
           ease: "easeInOut"
@@ -77,11 +80,11 @@ export default function WhyBase() {
       {/* USDC Coin - Middle Right */}
       <motion.div
         className="absolute top-1/2 right-24 text-5xl opacity-10 pointer-events-none"
-        animate={{
+        animate={shouldReduceAnimations ? {} : {
           y: [0, -15, 0],
           rotate: [0, 180, 360]
         }}
-        transition={{
+        transition={shouldReduceAnimations ? {} : {
           duration: 5,
           repeat: Infinity,
           ease: "easeInOut"

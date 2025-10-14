@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
+import { usePerformanceMode } from '@/hooks/usePerformanceMode';
 
 export default function Hero() {
+  const { shouldReduceAnimations } = usePerformanceMode();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 py-16 sm:py-20">
       {/* Subtle gradient background */}
@@ -26,11 +29,11 @@ export default function Hero() {
       {/* Decorative Soccer Ball - Behind "Predict" */}
       <motion.div
         className="absolute top-1/2 left-[5%] md:left-[15%] lg:left-[20%] -translate-y-1/2 z-[1] pointer-events-none"
-        animate={{ 
+        animate={shouldReduceAnimations ? {} : { 
           rotate: [0, 360],
           scale: [1, 1.08, 1]
         }}
-        transition={{ 
+        transition={shouldReduceAnimations ? {} : { 
           rotate: { duration: 25, repeat: Infinity, ease: "linear" },
           scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
         }}
@@ -59,11 +62,11 @@ export default function Hero() {
           {/* Animated "B" Icon */}
           <div className="relative flex-shrink-0">
             <motion.div
-              animate={{ 
+              animate={shouldReduceAnimations ? {} : { 
                 rotate: [0, 360],
                 scale: [1, 1.08, 1]
               }}
-              transition={{ 
+              transition={shouldReduceAnimations ? {} : { 
                 duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut"
@@ -75,11 +78,11 @@ export default function Hero() {
             </motion.div>
             {/* Pulse ring */}
             <motion.div
-              animate={{ 
+              animate={shouldReduceAnimations ? {} : { 
                 scale: [1, 1.4, 1],
                 opacity: [0.4, 0, 0.4]
               }}
-              transition={{ 
+              transition={shouldReduceAnimations ? {} : { 
                 duration: 2,
                 repeat: Infinity
               }}
@@ -120,7 +123,7 @@ export default function Hero() {
               scale: [1, 1.15, 1],
               opacity: [0.7, 1, 0.7]
             }}
-            transition={{ 
+            transition={shouldReduceAnimations ? {} : { 
               duration: 3,
               repeat: Infinity,
               ease: "easeInOut"
@@ -205,8 +208,8 @@ export default function Hero() {
       >
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={shouldReduceAnimations ? {} : { y: [0, 12, 0] }}
+            transition={shouldReduceAnimations ? {} : { duration: 1.5, repeat: Infinity }}
             className="w-1.5 h-1.5 bg-white/50 rounded-full mt-2"
           />
         </div>
