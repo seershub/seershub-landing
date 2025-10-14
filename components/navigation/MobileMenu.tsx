@@ -36,11 +36,10 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const menuItems = [
-    { href: '#how-it-works', label: 'How it works' },
-    { href: '/demo', label: '🎮 Demo', special: true },
-    { href: '/pitch-deck', label: '📄 Pitch Deck' },
-    { href: '#roadmap', label: 'Roadmap' },
-    { href: '#waitlist', label: 'Join Waitlist', primary: true },
+    { href: '#how-it-works', label: 'How it works', icon: '⚡' },
+    { href: '/demo', label: 'Demo', icon: '🎮', special: true },
+    { href: '/pitch-deck', label: 'Pitch Deck', icon: '📄' },
+    { href: '#roadmap', label: 'Roadmap', icon: '🗺️' },
   ];
 
   const socialLinks = [
@@ -59,8 +58,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-40 md:hidden"
           />
 
           {/* Menu Panel */}
@@ -68,61 +68,88 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-neutral-900 
-                     border-l border-white/10 z-50 md:hidden"
+            transition={{ 
+              type: 'tween', 
+              duration: 0.3, 
+              ease: [0.4, 0.0, 0.2, 1] 
+            }}
+            className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-neutral-950/95 
+                     border-l border-white/5 backdrop-blur-xl z-50 md:hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <Link href="/" onClick={onClose} className="flex items-center">
-                <span className="text-2xl font-bold text-white">Seershub</span>
+            <div className="flex items-center justify-between p-6 border-b border-white/5">
+              <Link href="/" onClick={onClose} className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-primary-500 to-accent-cyan flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">S</span>
+                </div>
+                <span className="text-xl font-bold text-white">Seershub</span>
               </Link>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg hover:bg-white/5 transition-colors touch-target"
+                className="p-2 rounded-xl hover:bg-white/5 transition-colors touch-target"
                 aria-label="Close menu"
               >
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-white/70" />
               </button>
             </div>
 
             {/* Navigation */}
             <nav className="p-6">
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {menuItems.map((item, index) => (
                   <motion.li
                     key={item.href}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
                   >
                     <Link
                       href={item.href}
                       onClick={onClose}
                       className={`
-                        block px-4 py-3 rounded-xl text-lg font-medium relative
-                        transition-all duration-300 touch-target
-                        ${item.primary 
-                          ? 'bg-primary-500 text-white hover:bg-primary-600' 
-                          : item.special
-                          ? 'text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-accent-cyan/10 hover:to-accent-purple/10 border border-accent-cyan/30'
+                        flex items-center gap-4 px-4 py-4 rounded-xl font-medium
+                        transition-all duration-200 touch-target
+                        ${item.special
+                          ? 'bg-gradient-to-r from-accent-cyan/10 to-accent-purple/10 border border-accent-cyan/30 text-accent-cyan hover:from-accent-cyan/20 hover:to-accent-purple/20'
                           : 'text-white/70 hover:text-white hover:bg-white/5'}
                       `}
                     >
-                      {item.label}
+                      <span className="text-xl">{item.icon}</span>
+                      <span className="text-base">{item.label}</span>
                       {item.special && (
-                        <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
+                        <span className="w-2 h-2 bg-accent-cyan rounded-full animate-pulse ml-auto"></span>
                       )}
                     </Link>
                   </motion.li>
                 ))}
               </ul>
+              
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.3 }}
+                className="mt-8"
+              >
+                <Link
+                  href="#waitlist"
+                  onClick={onClose}
+                  className="block w-full px-6 py-4 bg-gradient-to-r from-primary-500 to-accent-cyan text-white font-semibold rounded-xl text-center hover:from-primary-600 hover:to-accent-cyan/80 transition-all duration-200 hover:scale-[1.02]"
+                >
+                  Join Waitlist
+                </Link>
+              </motion.div>
             </nav>
 
             {/* Social Links */}
-            <div className="px-6 pb-6">
-              <p className="text-xs text-white/40 mb-3">Connect with us</p>
-              <div className="flex items-center justify-start gap-2">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+              className="px-6 pb-6"
+            >
+              <p className="text-xs text-white/40 mb-4 font-medium">Connect with us</p>
+              <div className="flex items-center justify-start gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
@@ -130,7 +157,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
-                    className="p-3 text-white/50 hover:text-[#00D4FF] transition-colors rounded-xl hover:bg-white/5"
+                    className="p-3 text-white/50 hover:text-accent-cyan transition-all duration-200 rounded-xl hover:bg-white/5 hover:scale-110"
                     aria-label={social.label}
                     title={social.label}
                   >
@@ -138,15 +165,20 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   </a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Footer Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
-              <div className="flex items-center gap-2 text-sm text-white/50">
-                <span className="w-2 h-2 rounded-full bg-green-500" />
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.3 }}
+              className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/5"
+            >
+              <div className="flex items-center gap-2 text-sm text-white/40">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span>Built on Base Network</span>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </>
       )}

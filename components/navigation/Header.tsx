@@ -83,42 +83,50 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link 
-              href="#how-it-works" 
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              How it works
-            </Link>
-            <Link 
-              href="/demo" 
-              className="text-sm text-white/60 hover:text-white transition-colors relative group"
-            >
-              🎮 Demo
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
-            </Link>
-            <Link 
-              href="/pitch-deck" 
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              📄 Pitch Deck
-            </Link>
-            <Link 
-              href="#roadmap" 
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Roadmap
-            </Link>
+          <div className="hidden md:flex items-center gap-8">
+            {/* Main Navigation */}
+            <div className="flex items-center gap-6">
+              <Link 
+                href="#how-it-works" 
+                className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
+              >
+                How it works
+              </Link>
+              
+              <Link 
+                href="/demo" 
+                className="relative group"
+              >
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-accent-cyan/10 to-accent-purple/10 border border-accent-cyan/30 text-accent-cyan hover:from-accent-cyan/20 hover:to-accent-purple/20 transition-all duration-300">
+                  <span className="text-sm font-medium">🎮 Demo</span>
+                  <span className="w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
+                </div>
+              </Link>
+              
+              <Link 
+                href="/pitch-deck" 
+                className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
+              >
+                Pitch Deck
+              </Link>
+              
+              <Link 
+                href="#roadmap" 
+                className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
+              >
+                Roadmap
+              </Link>
+            </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-1 ml-2">
+            {/* Social Links - Compact */}
+            <div className="flex items-center gap-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-white/50 hover:text-[#00D4FF] transition-colors rounded-lg hover:bg-white/5"
+                  className="p-2 text-white/40 hover:text-accent-cyan transition-all duration-200 rounded-lg hover:bg-white/5 hover:scale-110"
                   aria-label={social.label}
                   title={social.label}
                 >
@@ -127,13 +135,10 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Divider */}
-            <div className="w-px h-6 bg-white/10" />
-            
-            {/* Join Waitlist Button */}
+            {/* CTA Button */}
             <Link 
               href="#waitlist" 
-              className="btn-primary"
+              className="px-6 py-2.5 bg-gradient-to-r from-primary-500 to-accent-cyan text-white text-sm font-semibold rounded-lg hover:from-primary-600 hover:to-accent-cyan/80 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(0,82,255,0.4)]"
             >
               Join Waitlist
             </Link>
