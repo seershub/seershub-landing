@@ -37,6 +37,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const menuItems = [
     { href: '#how-it-works', label: 'How it works' },
+    { href: '/demo', label: '🎮 Demo', special: true },
     { href: '/pitch-deck', label: '📄 Pitch Deck' },
     { href: '#roadmap', label: 'Roadmap' },
     { href: '#waitlist', label: 'Join Waitlist', primary: true },
@@ -99,14 +100,19 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       href={item.href}
                       onClick={onClose}
                       className={`
-                        block px-4 py-3 rounded-xl text-lg font-medium
+                        block px-4 py-3 rounded-xl text-lg font-medium relative
                         transition-all duration-300 touch-target
                         ${item.primary 
                           ? 'bg-primary-500 text-white hover:bg-primary-600' 
+                          : item.special
+                          ? 'text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-accent-cyan/10 hover:to-accent-purple/10 border border-accent-cyan/30'
                           : 'text-white/70 hover:text-white hover:bg-white/5'}
                       `}
                     >
                       {item.label}
+                      {item.special && (
+                        <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
+                      )}
                     </Link>
                   </motion.li>
                 ))}

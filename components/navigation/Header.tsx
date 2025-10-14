@@ -91,6 +91,13 @@ export default function Header() {
               How it works
             </Link>
             <Link 
+              href="/demo" 
+              className="text-sm text-white/60 hover:text-white transition-colors relative group"
+            >
+              🎮 Demo
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
+            </Link>
+            <Link 
               href="/pitch-deck" 
               className="text-sm text-white/60 hover:text-white transition-colors"
             >
