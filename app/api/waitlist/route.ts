@@ -117,15 +117,25 @@ export async function POST(request: Request) {
     }
 
     // Handle database errors
-    if (error instanceof Error && error.message.includes('relation "waitlist" does not exist')) {
-      return NextResponse.json(
-        { error: 'Database not initialized. Please run the setup script.' },
-        { status: 500 }
-      );
+    if (error instanceof Error) {
+      if (error.message.includes('relation "waitlist" does not exist')) {
+        return NextResponse.json(
+          { error: 'Database not initialized. Please run the setup script.' },
+          { status: 500 }
+        );
+      }
+      
+      // Return more detailed error in development
+      if (process.env.NODE_ENV === 'development') {
+        return NextResponse.json(
+          { error: `Database error: ${error.message}` },
+          { status: 500 }
+        );
+      }
     }
 
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error. Please try again later.' },
       { status: 500 }
     );
   }
