@@ -82,7 +82,7 @@ export default function LiveMatchesDemo() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [matches]);
 
   return (
     <section className="py-16 sm:py-20 md:py-24 px-3 sm:px-4 md:px-6 relative overflow-hidden">

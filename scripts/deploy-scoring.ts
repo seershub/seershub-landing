@@ -4,6 +4,9 @@ const { ethers } = hre;
 async function main() {
   console.log("🚀 Deploying SeershubScoring contract...");
 
+  // Get the deployer account
+  const [deployer] = await ethers.getSigners();
+
   // Get the contract factory
   const SeershubScoring = await ethers.getContractFactory("SeershubScoring");
 
@@ -16,7 +19,7 @@ async function main() {
   console.log("✅ SeershubScoring deployed successfully!");
   console.log("📍 Contract Address:", contractAddress);
   console.log("🔗 Network:", hre.network.name);
-  console.log("👤 Deployer:", await scoring.runner?.getAddress());
+  console.log("👤 Deployer:", deployer.address);
 
   // Verify contract on Etherscan (if not localhost)
   if (hre.network.name !== "localhost" && hre.network.name !== "hardhat") {
@@ -39,7 +42,7 @@ async function main() {
   const contractInfo = {
     address: contractAddress,
     network: hre.network.name,
-    deployer: await scoring.runner?.getAddress(),
+    deployer: deployer.address,
     timestamp: new Date().toISOString(),
     blockNumber: await hre.ethers.provider.getBlockNumber(),
   };
