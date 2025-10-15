@@ -1,9 +1,9 @@
-import { ethers } from "hardhat";
-import * as fs from "fs";
-import * as path from "path";
+const { ethers } = require("hardhat");
+const fs = require("fs");
+const path = require("path");
 
 async function main() {
-  console.log("🚀 Deploying SeershubPredictions contract to Base Sepolia...\n");
+  console.log("🚀 Deploying SeershubScoring contract to Base Sepolia...\n");
 
   try {
     // Get the deployer account
@@ -20,19 +20,19 @@ async function main() {
 
     // Get the contract factory
     console.log("📦 Getting contract factory...");
-    const SeershubPredictions = await ethers.getContractFactory("SeershubPredictions");
+    const SeershubScoring = await ethers.getContractFactory("SeershubScoring");
 
     // Deploy the contract
     console.log("🔨 Deploying contract...");
-    const contract = await SeershubPredictions.deploy();
-    await contract.waitForDeployment();
+    const scoring = await SeershubScoring.deploy();
+    await scoring.waitForDeployment();
 
-    const address = await contract.getAddress();
-    console.log("✅ SeershubPredictions deployed successfully!");
-    console.log("📍 Contract Address:", address);
+    const contractAddress = await scoring.getAddress();
+    console.log("✅ SeershubScoring deployed successfully!");
+    console.log("📍 Contract Address:", contractAddress);
 
     // Get deployment transaction details
-    const deploymentTx = contract.deploymentTransaction();
+    const deploymentTx = scoring.deploymentTransaction();
     const receipt = await deploymentTx.wait();
     
     console.log("⛽ Gas Used:", receipt.gasUsed.toString());
@@ -47,7 +47,7 @@ async function main() {
     console.log("🔍 Verifying contract on BaseScan...");
     try {
       await hre.run("verify:verify", {
-        address: address,
+        address: contractAddress,
         constructorArguments: [],
         network: "baseSepolia"
       });
@@ -55,13 +55,13 @@ async function main() {
     } catch (verificationError) {
       console.log("⚠️  Verification failed:", verificationError.message);
       console.log("🔧 Manual verification command:");
-      console.log(`npx hardhat verify --network baseSepolia ${address}`);
+      console.log(`npx hardhat verify --network baseSepolia ${contractAddress}`);
     }
 
     // Prepare deployment info
     const deploymentInfo = {
-      contractName: "SeershubPredictions",
-      address: address,
+      contractName: "SeershubScoring",
+      address: contractAddress,
       network: "baseSepolia",
       deployer: deployer.address,
       deploymentTx: deploymentTx.hash,
@@ -78,7 +78,7 @@ async function main() {
       fs.mkdirSync(deploymentsDir, { recursive: true });
     }
 
-    const deploymentFile = path.join(deploymentsDir, "seershub-predictions-base-sepolia.json");
+    const deploymentFile = path.join(deploymentsDir, "seershub-scoring-base-sepolia.json");
     fs.writeFileSync(deploymentFile, JSON.stringify(deploymentInfo, null, 2));
     console.log("💾 Deployment info saved to:", deploymentFile);
 
@@ -91,7 +91,7 @@ async function main() {
     }
     
     allDeployments["baseSepolia"] = allDeployments["baseSepolia"] || {};
-    allDeployments["baseSepolia"]["SeershubPredictions"] = deploymentInfo;
+    allDeployments["baseSepolia"]["SeershubScoring"] = deploymentInfo;
     
     fs.writeFileSync(mainDeploymentFile, JSON.stringify(allDeployments, null, 2));
     console.log("📋 Updated main deployments file");
@@ -99,9 +99,9 @@ async function main() {
     // Display summary
     console.log("\n🎉 Deployment Summary:");
     console.log("=" * 50);
-    console.log("Contract: SeershubPredictions");
+    console.log("Contract: SeershubScoring");
     console.log("Network: Base Sepolia");
-    console.log("Address:", address);
+    console.log("Address:", contractAddress);
     console.log("Deployer:", deployer.address);
     console.log("Gas Used:", receipt.gasUsed.toString());
     console.log("Block:", receipt.blockNumber);
@@ -111,9 +111,10 @@ async function main() {
     // Next steps
     console.log("\n🎯 Next Steps:");
     console.log("1. Update your frontend with the new contract address");
-    console.log("2. Test the contract: npx hardhat test test/SeershubPredictions.test.ts");
-    console.log("3. Deploy scoring contract: npx hardhat run scripts/deploy-scoring.js --network baseSepolia");
-    console.log("4. Deploy both contracts: npx hardhat run scripts/deploy-all.js --network baseSepolia");
+    console.log("2. Set up the owner role for score updates");
+    console.log("3. Test the scoring mechanism with sample data");
+    console.log("4. Integrate with your existing SeershubPredictions contract");
+    console.log("5. Run tests: npx hardhat test test/SeershubScoring.test.ts");
 
     return deploymentInfo;
 
@@ -142,4 +143,3 @@ main()
     console.error("\n❌ Deployment failed:", error);
     process.exit(1);
   });
-

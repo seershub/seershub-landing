@@ -9,7 +9,15 @@
     "lint": "next lint",
     "hardhat:compile": "cross-env TS_NODE_PROJECT=tsconfig.hardhat.json hardhat compile",
     "hardhat:test": "cross-env TS_NODE_PROJECT=tsconfig.hardhat.json hardhat test",
-    "hardhat:deploy": "cross-env TS_NODE_PROJECT=tsconfig.hardhat.json hardhat run scripts/deploy.ts"
+    "hardhat:deploy": "cross-env TS_NODE_PROJECT=tsconfig.hardhat.json hardhat run scripts/deploy.ts",
+    "deploy:predictions": "hardhat run scripts/deploy.ts --network baseSepolia",
+    "deploy:scoring": "hardhat run scripts/deploy-scoring.js --network baseSepolia",
+    "deploy:all": "hardhat run scripts/deploy-all.js --network baseSepolia",
+    "test:predictions": "hardhat test test/SeershubPredictions.test.ts",
+    "test:scoring": "hardhat test test/SeershubScoring.test.ts",
+    "test:all": "hardhat test",
+    "verify:predictions": "hardhat verify --network baseSepolia",
+    "verify:scoring": "hardhat verify --network baseSepolia"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.8",
