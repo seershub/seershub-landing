@@ -109,8 +109,6 @@ export default function PredictionModal({
 
   if (!match) return null;
 
-  const isPending = isWriting || isConfirming;
-
   return (
     <AnimatePresence>
       <motion.div
