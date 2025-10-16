@@ -1,10 +1,15 @@
-import { Coinbase } from "@coinbase/coinbase-sdk";
+// import { Coinbase } from "@coinbase/coinbase-sdk";
 
-// Server-side only configuration
-export const coinbaseSDK = Coinbase.configureFromJson({
-  apiKeyName: process.env.CDP_API_KEY_NAME!,
-  privateKey: process.env.CDP_PRIVATE_KEY!,
-});
+// Server-side only configuration - Temporarily disabled until correct API is found
+// export const coinbaseSDK = Coinbase.configureFromJson({
+//   apiKeyName: process.env.CDP_API_KEY_NAME!,
+//   privateKey: process.env.CDP_PRIVATE_KEY!,
+// });
+
+// Mock coinbaseSDK for now
+export const coinbaseSDK = {
+  // Mock implementation - will be replaced with actual CDP SDK once correct API is found
+};
 
 // Validation function to check if all required environment variables are set
 export function validateCDPConfig() {
