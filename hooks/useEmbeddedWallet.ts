@@ -84,23 +84,18 @@ export function useEmbeddedWallet() {
     try {
       const provider = new ethers.JsonRpcProvider(cdpConfig.rpcUrl);
       
-      // Create signer using CDP SDK wallet
+      // TODO: Implement actual CDP SDK signing
+      // For now, return a mock signer to prevent build errors
       return {
         provider,
         address,
         signMessage: async (message: string) => {
-          // Use CDP SDK to sign message
-          if (wallet && typeof wallet.signMessage === 'function') {
-            return await wallet.signMessage(message);
-          }
-          throw new Error('Wallet signing not available');
+          console.warn('Mock embedded wallet: Message signing not implemented');
+          throw new Error('Embedded wallet signing not yet implemented');
         },
         signTransaction: async (transaction: any) => {
-          // Use CDP SDK to sign transaction
-          if (wallet && typeof wallet.signTransaction === 'function') {
-            return await wallet.signTransaction(transaction);
-          }
-          throw new Error('Wallet signing not available');
+          console.warn('Mock embedded wallet: Transaction signing not implemented');
+          throw new Error('Embedded wallet signing not yet implemented');
         },
       };
     } catch (err) {
