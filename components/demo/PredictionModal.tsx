@@ -259,25 +259,20 @@ export default function PredictionModal({
                   </div>
                 </div>
 
-                {(writeError || receiptError) && (
+                {error && (
                   <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm space-y-1">
                     <div className="font-semibold">
-                      {writeError?.message.includes('Already predicted') 
+                      {error.message.includes('Already predicted') 
                         ? '⚠️ You already predicted this match' 
-                        : writeError?.message.includes('insufficient') || writeError?.message.includes('gas')
+                        : error.message.includes('insufficient') || error.message.includes('gas')
                         ? '⚠️ Insufficient funds for gas'
-                        : writeError?.message.includes('rejected') || writeError?.message.includes('denied')
+                        : error.message.includes('rejected') || error.message.includes('denied')
                         ? '⚠️ Transaction rejected'
                         : '⚠️ Error submitting prediction'}
                     </div>
-                    {writeError && (
-                      <div className="text-xs opacity-75 font-mono">
-                        {writeError.message.slice(0, 150)}{writeError.message.length > 150 ? '...' : ''}
-                      </div>
-                    )}
-                    {receiptError && (
-                      <div className="text-xs opacity-75">Receipt error occurred</div>
-                    )}
+                    <div className="text-xs opacity-75 font-mono">
+                      {error.message.slice(0, 150)}{error.message.length > 150 ? '...' : ''}
+                    </div>
                   </div>
                 )}
 
