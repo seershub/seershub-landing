@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { coinbaseSDK, validateCDPConfig } from '@/lib/cdp-config';
+import { coinbaseSDK, validateCDPConfig } from '@/lib/cdp-server-config';
 
 export async function POST(request: NextRequest) {
   try {

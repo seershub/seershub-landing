@@ -1,12 +1,4 @@
-import { Coinbase } from "@coinbase/coinbase-sdk";
-
-// Server-side only configuration
-export const coinbaseSDK = Coinbase.configureFromJson({
-  apiKeyName: process.env.CDP_API_KEY_NAME!,
-  privateKey: process.env.CDP_PRIVATE_KEY!,
-});
-
-// Client-side configuration
+// Client-side configuration only
 export const cdpConfig = {
   projectId: process.env.NEXT_PUBLIC_CDP_PROJECT_ID!,
   chainId: Number(process.env.NEXT_PUBLIC_CHAIN_ID),
