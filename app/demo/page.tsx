@@ -14,7 +14,7 @@ import Achievements from '@/components/demo/Achievements';
 import PrizeVault from '@/components/demo/PrizeVault';
 import ProfileView from '@/components/demo/ProfileView';
 import UserComments from '@/components/demo/UserComments';
-import CDPEmbeddedWallet from '@/components/CDPEmbeddedWallet';
+import WalletConnectOptions from '@/components/WalletConnectOptions';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
 
@@ -88,7 +88,7 @@ export default function DemoPage() {
           </motion.div>
         </section>
 
-        {!isConnected && <CDPEmbeddedWallet />}
+        {!isConnected && <WalletConnectOptions />}
 
         {isConnected && (
           <>
