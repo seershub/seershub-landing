@@ -3,15 +3,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AuthButton } from '@coinbase/cdp-react/components/AuthButton';
-import { useIsSignedIn, useWallet } from '@coinbase/cdp-hooks';
+import { useIsSignedIn, useAddress } from '@coinbase/cdp-hooks';
 import { Mail, Smartphone, Loader2, CheckCircle2, AlertCircle, Wallet } from 'lucide-react';
 
 export default function CDPEmbeddedWallet() {
   const { isSignedIn } = useIsSignedIn();
-  const { wallet } = useWallet();
+  const { address } = useAddress();
   const [showAuth, setShowAuth] = useState(false);
 
-  if (isSignedIn && wallet) {
+  if (isSignedIn && address) {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -33,7 +33,7 @@ export default function CDPEmbeddedWallet() {
               <div className="text-left">
                 <p className="text-sm font-medium text-white">Address</p>
                 <p className="text-xs text-white/60 font-mono">
-                  {wallet.address?.slice(0, 6)}...{wallet.address?.slice(-4)}
+                  {address?.slice(0, 6)}...{address?.slice(-4)}
                 </p>
               </div>
             </div>
