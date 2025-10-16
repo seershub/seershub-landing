@@ -551,11 +551,11 @@ export default function PitchDeckPage() {
                     <span>Landing page live</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-white/40 mt-1">○</span>
+                    <span className="text-accent-green mt-1">✓</span>
                     <span>Demo app (wallet connect + predictions)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-white/40 mt-1">○</span>
+                    <span className="text-accent-green mt-1">✓</span>
                     <span>Base Builder grant application</span>
                   </li>
                 </ul>
@@ -888,4 +888,3 @@ export default function PitchDeckPage() {
       </main>
     </div>
   );
-}
