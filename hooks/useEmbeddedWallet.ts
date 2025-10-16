@@ -82,7 +82,7 @@ export function useEmbeddedWallet() {
     }
     
     try {
-      const provider = new ethers.JsonRpcProvider(cdpConfig.rpcUrl);
+      const provider = new ethers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL || 'https://sepolia.base.org');
       
       // TODO: Implement actual CDP SDK signing
       // For now, return a mock signer to prevent build errors
