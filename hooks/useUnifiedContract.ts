@@ -49,9 +49,37 @@ export function useUnifiedContract() {
     }
 
     if (isUsingEmbeddedWallet) {
-      // TODO: Implement embedded wallet transactions
-      // For now, throw an error to prevent build issues
-      throw new Error('Embedded wallet transactions not yet implemented');
+      // Handle embedded wallet transaction
+      setEmbeddedPending(true);
+      setEmbeddedError(null);
+      
+      try {
+        const signer = getSigner();
+        if (!signer) {
+          throw new Error('Failed to get embedded wallet signer');
+        }
+
+        // Create contract instance with embedded wallet signer
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
+        
+        // Submit prediction
+        const tx = await contract.submitPrediction(matchId, outcome);
+        setEmbeddedHash(tx.hash);
+        
+        // Wait for confirmation
+        const receipt = await tx.wait();
+        
+        if (receipt.status === 1) {
+          setEmbeddedPending(false);
+          return { hash: tx.hash, success: true };
+        } else {
+          throw new Error('Transaction failed');
+        }
+      } catch (error: any) {
+        setEmbeddedPending(false);
+        setEmbeddedError(error.message || 'Transaction failed');
+        throw error;
+      }
     } else {
       // Handle traditional wallet transaction using Wagmi
       return new Promise((resolve, reject) => {
