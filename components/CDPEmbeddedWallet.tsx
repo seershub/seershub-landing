@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AuthButton } from '@coinbase/cdp-react/components/AuthButton';
-import { useIsSignedIn, useAddress } from '@coinbase/cdp-hooks';
+import { useIsSignedIn, useEvmAddress } from '@coinbase/cdp-hooks';
 import { Mail, Smartphone, Loader2, CheckCircle2, AlertCircle, Wallet } from 'lucide-react';
 
 export default function CDPEmbeddedWallet() {
   const { isSignedIn } = useIsSignedIn();
-  const { address } = useAddress();
+  const { address } = useEvmAddress();
   const [showAuth, setShowAuth] = useState(false);
 
   if (isSignedIn && address) {
