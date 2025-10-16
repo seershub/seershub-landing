@@ -3,14 +3,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Loader2, ExternalLink, Copy, Sparkles } from 'lucide-react';
-import { useWriteContract, useWaitForTransactionReceipt, useAccount } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
+import { useAccount } from 'wagmi';
 import confetti from 'canvas-confetti';
 import { MatchData } from '@/lib/mockData';
-import ABI from '@/public/contract-abi.json';
+import { useUnifiedContract } from '@/hooks/useUnifiedContract';
 import Image from 'next/image';
-
-const CONTRACT_ADDRESS = '0x718430F546A7e7b74b1BA4a13e0C391e36108D8b' as `0x${string}`;
 
 export default function PredictionModal({ 
   match, 
@@ -28,26 +25,25 @@ export default function PredictionModal({
   const [hasShownConfetti, setHasShownConfetti] = useState(false);
   const [currentTxHash, setCurrentTxHash] = useState<string | null>(null);
 
-  const { data: hash, writeContract, isPending: isWriting, error: writeError, reset: resetWrite } = useWriteContract();
-  const { isLoading: isConfirming, isSuccess, error: receiptError } = useWaitForTransactionReceipt({ 
-    hash: hash || undefined, 
-    chainId: baseSepolia.id 
-  });
+  const {
+    isConnected,
+    address: activeAddress,
+    isUsingEmbeddedWallet,
+    isPending,
+    isConfirming,
+    isSuccess,
+    hash,
+    error,
+    submitPrediction,
+    resetTransactionState,
+  } = useUnifiedContract();
 
   // Debug logging
   useEffect(() => {
-    if (writeError) {
-      console.error('❌ Write Error:', writeError);
-      console.error('Error message:', writeError.message);
-      console.error('Error cause:', writeError.cause);
+    if (error) {
+      console.error('❌ Transaction Error:', error);
     }
-  }, [writeError]);
-
-  useEffect(() => {
-    if (receiptError) {
-      console.error('❌ Receipt Error:', receiptError);
-    }
-  }, [receiptError]);
+  }, [error]);
 
   // Reset all state when modal closes or match changes
   const resetPredictionState = () => {
@@ -56,7 +52,7 @@ export default function PredictionModal({
     setReasoning('');
     setHasShownConfetti(false);
     setCurrentTxHash(null);
-    resetWrite();
+    resetTransactionState();
   };
 
   // Reset when match changes
@@ -91,27 +87,21 @@ export default function PredictionModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess, hash, hasShownConfetti, match, outcome]);
 
-  const handleSubmit = () => {
-    if (!match || outcome === null || !address) {
-      console.warn('⚠️ Cannot submit:', { match: !!match, outcome, address });
+  const handleSubmit = async () => {
+    if (!match || outcome === null || !activeAddress) {
+      console.warn('⚠️ Cannot submit:', { match: !!match, outcome, address: activeAddress });
       return;
     }
     
     console.log('📝 Submitting prediction:', {
       matchId: match.id,
       outcome,
-      address,
-      contractAddress: CONTRACT_ADDRESS
+      address: activeAddress,
+      walletType: isUsingEmbeddedWallet ? 'embedded' : 'traditional'
     });
     
     try {
-      writeContract({
-        address: CONTRACT_ADDRESS,
-        abi: ABI,
-        functionName: 'submitPrediction',
-        args: [BigInt(match.id), outcome],
-        chainId: baseSepolia.id,
-      });
+      await submitPrediction(match.id, outcome);
     } catch (error) {
       console.error('❌ Submit error:', error);
     }
@@ -295,13 +285,13 @@ export default function PredictionModal({
 
                 <button
                   onClick={handleSubmit}
-                  disabled={outcome === null || isPending || !address}
+                  disabled={outcome === null || isPending || !activeAddress}
                   className="w-full py-4 rounded-xl bg-gradient-to-r from-[#0052FF] to-[#00D4FF] font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
                 >
                   {isPending ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      {isWriting ? 'Waiting for signature...' : 'Broadcasting...'}
+                      {isUsingEmbeddedWallet ? 'Processing...' : 'Waiting for signature...'}
                     </>
                   ) : (
                     <>

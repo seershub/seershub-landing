@@ -20,6 +20,8 @@
     "verify:scoring": "hardhat verify --network baseSepolia"
   },
   "dependencies": {
+    "@coinbase/coinbase-sdk": "^0.25.0",
+    "@coinbase/onchainkit": "^1.1.1",
     "@rainbow-me/rainbowkit": "^2.2.8",
     "@tanstack/react-query": "^5.90.2",
     "@vercel/postgres": "^0.9.0",

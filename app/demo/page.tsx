@@ -14,6 +14,7 @@ import Achievements from '@/components/demo/Achievements';
 import PrizeVault from '@/components/demo/PrizeVault';
 import ProfileView from '@/components/demo/ProfileView';
 import UserComments from '@/components/demo/UserComments';
+import WalletConnectOptions from '@/components/WalletConnectOptions';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
 
@@ -87,20 +88,7 @@ export default function DemoPage() {
           </motion.div>
         </section>
 
-        {!isConnected && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center p-8 sm:p-12 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 backdrop-blur"
-          >
-            <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">🔐</div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 px-4">Connect Your Wallet</h2>
-            <p className="text-white/60 mb-4 sm:mb-6 text-sm sm:text-base px-4">Connect to Base Sepolia to start making predictions</p>
-            <div className="text-xs sm:text-sm text-white/40 px-4">
-              Click "Connect Wallet" in the top right corner
-            </div>
-          </motion.div>
-        )}
+        {!isConnected && <WalletConnectOptions />}
 
         {isConnected && (
           <>
