@@ -262,16 +262,16 @@ export default function PredictionModal({
                 {error && (
                   <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm space-y-1">
                     <div className="font-semibold">
-                      {error.message.includes('Already predicted') 
+                      {error.includes('Already predicted') 
                         ? '⚠️ You already predicted this match' 
-                        : error.message.includes('insufficient') || error.message.includes('gas')
+                        : error.includes('insufficient') || error.includes('gas')
                         ? '⚠️ Insufficient funds for gas'
-                        : error.message.includes('rejected') || error.message.includes('denied')
+                        : error.includes('rejected') || error.includes('denied')
                         ? '⚠️ Transaction rejected'
                         : '⚠️ Error submitting prediction'}
                     </div>
                     <div className="text-xs opacity-75 font-mono">
-                      {error.message.slice(0, 150)}{error.message.length > 150 ? '...' : ''}
+                      {error.slice(0, 150)}{error.length > 150 ? '...' : ''}
                     </div>
                   </div>
                 )}
