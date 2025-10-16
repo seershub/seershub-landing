@@ -126,7 +126,7 @@ export default function PredictionModal({
           onClick={(e) => e.stopPropagation()}
         >
           {isSuccess ? (
-            <SuccessState hash={hash!} onClose={onClose} />
+            <SuccessState hash={hash as `0x${string}`} onClose={onClose} />
           ) : (
             <>
               <div className="sticky top-0 bg-[#000814] border-b border-white/10 p-6 flex items-center justify-between">
