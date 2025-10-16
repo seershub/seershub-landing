@@ -8,10 +8,10 @@ import { Mail, Smartphone, Loader2, CheckCircle2, AlertCircle, Wallet } from 'lu
 
 export default function CDPEmbeddedWallet() {
   const { isSignedIn } = useIsSignedIn();
-  const { address } = useEvmAddress();
+  const { evmAddress } = useEvmAddress();
   const [showAuth, setShowAuth] = useState(false);
 
-  if (isSignedIn && address) {
+  if (isSignedIn && evmAddress) {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -33,7 +33,7 @@ export default function CDPEmbeddedWallet() {
               <div className="text-left">
                 <p className="text-sm font-medium text-white">Address</p>
                 <p className="text-xs text-white/60 font-mono">
-                  {address?.slice(0, 6)}...{address?.slice(-4)}
+                  {evmAddress?.slice(0, 6)}...{evmAddress?.slice(-4)}
                 </p>
               </div>
             </div>
