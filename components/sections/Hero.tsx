@@ -1,60 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Check } from 'lucide-react';
 import { usePerformanceMode } from '@/hooks/usePerformanceMode';
 
 export default function Hero() {
   const { shouldReduceAnimations } = usePerformanceMode();
-  
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 py-16 sm:py-20">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 gradient-subtle" />
-      
-      {/* Animated grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.15]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}
-      />
-      
-      {/* Radial gradient spotlight */}
-      <div className="absolute inset-0 gradient-radial" />
-      
-      {/* Decorative Soccer Ball - Behind "Predict" */}
-      <motion.div
-        className="absolute top-1/2 left-[5%] md:left-[15%] lg:left-[20%] -translate-y-1/2 z-[1] pointer-events-none"
-        animate={shouldReduceAnimations ? {} : { 
-          rotate: [0, 360],
-          scale: [1, 1.08, 1]
-        }}
-        transition={shouldReduceAnimations ? {} : { 
-          rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-          scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-        }}
-      >
-        <div className="text-[15rem] md:text-[25rem] lg:text-[35rem] opacity-[0.08]" style={{
-          filter: 'blur(2px) drop-shadow(0 0 60px rgba(0, 82, 255, 0.4))'
-        }}>
-          ⚽
-        </div>
-      </motion.div>
-      
+
       {/* Content */}
       <div className="relative z-10 container-responsive py-20 sm:py-24 md:py-32 text-center">
-        
+
         {/* Badge - Balanced & Modern - Mobile Optimized */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full 
-                     bg-gradient-to-r from-primary-500/10 to-accent-cyan/10 
-                     border border-primary-500/30 backdrop-blur-md mb-6 sm:mb-8
+          className="inline-flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full
+                     bg-gradient-to-r from-primary-500/10 to-accent-cyan/10
+                     border border-primary-500/30 backdrop-blur-md mb-12 sm:mb-16
                      hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(0,82,255,0.25)]
                      transition-all duration-300
                      shadow-[0_0_20px_rgba(0,82,255,0.15)]"
@@ -62,68 +28,68 @@ export default function Hero() {
           {/* Animated "B" Icon */}
           <div className="relative flex-shrink-0">
             <motion.div
-              animate={shouldReduceAnimations ? {} : { 
+              animate={shouldReduceAnimations ? {} : {
                 rotate: [0, 360],
                 scale: [1, 1.08, 1]
               }}
-              transition={shouldReduceAnimations ? {} : { 
+              transition={shouldReduceAnimations ? {} : {
                 duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-cyan 
+              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-cyan
                          flex items-center justify-center shadow-[0_0_12px_rgba(0,82,255,0.5)]"
             >
               <span className="text-white text-xs sm:text-sm font-bold">B</span>
             </motion.div>
             {/* Pulse ring */}
             <motion.div
-              animate={shouldReduceAnimations ? {} : { 
+              animate={shouldReduceAnimations ? {} : {
                 scale: [1, 1.4, 1],
                 opacity: [0.4, 0, 0.4]
               }}
-              transition={shouldReduceAnimations ? {} : { 
+              transition={shouldReduceAnimations ? {} : {
                 duration: 2,
                 repeat: Infinity
               }}
               className="absolute inset-0 rounded-full border-2 border-primary-500"
             />
           </div>
-          
+
           {/* Text + Logo Group - Aligned - Mobile Optimized */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span className="text-sm sm:text-base font-medium text-white tracking-wide">
               Built on
             </span>
-            
+
             {/* Base Logo - Same Height as Text */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="relative flex items-center"
             >
-              <img 
-                src="/Base_Logo_1.png" 
-                alt="Base" 
+              <img
+                src="/Base_Logo_1.png"
+                alt="Base"
                 className="h-[14px] sm:h-[18px] w-auto object-contain"
                 style={{
                   filter: 'brightness(1.15) contrast(1.05) drop-shadow(0 2px 8px rgba(0, 82, 255, 0.4))'
                 }}
               />
             </motion.div>
-            
+
             <span className="text-sm sm:text-base font-medium text-white tracking-wide">
               Network
             </span>
           </div>
-          
+
           {/* Sparkle */}
           <motion.div
-            animate={{ 
+            animate={{
               rotate: [0, 180, 360],
               scale: [1, 1.15, 1],
               opacity: [0.7, 1, 0.7]
             }}
-            transition={shouldReduceAnimations ? {} : { 
+            transition={shouldReduceAnimations ? {} : {
               duration: 3,
               repeat: Infinity,
               ease: "easeInOut"
@@ -133,72 +99,137 @@ export default function Hero() {
             ✨
           </motion.div>
         </motion.div>
-        
-        {/* MASSIVE headline - Mobile Optimized */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6"
-        >
-          Predict Sports.
-          <br />
-          <span className="bg-gradient-to-r from-primary-500 to-accent-cyan bg-clip-text text-transparent">
-            Win On-Chain.
-          </span>
-        </motion.h1>
-        
-        {/* Subheadline - Mobile Optimized */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4 sm:px-0"
-        >
-          Skill-based sports prediction competitions on Base. 
-          Transparent, verifiable, and rewarding. No gambling, pure strategy.
-        </motion.p>
-        
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Link href="#waitlist" className="btn-primary group">
-            Join Waitlist
-            <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
-          </Link>
-          
-          <Link href="/pitch-deck" className="btn-secondary group">
-            📄 Pitch Deck
-            <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
-          </Link>
-        </motion.div>
-        
-        {/* Trust indicators - Mobile Optimized */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-white/50 px-4"
-        >
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-            <span>Audited Contracts</span>
-          </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-            <span>Non-Custodial</span>
-          </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-            <span>10,000+ Predictions</span>
-          </div>
-        </motion.div>
+
+        {/* Application Status Cards */}
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-4">
+
+          {/* Mini App - Published & Active */}
+          <motion.a
+            href="https://farcaster.xyz/miniapps/-FFJ1DnvO00L/seersleague"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="group relative bg-gradient-to-br from-green-500/10 via-primary-500/10 to-accent-cyan/10
+                       border border-green-500/30 rounded-2xl p-8
+                       hover:border-green-500/50 hover:shadow-[0_0_40px_rgba(34,197,94,0.2)]
+                       transition-all duration-300 cursor-pointer"
+          >
+            {/* Status Badge */}
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/20 border border-green-500/40">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-sm font-semibold text-green-400">Published</span>
+              </div>
+            </div>
+
+            {/* Platform Logos */}
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <img
+                src="https://play-lh.googleusercontent.com/EzgUgulJb5ul-ed3SiXCyK6J22LD9vcEI1xo6INYI4Jd64LGQ7eubZkpeDclqHEM83A=w240-h480-rw"
+                alt="Base App"
+                className="w-12 h-12 rounded-xl object-contain"
+                style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 82, 255, 0.3))' }}
+              />
+              <div className="text-white/30 text-2xl">+</div>
+              <img
+                src="https://docs.farcaster.xyz/og-image.png"
+                alt="Farcaster"
+                className="w-12 h-12 rounded-xl object-contain"
+                style={{ filter: 'drop-shadow(0 4px 12px rgba(138, 99, 210, 0.3))' }}
+              />
+            </div>
+
+            {/* Mini App Logo */}
+            <div className="flex justify-center mb-4">
+              <img
+                src="https://raw.githubusercontent.com/seershub/seersleague-miniapp/refs/heads/main/icon-512.png"
+                alt="Seers League Mini App"
+                className="w-24 h-24 rounded-2xl object-contain shadow-lg"
+                style={{ filter: 'drop-shadow(0 8px 16px rgba(0, 82, 255, 0.4))' }}
+              />
+            </div>
+
+            {/* Title & Description */}
+            <h3 className="text-xl font-bold text-white mb-2 text-center">Seers League</h3>
+            <p className="text-sm text-white/60 text-center mb-4">
+              Mini App on Base Mainnet
+            </p>
+
+            {/* Launch Button */}
+            <div className="flex justify-center">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/20
+                            border border-green-500/30 text-green-400 text-sm font-medium
+                            group-hover:bg-green-500/30 group-hover:border-green-500/50
+                            transition-all duration-300">
+                <span>Launch App</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </div>
+
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-primary-500/5
+                          rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+          </motion.a>
+
+          {/* Main App - Building */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="relative bg-gradient-to-br from-neutral-800/40 via-neutral-900/40 to-neutral-800/40
+                       border border-neutral-700/30 rounded-2xl p-8
+                       hover:border-neutral-600/40 hover:shadow-[0_0_40px_rgba(163,163,163,0.1)]
+                       transition-all duration-300"
+          >
+            {/* Status Badge */}
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40">
+                <div className="w-2 h-2 bg-amber-500 rounded-full">
+                  <div className="w-2 h-2 bg-amber-500 rounded-full animate-ping absolute" />
+                </div>
+                <span className="text-sm font-semibold text-amber-400">In Development</span>
+              </div>
+            </div>
+
+            {/* Placeholder for platform logos */}
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-neutral-800/50 border border-neutral-700/30
+                            flex items-center justify-center text-neutral-600">
+                <span className="text-2xl">🌐</span>
+              </div>
+            </div>
+
+            {/* Main Logo - Greyed Out */}
+            <div className="flex justify-center mb-4">
+              <img
+                src="/seershub-logo.png"
+                alt="Seershub Main App"
+                className="w-32 h-32 rounded-2xl object-contain opacity-30 grayscale"
+                style={{ filter: 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))' }}
+              />
+            </div>
+
+            {/* Title & Description */}
+            <h3 className="text-xl font-bold text-white/50 mb-2 text-center">Seershub Platform</h3>
+            <p className="text-sm text-white/40 text-center mb-4">
+              Full-featured prediction platform
+            </p>
+
+            {/* Building Status */}
+            <div className="flex justify-center">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20
+                            border border-amber-500/30 text-amber-400 text-sm font-medium">
+                <span>Building...</span>
+                <span className="animate-pulse">🔨</span>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
-      
+
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
