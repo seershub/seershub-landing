@@ -133,263 +133,221 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Main Headline */}
+        {/* MASSIVE headline - With Original Animations */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6"
         >
-          <span className="bg-gradient-to-r from-white via-primary-100 to-white bg-clip-text text-transparent">
-            Predict Sports.
-          </span>
+          Predict Sports.
           <br />
-          <span className="bg-gradient-to-r from-primary-400 via-primary-500 to-accent-cyan bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary-500 to-accent-cyan bg-clip-text text-transparent">
             Win On-Chain.
           </span>
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subheadline - Optimized */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-12 sm:mb-16 px-4"
+          className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-10 sm:mb-12 px-4"
         >
           Experience our ecosystem: Play our <span className="text-green-400 font-semibold">live Mini App</span> on Base today,
           or join the waitlist for the <span className="text-primary-400 font-semibold">full platform</span> coming soon.
         </motion.p>
 
-        {/* Application Status Cards - Professional & Eye-Catching */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 px-4">
+        {/* Application Status Cards - Ultra Professional */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-4 sm:px-6">
 
-          {/* Mini App - Published & Active - PREMIUM CARD */}
+          {/* Mini App - Published & Active - ULTRA MODERN CARD */}
           <motion.a
             href="https://farcaster.xyz/miniapps/-FFJ1DnvO00L/seersleague"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="group relative bg-gradient-to-br from-green-500/5 via-emerald-500/5 to-primary-500/5
-                       backdrop-blur-xl rounded-3xl overflow-hidden
-                       hover:scale-[1.02] transition-all duration-500 cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="group relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50
+                       backdrop-blur-2xl border border-green-500/20 rounded-3xl overflow-hidden
+                       hover:border-green-500/40 hover:shadow-[0_0_60px_rgba(34,197,94,0.15)]
+                       transition-all duration-500 cursor-pointer will-change-transform"
           >
-            {/* Animated Border Gradient */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-500/40 via-emerald-400/40 to-green-500/40 p-[2px] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="w-full h-full rounded-3xl bg-neutral-950/95 backdrop-blur-xl" />
-            </div>
+            {/* Subtle Glow Effects - Optimized */}
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* Glow Effects */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-green-500/20 rounded-full blur-3xl group-hover:bg-green-500/30 transition-all duration-500" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/30 transition-all duration-500" />
+            {/* Content - Clean & Modern */}
+            <div className="relative z-10 p-10 sm:p-12">
 
-            {/* Content */}
-            <div className="relative z-10 p-8 sm:p-10">
-
-              {/* Status Badge - Premium */}
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/40 backdrop-blur-sm">
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-2.5 h-2.5 bg-green-400 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.8)]"
-                  />
-                  <span className="text-sm font-bold text-green-300 uppercase tracking-wide">Live Now</span>
+              {/* Status Badge - Minimal */}
+              <div className="flex items-center justify-between mb-10">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full
+                               bg-green-500/10 border border-green-500/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                  <span className="text-sm font-semibold text-green-400 uppercase tracking-wider">Live</span>
                 </div>
-                <Sparkles className="w-5 h-5 text-green-400 opacity-60 group-hover:opacity-100 transition-opacity" />
               </div>
 
-              {/* Platform Logos - Enhanced */}
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-primary-500/30 rounded-2xl blur-xl" />
+              {/* Platform Logos - Clean */}
+              <div className="flex items-center justify-center gap-4 mb-10">
+                <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-neutral-800/30 border border-neutral-700/30">
                   <img
                     src="https://play-lh.googleusercontent.com/EzgUgulJb5ul-ed3SiXCyK6J22LD9vcEI1xo6INYI4Jd64LGQ7eubZkpeDclqHEM83A=w240-h480-rw"
                     alt="Base App"
-                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-contain border border-white/10 bg-neutral-900/50 backdrop-blur-sm p-2"
+                    loading="lazy"
+                    className="w-8 h-8 rounded-lg object-contain"
                   />
-                </motion.div>
-
-                <div className="text-white/40 text-xl font-bold">+</div>
-
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-purple-500/30 rounded-2xl blur-xl" />
+                  <span className="text-white/30 text-sm font-bold">×</span>
                   <img
                     src="https://docs.farcaster.xyz/og-image.png"
                     alt="Farcaster"
-                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-contain border border-white/10 bg-neutral-900/50 backdrop-blur-sm p-2"
+                    loading="lazy"
+                    className="w-8 h-8 rounded-lg object-contain"
                   />
-                </motion.div>
+                </div>
               </div>
 
               {/* Mini App Logo - Hero */}
-              <div className="flex justify-center mb-6">
-                <motion.div
-                  whileHover={{ scale: 1.05, rotate: 3 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/40 to-primary-500/40 rounded-3xl blur-2xl" />
+              <div className="flex justify-center mb-8">
+                <div className="relative group/logo">
+                  <div className="absolute inset-0 bg-green-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity" />
                   <img
                     src="https://raw.githubusercontent.com/seershub/seersleague-miniapp/refs/heads/main/icon-512.png"
-                    alt="Seers League Mini App"
-                    className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl object-contain shadow-2xl ring-2 ring-green-500/30"
+                    alt="Seers League"
+                    loading="lazy"
+                    className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-3xl object-contain
+                             ring-1 ring-green-500/20 shadow-2xl"
                   />
-                </motion.div>
+                </div>
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 text-center bg-gradient-to-r from-white to-green-100 bg-clip-text text-transparent">
+              <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-center tracking-tight">
                 Seers League
               </h3>
-              <p className="text-sm sm:text-base text-white/60 text-center mb-6 leading-relaxed">
-                Full-featured mini app on <span className="text-primary-400 font-semibold">Base Mainnet</span>
-                <br />
-                <span className="text-green-400 font-medium">Play competitions now!</span>
+              <p className="text-base text-white/50 text-center mb-8 leading-relaxed max-w-sm mx-auto">
+                Full-featured prediction mini app on Base Mainnet
               </p>
 
-              {/* Features List */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                <div className="flex items-center gap-2 text-xs text-white/50">
-                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+              {/* Features - Minimal Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-10 max-w-md mx-auto">
+                <div className="flex items-center gap-2.5 text-sm text-white/40">
+                  <div className="w-1 h-1 bg-green-400/60 rounded-full" />
                   <span>Live Competitions</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-white/50">
-                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                <div className="flex items-center gap-2.5 text-sm text-white/40">
+                  <div className="w-1 h-1 bg-green-400/60 rounded-full" />
                   <span>On-Chain Rewards</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-white/50">
-                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                <div className="flex items-center gap-2.5 text-sm text-white/40">
+                  <div className="w-1 h-1 bg-green-400/60 rounded-full" />
                   <span>Real-time Scoring</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-white/50">
-                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                  <span>Social Integration</span>
+                <div className="flex items-center gap-2.5 text-sm text-white/40">
+                  <div className="w-1 h-1 bg-green-400/60 rounded-full" />
+                  <span>Social Features</span>
                 </div>
               </div>
 
-              {/* Launch Button - Premium */}
+              {/* Launch Button - Modern */}
               <div className="flex justify-center">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-                  <div className="relative flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-sm sm:text-base shadow-lg">
+                <div className="group/btn relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl blur opacity-25 group-hover/btn:opacity-50 transition-opacity" />
+                  <div className="relative flex items-center gap-2.5 px-8 py-4 rounded-xl
+                                bg-gradient-to-r from-green-500 to-emerald-500
+                                text-white font-semibold text-base
+                                shadow-lg hover:shadow-xl
+                                transform hover:scale-105 transition-all duration-200">
                     <span>Launch App</span>
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                    <ExternalLink className="w-4 h-4" />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.a>
 
-          {/* Main App - Building - PREMIUM CARD */}
+          {/* Main App - Building - ULTRA MODERN CARD */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="group relative bg-gradient-to-br from-neutral-800/20 via-neutral-900/20 to-neutral-800/20
-                       backdrop-blur-xl rounded-3xl overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="group relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50
+                       backdrop-blur-2xl border border-amber-500/10 rounded-3xl overflow-hidden
+                       hover:border-amber-500/20 hover:shadow-[0_0_60px_rgba(251,191,36,0.08)]
+                       transition-all duration-500 will-change-transform"
           >
-            {/* Animated Border Gradient */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-500/30 via-orange-500/30 to-amber-500/30 p-[2px] opacity-40 group-hover:opacity-60 transition-opacity duration-300">
-              <div className="w-full h-full rounded-3xl bg-neutral-950/95 backdrop-blur-xl" />
-            </div>
+            {/* Subtle Glow Effects - Optimized */}
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* Glow Effects */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/15 transition-all duration-500" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/15 transition-all duration-500" />
+            {/* Content - Clean & Modern */}
+            <div className="relative z-10 p-10 sm:p-12">
 
-            {/* Content */}
-            <div className="relative z-10 p-8 sm:p-10">
-
-              {/* Status Badge */}
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/40 backdrop-blur-sm">
-                  <motion.div
-                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-2.5 h-2.5 bg-amber-400 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.8)]"
-                  />
-                  <span className="text-sm font-bold text-amber-300 uppercase tracking-wide">Coming Soon</span>
+              {/* Status Badge - Minimal */}
+              <div className="flex items-center justify-between mb-10">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full
+                               bg-amber-500/10 border border-amber-500/20">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(251,191,36,0.4)]" />
+                  <span className="text-sm font-semibold text-amber-400 uppercase tracking-wider">Coming Soon</span>
                 </div>
-                <Rocket className="w-5 h-5 text-amber-400 opacity-40 group-hover:opacity-60 transition-opacity" />
               </div>
 
               {/* Platform Icon */}
-              <div className="flex items-center justify-center mb-8">
-                <motion.div
-                  animate={{ rotate: [0, 5, 0, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20
-                           border border-amber-500/30 backdrop-blur-sm
-                           flex items-center justify-center text-3xl sm:text-4xl"
-                >
+              <div className="flex items-center justify-center mb-10">
+                <div className="w-16 h-16 rounded-2xl bg-neutral-800/30 border border-neutral-700/30
+                             flex items-center justify-center text-4xl">
                   🌐
-                </motion.div>
+                </div>
               </div>
 
               {/* Main Logo - Styled */}
-              <div className="flex justify-center mb-6">
+              <div className="flex justify-center mb-8">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-neutral-700/20 rounded-3xl blur-xl" />
                   <img
                     src="/seershub-logo.png"
                     alt="Seershub Platform"
-                    className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-3xl object-contain opacity-40 grayscale-[50%] ring-2 ring-neutral-700/30"
+                    loading="lazy"
+                    className="w-36 h-36 sm:w-40 sm:h-40 rounded-3xl object-contain
+                             opacity-30 grayscale ring-1 ring-neutral-700/20"
                   />
                 </div>
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-2xl sm:text-3xl font-bold text-white/60 mb-3 text-center">
+              <h3 className="text-3xl sm:text-4xl font-bold text-white/50 mb-4 text-center tracking-tight">
                 Seershub Platform
               </h3>
-              <p className="text-sm sm:text-base text-white/40 text-center mb-6 leading-relaxed">
-                Advanced prediction platform with
-                <br />
-                <span className="text-amber-400/80 font-medium">enhanced features & analytics</span>
+              <p className="text-base text-white/30 text-center mb-8 leading-relaxed max-w-sm mx-auto">
+                Advanced prediction platform with enhanced features
               </p>
 
-              {/* Coming Features */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                <div className="flex items-center gap-2 text-xs text-white/30">
-                  <div className="w-1.5 h-1.5 bg-amber-400/60 rounded-full" />
+              {/* Coming Features - Minimal Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-10 max-w-md mx-auto">
+                <div className="flex items-center gap-2.5 text-sm text-white/25">
+                  <div className="w-1 h-1 bg-amber-400/40 rounded-full" />
                   <span>Advanced Stats</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-white/30">
-                  <div className="w-1.5 h-1.5 bg-amber-400/60 rounded-full" />
+                <div className="flex items-center gap-2.5 text-sm text-white/25">
+                  <div className="w-1 h-1 bg-amber-400/40 rounded-full" />
                   <span>Private Leagues</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-white/30">
-                  <div className="w-1.5 h-1.5 bg-amber-400/60 rounded-full" />
+                <div className="flex items-center gap-2.5 text-sm text-white/25">
+                  <div className="w-1 h-1 bg-amber-400/40 rounded-full" />
                   <span>NFT Rewards</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-white/30">
-                  <div className="w-1.5 h-1.5 bg-amber-400/60 rounded-full" />
+                <div className="flex items-center gap-2.5 text-sm text-white/25">
+                  <div className="w-1 h-1 bg-amber-400/40 rounded-full" />
                   <span>Web Dashboard</span>
                 </div>
               </div>
 
               {/* Building Status */}
               <div className="flex justify-center">
-                <div className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl
-                             bg-gradient-to-r from-amber-500/10 to-orange-500/10
-                             border border-amber-500/30 text-amber-400/80 font-semibold text-sm sm:text-base">
-                  <motion.span
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  >
-                    🔨
-                  </motion.span>
+                <div className="inline-flex items-center gap-3 px-8 py-4 rounded-xl
+                             bg-amber-500/5 border border-amber-500/20
+                             text-amber-400/60 font-semibold text-base">
+                  <span>🔨</span>
                   <span>In Development</span>
                 </div>
               </div>

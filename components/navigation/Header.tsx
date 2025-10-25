@@ -82,51 +82,47 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {/* Main Navigation */}
-            <div className="flex items-center gap-6">
-              <Link 
-                href="#how-it-works" 
-                className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
+          {/* Desktop Navigation - Clean & Organized */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            {/* Main Navigation Links */}
+            <nav className="flex items-center gap-1">
+              <Link
+                href="/demo"
+                className="relative group px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-200"
               >
-                How it works
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">
+                  Demo
+                </span>
+                <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-accent-cyan rounded-full animate-pulse opacity-75" />
               </Link>
-              
-              <Link 
-                href="/demo" 
-                className="relative group"
-              >
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-accent-cyan/10 to-accent-purple/10 border border-accent-cyan/30 text-accent-cyan hover:from-accent-cyan/20 hover:to-accent-purple/20 transition-all duration-300">
-                  <span className="text-sm font-medium">🎮 Demo</span>
-                  <span className="w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
-                </div>
-              </Link>
-              
-              <Link 
-                href="/pitch-deck" 
-                className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
+
+              <Link
+                href="/pitch-deck"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200"
               >
                 Pitch Deck
               </Link>
-              
-              <Link 
-                href="#roadmap" 
-                className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
+
+              <Link
+                href="#roadmap"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200"
               >
                 Roadmap
               </Link>
-            </div>
+            </nav>
 
-            {/* Social Links - Compact */}
-            <div className="flex items-center gap-2">
+            {/* Divider */}
+            <div className="w-px h-6 bg-white/10" />
+
+            {/* Social Links - Minimal */}
+            <div className="flex items-center gap-1">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-white/40 hover:text-accent-cyan transition-all duration-200 rounded-lg hover:bg-white/5 hover:scale-110"
+                  className="p-2 text-white/30 hover:text-white/70 transition-colors duration-200 rounded-lg hover:bg-white/5"
                   aria-label={social.label}
                   title={social.label}
                 >
@@ -135,12 +131,18 @@ export default function Header() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <Link 
-              href="#waitlist" 
-              className="px-6 py-2.5 bg-gradient-to-r from-primary-500 to-accent-cyan text-white text-sm font-semibold rounded-lg hover:from-primary-600 hover:to-accent-cyan/80 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(0,82,255,0.4)]"
+            {/* Divider */}
+            <div className="w-px h-6 bg-white/10" />
+
+            {/* CTA Button - Modern */}
+            <Link
+              href="#waitlist"
+              className="relative group px-5 py-2.5 rounded-lg overflow-hidden"
             >
-              Join Waitlist
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-cyan opacity-100 group-hover:opacity-90 transition-opacity" />
+              <span className="relative text-sm font-semibold text-white">
+                Join Waitlist
+              </span>
             </Link>
           </div>
 
