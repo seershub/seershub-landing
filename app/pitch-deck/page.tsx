@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, Users, Zap, Shield, Trophy, LayoutDashboard, Rocket, CheckCircle2 } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card";
+
 
 export default function PitchDeck() {
   return (
