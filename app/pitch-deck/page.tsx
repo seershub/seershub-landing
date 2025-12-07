@@ -27,6 +27,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 
+
 export default function PitchDeckPage() {
   return (
     <div className="min-h-screen bg-neutral-950 text-white">
@@ -72,146 +73,96 @@ export default function PitchDeckPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16 sm:mb-20"
           >
-            {/* Premium Logo Showcase with Glass Effect */}
+            {/* Full Width Logo Card */}
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-              className="mb-10 relative inline-block"
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-12 relative w-full"
             >
-              {/* Outer glow */}
-              <div className="absolute -inset-8 bg-gradient-radial from-primary-500/20 via-accent-cyan/10 to-transparent blur-3xl rounded-full" />
+              {/* Background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-violet-500/10 via-emerald-500/5 to-transparent rounded-3xl blur-3xl" />
 
-              {/* Premium Glass Card Container */}
-              <div className="relative glass-card-premium rounded-3xl overflow-hidden p-8 sm:p-10">
-                {/* Animated gradient border */}
-                <motion.div
-                  className="absolute inset-0 rounded-3xl"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(0,82,255,0.4) 25%, rgba(0,212,255,0.4) 50%, rgba(0,82,255,0.4) 75%, transparent 100%)',
-                    backgroundSize: '300% 100%'
-                  }}
-                  animate={{ backgroundPosition: ['0% 0%', '300% 0%'] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                >
-                  <div className="absolute inset-[1px] rounded-3xl bg-neutral-950/95 backdrop-blur-xl" />
-                </motion.div>
+              {/* Card */}
+              <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden
+                              bg-gradient-to-b from-zinc-900/80 to-zinc-950/90
+                              border border-violet-500/20 p-6 sm:p-10 md:p-14">
 
-                {/* Decorative corner elements */}
-                <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-primary-500/40 rounded-tl-lg" />
-                <div className="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-accent-cyan/40 rounded-tr-lg" />
-                <div className="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-accent-cyan/40 rounded-bl-lg" />
-                <div className="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-primary-500/40 rounded-br-lg" />
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
 
                 <div className="relative z-10 flex flex-col items-center">
                   {/* Welcome Badge */}
-                  <motion.div
-                    initial={{ y: -10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
-                               glass-effect border border-white/10 mb-4"
-                  >
-                    <Sparkles className="w-4 h-4 text-accent-cyan" />
-                    <span className="text-sm text-white/70 font-medium">Welcome to</span>
-                  </motion.div>
+                  <div className="badge-violet mb-6">
+                    <Sparkles className="w-4 h-4" />
+                    <span className="text-sm font-medium">Welcome to</span>
+                  </div>
 
-                  {/* Logo with enhanced styling */}
-                  <motion.div
-                    initial={{ scale: 0.85, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="relative"
-                  >
-                    {/* Logo glow */}
-                    <div className="absolute inset-0 bg-primary-500/20 blur-3xl rounded-full" />
+                  {/* Logo - Optimized loading */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-violet-500/20 blur-3xl rounded-full" />
                     <img
                       src="/seershub-logo.png"
                       alt="Seershub"
-                      className="relative h-36 md:h-48 lg:h-56 w-auto"
+                      width={280}
+                      height={100}
+                      loading="eager"
+                      className="relative h-24 sm:h-32 md:h-40 lg:h-48 w-auto"
                       style={{
-                        filter: 'brightness(1.1) contrast(1.05) drop-shadow(0 12px 40px rgba(0, 82, 255, 0.3))',
+                        filter: 'brightness(1.1) drop-shadow(0 8px 30px rgba(139, 92, 246, 0.4))',
                       }}
                     />
-                  </motion.div>
+                  </div>
 
-                  {/* Decorative Divider */}
-                  <motion.div
-                    initial={{ opacity: 0, scaleX: 0 }}
-                    animate={{ opacity: 1, scaleX: 1 }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                    className="flex items-center justify-center w-full max-w-sm mt-4"
-                  >
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="p-1.5 rounded-full glass-effect border border-primary-500/30"
-                    >
-                      <Star className="w-4 h-4 text-primary-400" />
-                    </motion.div>
-
-                    <div className="flex-1 h-[1px] mx-4 bg-gradient-to-r from-primary-500/30 via-white/20 to-accent-cyan/30" />
-
-                    <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="p-1.5 rounded-full glass-effect border border-accent-cyan/30"
-                    >
-                      <Star className="w-4 h-4 text-accent-cyan" />
-                    </motion.div>
-                  </motion.div>
+                  {/* Divider */}
+                  <div className="flex items-center w-full max-w-xs sm:max-w-md mb-4">
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
+                  </div>
 
                   {/* Tagline */}
-                  <motion.p
-                    initial={{ y: 10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 1, duration: 0.6 }}
-                    className="text-sm md:text-base text-white/50 font-light tracking-wide text-center mt-4"
-                  >
+                  <p className="text-sm sm:text-base text-zinc-400 font-light tracking-wide">
                     The On-Chain Fandom Ecosystem
-                  </motion.p>
+                  </p>
                 </div>
               </div>
             </motion.div>
 
             {/* Pitch Deck Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                           badge-primary mb-6">
+            <div className="badge-violet mb-6">
               <Rocket className="w-4 h-4" />
               <span className="text-sm font-semibold">Pitch Deck</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
-              <span className="text-gradient-primary">
-                Seershub
-              </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+              <span className="text-gradient-violet">Seershub</span>
             </h1>
 
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-white">
               The On-Chain Ecosystem for Sports Fandom
             </h2>
 
-            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8">
-              <strong className="text-accent-green">
-                Not Betting. Not Gambling.
-              </strong>
+            <p className="text-lg sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-8">
+              <strong className="text-emerald-400">Not Betting. Not Gambling.</strong>
               <br />
               A provably fair, skill-based ecosystem on Base.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                🏆 Skill-Based Competition
+            <div className="flex flex-wrap justify-center gap-3 text-xs sm:text-sm">
+              <div className="px-3 py-2 sm:px-4 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300">
+                <Trophy className="w-4 h-4 inline mr-1.5 text-amber-400" />
+                Skill-Based
               </div>
-              <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                🔒 100% Transparent
+              <div className="px-3 py-2 sm:px-4 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300">
+                <Shield className="w-4 h-4 inline mr-1.5 text-violet-400" />
+                100% Transparent
               </div>
-              <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                ⚡ Built on Base
+              <div className="px-3 py-2 sm:px-4 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300">
+                <Zap className="w-4 h-4 inline mr-1.5 text-emerald-400" />
+                Built on Base
               </div>
-              <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                🚀 2 Live Mini Apps
+              <div className="px-3 py-2 sm:px-4 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300">
+                <Rocket className="w-4 h-4 inline mr-1.5 text-orange-400" />
+                2 Live Apps
               </div>
             </div>
           </motion.div>
