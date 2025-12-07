@@ -18,11 +18,13 @@ import {
   Lock,
   Sparkles,
   TrendingDown,
-  Gift, // For SeersLeague
-  Gauge, // For Pulseers
-  BarChart3, // For Seershub
-  Activity, // For Traction
-  Clock, // For 48h fix
+  Gift,
+  Gauge,
+  BarChart3,
+  Activity,
+  Clock,
+  Star,
+  ExternalLink,
 } from 'lucide-react';
 
 export default function PitchDeckPage() {
@@ -34,173 +36,158 @@ export default function PitchDeckPage() {
         animate={{ opacity: 1, y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-neutral-950/90"
       >
-        <div className="container-responsive h-20 flex items-center justify-between">
+        <div className="container-responsive h-16 sm:h-20 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Back to Home</span>
+            <span className="hidden sm:inline">Back to Home</span>
           </Link>
-          {/* UPDATED: Changed "Join Waitlist" to "Launch Apps" */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="https://pulseers.seershub.com"
               target="_blank"
-              className="btn-secondary px-4 py-2 text-sm"
+              className="btn-secondary px-3 py-2 text-xs sm:text-sm"
             >
-              Launch Pulseers (Free)
+              <span className="hidden sm:inline">Launch</span> Pulseers
             </Link>
             <Link
               href="https://league.seershub.com"
               target="_blank"
-              className="btn-primary px-4 py-2 text-sm"
+              className="btn-primary px-3 py-2 text-xs sm:text-sm"
             >
-              Launch SeersLeague
+              <span className="hidden sm:inline">Launch</span> SeersLeague
             </Link>
           </div>
         </div>
       </motion.header>
 
-      <main className="pt-32 pb-20 px-4">
+      <main className="pt-28 sm:pt-32 pb-20 px-4">
         <div className="container-responsive max-w-5xl">
-          
+
           {/* Hero */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-20"
+            className="text-center mb-16 sm:mb-20"
           >
-            {/* Logo - Minimal & Elegant Showcase */}
+            {/* Premium Logo Showcase with Glass Effect */}
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-              className="mb-10 relative"
+              className="mb-10 relative inline-block"
             >
-              {/* Minimal Card - Theme Matching with Animated Border */}
-              <div className="relative rounded-2xl overflow-hidden py-6 px-6">
+              {/* Outer glow */}
+              <div className="absolute -inset-8 bg-gradient-radial from-primary-500/20 via-accent-cyan/10 to-transparent blur-3xl rounded-full" />
+
+              {/* Premium Glass Card Container */}
+              <div className="relative glass-card-premium rounded-3xl overflow-hidden p-8 sm:p-10">
                 {/* Animated gradient border */}
                 <motion.div
-                  className="absolute inset-0 rounded-2xl"
+                  className="absolute inset-0 rounded-3xl"
                   style={{
-                    background: 'linear-gradient(90deg, transparent, rgba(0,82,255,0.3), rgba(6,182,212,0.3), transparent)',
-                    backgroundSize: '200% 100%'
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(0,82,255,0.4) 25%, rgba(0,212,255,0.4) 50%, rgba(0,82,255,0.4) 75%, transparent 100%)',
+                    backgroundSize: '300% 100%'
                   }}
-                  animate={{
-                    backgroundPosition: ['0% 0%', '200% 0%']
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
+                  animate={{ backgroundPosition: ['0% 0%', '300% 0%'] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                 >
-                  <div className="absolute inset-[1px] rounded-2xl bg-white/[0.02] backdrop-blur-sm" />
+                  <div className="absolute inset-[1px] rounded-3xl bg-neutral-950/95 backdrop-blur-xl" />
                 </motion.div>
-                
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-primary-500/[0.02] to-transparent pointer-events-none" />
-                
+
+                {/* Decorative corner elements */}
+                <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-primary-500/40 rounded-tl-lg" />
+                <div className="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-accent-cyan/40 rounded-tr-lg" />
+                <div className="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-accent-cyan/40 rounded-bl-lg" />
+                <div className="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-primary-500/40 rounded-br-lg" />
+
                 <div className="relative z-10 flex flex-col items-center">
-                  {/* Welcome Message - Smaller */}
+                  {/* Welcome Badge */}
                   <motion.div
                     initial={{ y: -10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.6 }}
-                    className="text-base md:text-lg font-light text-white/60 tracking-wide mb-1"
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
+                               glass-effect border border-white/10 mb-4"
                   >
-                    Welcome to
+                    <Sparkles className="w-4 h-4 text-accent-cyan" />
+                    <span className="text-sm text-white/70 font-medium">Welcome to</span>
                   </motion.div>
-                  
-                  {/* Logo - HUGE & PROMINENT - Cropped */}
+
+                  {/* Logo with enhanced styling */}
                   <motion.div
                     initial={{ scale: 0.85, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                     whileHover={{ scale: 1.02 }}
-                    className="relative -my-3 overflow-hidden max-h-32 md:max-h-40 lg:max-h-48"
+                    className="relative"
                   >
-                    <img 
-                      src="/seershub-logo.png" 
-                      alt="Seershub" 
-                      className="h-48 md:h-60 lg:h-72 w-auto"
+                    {/* Logo glow */}
+                    <div className="absolute inset-0 bg-primary-500/20 blur-3xl rounded-full" />
+                    <img
+                      src="/seershub-logo.png"
+                      alt="Seershub"
+                      className="relative h-36 md:h-48 lg:h-56 w-auto"
                       style={{
-                        filter: 'brightness(1.15) contrast(1.05) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2))',
-                        transform: 'translateY(-10%)'
+                        filter: 'brightness(1.1) contrast(1.05) drop-shadow(0 12px 40px rgba(0, 82, 255, 0.3))',
                       }}
                     />
                   </motion.div>
-                  
-                  {/* Decorative Divider - Wide & Elegant */}
+
+                  {/* Decorative Divider */}
                   <motion.div
                     initial={{ opacity: 0, scaleX: 0 }}
                     animate={{ opacity: 1, scaleX: 1 }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    className="flex items-center justify-center w-full max-w-md -mt-4"
+                    className="flex items-center justify-center w-full max-w-sm mt-4"
                   >
-                    <motion.span
-                      animate={{ 
-                        rotate: [0, 360]
-                      }}
-                      transition={{ 
-                        duration: 20, 
-                        repeat: Infinity, 
-                        ease: "linear" 
-                      }}
-                      className="text-2xl opacity-35"
-                      style={{
-                        filter: 'drop-shadow(0 2px 8px rgba(0, 82, 255, 0.2))'
-                      }}
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      className="p-1.5 rounded-full glass-effect border border-primary-500/30"
                     >
-                      ⚽
-                    </motion.span>
-                    
-                    <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mx-4" />
-                    
-                    <motion.span
-                      animate={{ 
-                        rotate: [360, 0]
-                      }}
-                      transition={{ 
-                        duration: 20, 
-                        repeat: Infinity, 
-                        ease: "linear" 
-                      }}
-                      className="text-2xl opacity-35"
-                      style={{
-                        filter: 'drop-shadow(0 2px 8px rgba(6, 182, 212, 0.2))'
-                      }}
+                      <Star className="w-4 h-4 text-primary-400" />
+                    </motion.div>
+
+                    <div className="flex-1 h-[1px] mx-4 bg-gradient-to-r from-primary-500/30 via-white/20 to-accent-cyan/30" />
+
+                    <motion.div
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      className="p-1.5 rounded-full glass-effect border border-accent-cyan/30"
                     >
-                      ⚽
-                    </motion.span>
+                      <Star className="w-4 h-4 text-accent-cyan" />
+                    </motion.div>
                   </motion.div>
-                  
-                  {/* Tagline - Below Divider */}
+
+                  {/* Tagline */}
                   <motion.p
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 1, duration: 0.6 }}
-                    className="text-xs md:text-sm text-white/40 font-light tracking-wide text-center mt-2"
+                    className="text-sm md:text-base text-white/50 font-light tracking-wide text-center mt-4"
                   >
                     The On-Chain Fandom Ecosystem
                   </motion.p>
                 </div>
               </div>
             </motion.div>
-            
+
+            {/* Pitch Deck Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                           bg-primary-500/10 border border-primary-500/30 mb-6">
-              <Rocket className="w-4 h-4 text-primary-500" />
-              <span className="text-sm font-semibold text-primary-500">Pitch Deck</span>
+                           badge-primary mb-6">
+              <Rocket className="w-4 h-4" />
+              <span className="text-sm font-semibold">Pitch Deck</span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="text-gradient bg-gradient-to-r from-primary-500 to-accent-cyan bg-clip-text text-transparent">
+
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
+              <span className="text-gradient-primary">
                 Seershub
               </span>
             </h1>
-            
+
             <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-white">
               The On-Chain Ecosystem for Sports Fandom
             </h2>
@@ -282,7 +269,7 @@ export default function PitchDeckPage() {
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold">The Problem</h2>
               </div>
-              
+
               <p className="text-white/70 text-lg mb-6">
                 Traditional sports prediction platforms suffer from three critical issues:
               </p>
@@ -294,7 +281,7 @@ export default function PitchDeckPage() {
                     <div>
                       <h3 className="text-xl font-bold mb-2">Lack of Transparency</h3>
                       <p className="text-white/60">
-                        Centralized platforms control everything—odds, outcomes, rewards. Users have no visibility into how 
+                        Centralized platforms control everything—odds, outcomes, rewards. Users have no visibility into how
                         winners are determined or how prizes are distributed.
                       </p>
                     </div>
@@ -574,7 +561,7 @@ export default function PitchDeckPage() {
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold">Market Opportunity</h2>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                   <div className="text-6xl font-bold mb-3 text-gradient bg-gradient-to-r from-primary-500 to-accent-cyan bg-clip-text text-transparent">
@@ -583,7 +570,7 @@ export default function PitchDeckPage() {
                   <p className="text-white/70 text-lg mb-6">
                     Global sports prediction market size
                   </p>
-                  
+
                   <div className="text-5xl font-bold mb-3 text-gradient bg-gradient-to-r from-accent-green to-accent-cyan bg-clip-text text-transparent">
                     60M+
                   </div>
