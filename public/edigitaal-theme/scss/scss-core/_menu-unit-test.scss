@@ -1,0 +1,10 @@
+/*
+ * menu-unit-test.scss
+ * -----------------------------------------------
+*/
+
+.menuzord-primary-nav .menuzord-menu > li > a {
+  font-size: var(--menuzord-primary-nav-font-size);
+  font-weight: var(--menuzord-primary-nav-font-weight);
+  text-transform: var(--menuzord-primary-nav-font-transform);
+}

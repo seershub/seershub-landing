@@ -1,0 +1,68 @@
+.wp-block-calendar,
+.widget_calendar {
+  table,
+  th,
+  td {
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    [data-tm-layout="dark"] & {
+      border: 1px solid rgba(221, 221, 221, 0.1);
+    }
+  }
+  .wp-calendar-table {
+    margin-bottom: 10px;
+    thead {
+      background-color: var(--theme-color1);
+      th {
+        background-color: transparent;
+        color: var(--theme-color1-text-color);
+        text-align: center;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        [data-tm-layout="dark"] & {
+          border: 1px solid rgba(51, 51, 51, 0.1);
+        }
+      }
+    }
+    tbody {
+      background-color: var(--theme-color-white);
+      td {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 8px;
+      }
+    }
+    caption {
+      text-align: center;
+      color: var(--theme-color1);
+      padding-bottom: 0;
+      padding-top: 20px;
+      caption-side: bottom;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  .calendar_wrap {
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        color: var(--theme-color-dark);
+        transition: all 500ms ease;
+        &:hover {
+          color: var(--hover-theme-color);
+        }
+      }
+    }
+  }
+}
+.wp-block-calendar {
+  margin-bottom: 28px;
+}
+.widget .wp-block-calendar {
+  margin-bottom: 0;
+}
+.wp-block-group .wp-block-group__inner-container > .wp-block-calendar {
+  margin-bottom: $widget-margin-bottom;
+}

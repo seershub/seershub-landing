@@ -1,0 +1,27 @@
+/*
+ * shop-common
+ * -----------------------------------------------
+*/
+
+.woocommerce .button:not(.compare):not(.yith-wcqv-button):not([name="apply_coupon"]),
+.woosc_table .button,
+.woosc_table .added_to_cart,
+.woosw-item .added_to_cart {
+  @include button-variant($theme-color1, $theme-color1);
+  color: var(--theme-color1-text-color);
+  &:hover {
+    color: var(--theme-color3-text-color);
+  }
+  &:focus {
+    color: var(--theme-color3-text-color);
+    box-shadow: none;
+  }
+  &:disabled,
+  &.disabled {
+    color: var(--theme-color1-text-color);
+    opacity: 0.5;
+    &:hover {
+      color: var(--theme-color3-text-color);
+    }
+  }
+}

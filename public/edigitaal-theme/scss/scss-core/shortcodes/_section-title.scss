@@ -1,0 +1,192 @@
+/*
+ * Shortcode: section-title.scss
+ * -----------------------------------------------
+*/
+.tm-sc-section-title {
+  margin-bottom: $section-title-mb;
+  .title-wrapper {
+    margin-bottom: 0;
+    position: relative;
+    .title {
+      margin-top: -6px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 0;
+      font-family: var(--section-title-font-family);
+      font-weight: var(--section-title-font-weight);
+      color: var(--section-title-color);
+      line-height: var(--section-title-line-height);
+      @include transition(all 0.3s ease);
+      .title-shadow-text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        color: #ddd;
+        font-size: 6rem;
+        opacity: 0.4;
+        top: -40px;
+        @include media-breakpoint-down(md) {
+          font-size: 4rem;
+          top: -20px;
+        }
+      }
+      span {
+        line-height: 1;
+        display: inline;
+      }
+    }
+    h2.title {
+      font-size: var(--section-title-font-size);
+      @include media-breakpoint-down(md) {
+        font-size: var(--h2-font-size-mob);
+      }
+    }
+    .sub-title-outer {
+      position: relative;
+      margin-bottom: 5px;
+      display: inline-block;
+      .subtitle {
+        position: relative;
+        display: block;
+        z-index: 1;
+        color: var(--section-title-subtitle-color);
+        font-size: var(--section-title-subtitle-font-size);
+        line-height: var(--section-title-subtitle-line-height);
+        font-family: var(--section-title-subtitle-font-family);
+        font-weight: var(--section-title-subtitle-font-weight);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        padding-top: 12px;
+        letter-spacing: 0.1em;
+        @include transition(all 0.3s ease);
+      }
+      .divider {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background-image: url(.../../../images/current-theme/icon-power.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: hidden;
+        height: 15px;
+        &:after {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          border-bottom: 1px solid var(--theme-color1);
+          content: "";
+          width: 50%;
+          margin-left: 11px;
+        }
+        &:before {
+          position: absolute;
+          top: 50%;
+          border-bottom: 1px solid var(--theme-color1);
+          content: "";
+          width: 50%;
+          margin-left: 11px;
+          right: 50%;
+          left: auto;
+          margin-right: 11px;
+          margin-left: 0;
+        }
+      }
+    }
+    :first-child {
+      margin-top: 0;
+    }
+    .paragraph {
+      position: relative;
+      @include transition(all 0.3s ease);
+      > * {
+        @include transition(all 0.3s ease);
+      }
+    }
+  }
+  &.subtitle-current-style1 {
+    &.dark {
+      .title-wrapper {
+        .sub-title-outer {
+          .subtitle {
+            &::before {
+              filter: brightness(0);
+            }
+          }
+        }
+      }
+    }
+    .title-wrapper {
+      .sub-title-outer {
+        .subtitle {
+          position: relative;
+          color: #000;
+          border: 3px solid #eee9e3;
+          display: inline-block;
+          padding: 2px 24px;
+          letter-spacing: 0.2em;
+          line-height: 30px;
+          font-family: var(--heading-font-family);
+          font-size: 12px;
+          font-weight: 800;
+          margin-bottom: 14px;
+          &::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            width: 19px;
+            height: 14px;
+            background-image: url(../../assets/images/current-theme/subtitle-before.png);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+          }
+        }
+      }
+    }
+  }
+
+  &.title-icon-pos-icon-top {
+    .title-wrapper {
+      .subtitle {
+        display: block;
+      }
+    }
+  }
+}
+
+.elementor-widget-tm-ele-section-title {
+  &.horizontal-line-align-center {
+    .tm-sc-section-title {
+      .title-wrapper {
+        &:before,
+        &:after {
+          left: 50%;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+  }
+  &.horizontal-line-align-right {
+    .tm-sc-section-title {
+      .title-wrapper {
+        &:before,
+        &:after {
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+  }
+  &.vertical-line-align-top {
+    .tm-sc-section-title {
+      .title-wrapper {
+        &:before,
+        &:after {
+          bottom: auto;
+          top: -20px;
+        }
+      }
+    }
+  }
+}

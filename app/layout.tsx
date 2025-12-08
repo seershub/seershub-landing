@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className="antialiased font-body bg-background text-foreground">
         <Providers>
           <Header />
-          <main className="pt-20">
+          <main>
             {children}
           </main>
         </Providers>

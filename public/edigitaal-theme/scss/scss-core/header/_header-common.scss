@@ -1,0 +1,47 @@
+/*
+ * header-common.scss
+ * -----------------------------------------------
+*/
+header#header {
+  .menuzord-brand {
+    .logo-mobile-version {
+      display: none;
+    }
+  }
+  .tm-header-branding {
+    .menuzord-brand {
+      @media (max-width: $ele-breakpoint-tablet-max) {
+        .logo-mobile-version {
+          display: inline-block;
+        }
+        .logo-default {
+          display: none;
+        }
+      }
+    }
+  }
+}
+body.switchable-logo {
+  header#header {
+    .menuzord-brand {
+      .logo-primary {
+        display: inline-block;
+      }
+      .logo-on-sticky {
+        display: none;
+      }
+    }
+    #elementor-header-top-sticky {
+      &.visible {
+        .menuzord-brand {
+          .logo-primary {
+            display: none;
+          }
+          .logo-on-sticky {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

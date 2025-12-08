@@ -1,0 +1,175 @@
+/*
+ * Shortcode: buttons.scss
+ * -----------------------------------------------
+*/
+
+$tm-btn-theme-colors: () !default;
+
+$tm-btn-theme-colors: map-merge(
+  (
+    "theme-colored1": $theme-color1,
+    "theme-colored2": $theme-color2,
+    "theme-colored3": $theme-color3,
+    "theme-colored4": $theme-color4,
+  ),
+  $tm-btn-theme-colors
+);
+@each $color, $value in $tm-btn-theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $tm-btn-theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+//make sure => default and hover bg color should be same and the animated before color will be different
+.btn-theme-colored1 {
+  color: var(--theme-color1-text-color);
+  background-color: var(--theme-color1);
+  border-color: var(--theme-color1);
+  &:hover,
+  &:focus {
+    color: var(--theme-color2-text-color);
+    background-color: var(--theme-color1);
+    border-color: var(--theme-color1);
+  }
+  &:before {
+    background-color: var(--theme-color2);
+  }
+}
+.btn-theme-colored2 {
+  color: var(--theme-color2-text-color);
+  background-color: var(--theme-color2);
+  border-color: var(--theme-color2);
+  &:hover,
+  &:focus {
+    color: var(--theme-color1-text-color);
+    background-color: var(--theme-color2);
+    border-color: var(--theme-color2);
+  }
+  &:before {
+    background-color: var(--theme-color1);
+  }
+}
+.btn-theme-colored3 {
+  color: var(--theme-color3-text-color);
+  background-color: var(--theme-color3);
+  border-color: var(--theme-color3);
+  &:hover,
+  &:focus {
+    color: var(--theme-color1-text-color);
+    background-color: var(--theme-color3);
+    border-color: var(--theme-color3);
+  }
+}
+.btn-theme-colored4 {
+  color: var(--theme-color4-text-color);
+  background-color: var(--theme-color4);
+  border-color: var(--theme-color4);
+  &:hover,
+  &:focus {
+    color: var(--theme-color1-text-color);
+    background-color: var(--theme-color4);
+    border-color: var(--theme-color4);
+  }
+}
+
+.btn-theme-colored3,
+.btn-theme-colored4,
+.btn-outline-theme-colored3,
+.btn-outline-theme-colored3 {
+  &:before {
+    background: var(--theme-color1);
+  }
+}
+
+.btn-outline-theme-colored1 {
+  color: var(--theme-color1);
+  border-color: var(--theme-color1);
+  &:hover {
+    border-color: var(--theme-color3) !important;
+    color: #fff !important;
+  }
+}
+.btn-outline-theme-colored2 {
+  color: var(--theme-color2);
+  border-color: var(--theme-color2);
+  &:hover {
+    border-color: var(--theme-color3) !important;
+    color: #fff !important;
+  }
+}
+.btn-outline-theme-colored3 {
+  color: var(--theme-color3);
+  border-color: var(--theme-color3);
+  &:hover {
+    border-color: var(--theme-color3) !important;
+    color: #fff !important;
+  }
+}
+
+input[type="submit"].btn-theme-colored1 {
+  &:hover,
+  &:focus {
+    color: var(--theme-color2-text-color);
+    background-color: var(--theme-color2);
+  }
+}
+input[type="submit"].btn-theme-colored2 {
+  &:hover,
+  &:focus {
+    color: var(--theme-color1-text-color);
+    background-color: var(--theme-color1);
+  }
+}
+input[type="submit"].btn-theme-colored3 {
+  &:hover,
+  &:focus {
+    color: var(--theme-color1-text-color);
+    background-color: var(--theme-color1);
+  }
+}
+input[type="submit"].btn-theme-colored4 {
+  &:hover,
+  &:focus {
+    color: var(--theme-color1-text-color);
+    background-color: var(--theme-color1);
+  }
+}
+
+.btn-light,
+.btn-dark {
+  &:before {
+    background-color: rgba(var(--theme-color2-rgb), 0.2);
+  }
+  &:hover,
+  &:focus {
+    color: var(--theme-color2-text-color);
+    &:before {
+      background-color: var(--theme-color2);
+    }
+  }
+}
+.btn-outline-light {
+  color: #fff;
+}
+.btn-outline-light,
+.btn-outline-dark {
+  &:hover {
+    background-color: transparent;
+  }
+  &:before {
+    background-color: rgba(var(--theme-color2-rgb), 0.2);
+  }
+  &:hover,
+  &:focus {
+    color: var(--theme-color2-text-color);
+    &:before {
+      background-color: var(--theme-color2);
+    }
+  }
+}

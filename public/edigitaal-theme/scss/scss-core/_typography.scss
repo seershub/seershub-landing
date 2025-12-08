@@ -1,0 +1,273 @@
+--dark-bg/*
+ * typography.scss
+ * -----------------------------------------------
+*/
+::selection {
+  background: var(--theme-color-dark);
+  color: var(--theme-color-white);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--theme-color-dark); /* Firefox */
+  color: var(--theme-color-white);
+  text-shadow: none;
+}
+
+::-webkit-selection {
+  background: var(--theme-color-dark); /* Safari */
+  color: var(--theme-color-white);
+  text-shadow: none;
+}
+
+:active,
+:focus {
+  outline: none !important;
+}
+
+body {
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  font-size: var(--body-font-size);
+  font-family: var(--body-font-family);
+  font-weight: var(--body-font-weight);
+  background-color: var(--body-bg);
+  background-attachment: fixed;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  counter-reset: my-sec-counter;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: var(--body-font-weight);
+  @include transition(all 0.3s ease);
+
+  &:hover,
+  &:focus {
+    color: var(--hover-theme-color);
+    text-decoration: none;
+  }
+  b,
+  strong {
+    @include transition(all 0.3s ease);
+  }
+
+  img {
+    border: none;
+  }
+}
+
+b,
+strong {
+  color: var(--body-font-bold-color);
+  font-weight: var(--body-font-bold);
+}
+
+img {
+  max-width: 100%;
+}
+
+iframe {
+  border: none !important;
+}
+
+/* -------- Headings ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--heading-font-family);
+  color: var(--headings-color);
+  margin-bottom: 1rem;
+  margin-top: 0.75rem;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: var(--headings-color);
+  }
+
+  a {
+    color: inherit;
+    font-weight: inherit;
+  }
+}
+
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
+  line-height: var(--headings-line-height);
+  margin-bottom: 1rem;
+  margin-top: 0.75rem;
+}
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+  line-height: var(--headings-line-height-smaller);
+  margin-bottom: 1rem;
+  margin-top: 0.75rem;
+}
+
+h1,
+.h1 {
+  font-size: var(--h1-font-size);
+}
+h2,
+.h2 {
+  font-size: var(--h2-font-size);
+  @include media-breakpoint-down(md) {
+    font-size: var(--h2-font-size-mob);
+  }
+}
+h3,
+.h3 {
+  font-size: var(--h3-font-size);
+}
+h4,
+.h4 {
+  font-size: var(--h4-font-size);
+}
+h5,
+.h5 {
+  font-size: var(--h5-font-size);
+}
+h6,
+.h6 {
+  font-size: var(--h6-font-size);
+}
+
+h1,
+.h1 {
+  font-weight: var(--headings-font-weight-h1);
+}
+h2,
+.h2 {
+  font-weight: var(--headings-font-weight-h2);
+}
+h3,
+.h3 {
+  font-weight: var(--headings-font-weight-h3);
+}
+h4,
+.h4 {
+  font-weight: var(--headings-font-weight-h4);
+}
+h5,
+.h5 {
+  font-weight: var(--headings-font-weight-h5);
+}
+h6,
+.h6 {
+  font-weight: var(--headings-font-weight-h6);
+}
+
+/* -------- Body Text ---------- */
+p,
+pre,
+ul,
+ol,
+dl,
+dd,
+blockquote,
+address,
+table,
+fieldset {
+  margin-bottom: 10px;
+}
+
+table p {
+  margin-bottom: 0;
+}
+
+p {
+  margin-bottom: 20px;
+  a:not(.button):not(.btn):not(.added_to_cart) {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+.wp-block-quote {
+  margin: 20px 0;
+}
+caption {
+  caption-side: top;
+}
+
+.main-content-area,
+.page-content,
+.post-content,
+.post-excerpt,
+.wpb_text_column,
+.comment-list {
+  a:not(.btn):not(.styled-icons-item):not(.wp-block-button__link),
+  p a:not(.btn):not(.styled-icons-item):not(.wp-block-button__link) {
+  }
+  ul > li,
+  ol > li {
+    margin-bottom: 10px;
+    > ul,
+    > ol {
+      margin-top: 10px;
+    }
+  }
+}
+.main-content-area {
+  .entry-content {
+  }
+}
+
+/*Drop Caps*/
+.drop-caps {
+  > p {
+    text-align: justify;
+  }
+  > p:first-child:first-letter {
+    color: var(--theme-color-dark);
+    display: block;
+    float: left;
+    font-size: 48px;
+    line-height: 48px;
+    margin: 6px 3px;
+    padding: 10px 18px;
+  }
+}
+
+address {
+  color: #777;
+  font-style: italic;
+}
+
+ol,
+ul {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+ol ol li,
+ol ul li,
+ul ol li,
+ul ul li {
+  padding-left: $ul-li-padding-left;
+}
+ol > li,
+ul > li {
+}

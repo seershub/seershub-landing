@@ -1,0 +1,119 @@
+//Root Typography
+:root {
+  --theme-color-white: #ffffff;
+  --theme-color-light: #f8f5f0;
+  --theme-color-gray: #f6f6f6;
+  --theme-color-silver: #eee;
+  --theme-color-dark: #333;
+  --theme-color-dark2: #222;
+
+  --tm-container-pt: 120px;
+  --tm-container-pb: 120px;
+  --body-font-family: "Urbanist", sans-serif;
+  --heading-font-family: "GT Walsheim Pro", sans-serif;
+
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --body-font-bold: 600;
+  --body-font-bold-color: #333;
+  --body-bg: #fff;
+
+  --text-color: #cccccc;
+  --link-color: #352f27;
+  --link-hover-color: #5b8c51;
+  --headings-color: #24201f;
+  --entry-meta-color: #819291;
+  --entry-meta-color-light: #a1a1a1;
+
+  --line-height-base: 1.9;
+  --line-height-widget-li: 2.5rem;
+  --headings-line-height: 1.3;
+  --headings-line-height-smaller: 1.4;
+
+  --btn-font-size: 14px;
+
+  --h1-font-size: 3.8rem;
+  --h1-font-size-mob: 2.5rem;
+  --h2-font-size: 3rem;
+  --h2-font-size-mob: 2.5rem;
+  --h3-font-size: 1.95rem;
+  --h4-font-size: 1.5rem;
+  --h5-font-size: 1.125rem;
+  --h6-font-size: 0.875rem;
+
+  --headings-font-weight-h1: 500;
+  --headings-font-weight-h2: 500;
+  --headings-font-weight-h3: 500;
+  --headings-font-weight-h4: 500;
+  --headings-font-weight-h5: 400;
+  --headings-font-weight-h6: 400;
+
+  --section-title-color: #ffffff;
+  --section-title-font-size: 50px;
+  --section-title-line-height: 1.2em;
+  --section-title-font-family: var(--heading-font-family);
+  --section-title-font-weight: var(--headings-font-weight-h2);
+
+  --section-title-subtitle-color: #ffffff;
+  --section-title-subtitle-font-size: 14px;
+  --section-title-subtitle-line-height: 1.4;
+  --section-title-subtitle-font-family: var(--heading-font-family);
+  --section-title-subtitle-font-weight: 400;
+
+  //news details page
+  --news-widget-archive-icon-color: var(--theme-color2);
+
+  //mobile responsive nav styling
+  --mobile-menu-bg-color: var(--theme-color-white);
+  --mobile-menu-hamburger-color: var(--theme-color-dark);
+
+  --mobile-menu-item-link-text-color: var(--theme-color-dark);
+  --mobile-menu-item-link-bg-color: transparent;
+  --mobile-menu-item-link-bg-border-color: rgba(241, 241, 241, 0.24);
+  --mobile-menu-item-link-text-color-hover: #111;
+  --mobile-menu-item-indicator-bg-color: var(--theme-color2);
+  --mobile-menu-item-indicator-text-color: var(--theme-color2-text-color);
+
+  //menu-unit-test.scss
+  --menuzord-primary-nav-font-size: 14px;
+  --menuzord-primary-nav-font-weight: 500;
+  --menuzord-primary-nav-font-transform: uppercase;
+
+  //logo width
+  --menuzord-brand-width: 155px;
+  --menuzord-brand-width-responsive: 100px;
+
+  //default header
+  --default-header-bg-color: #fff;
+  --default-header-menu-color: #222;
+
+  //footer
+  --footer-bg-color: #111416;
+  --footer-primary-text-color: #cccccc;
+  --footer-link-color: #cccccc;
+  --footer-link-color-hover: #fff;
+  --footer-link-fontsize: 1rem;
+  --footer-widget-title-color: #fff;
+  --sidebar_link_color: #404040;
+  --blockquote-text-color: #333;
+  --blockquote-cite-color: #777;
+  --pre-code-text-color: #000;
+
+  //widget widget
+  --sidebar_widget_common_bg: var(--theme-color-light);
+  --sidebar_widget_common_border: var(--theme-color-light);
+  --sidebar_widget_search_bg: var(--theme-color-silver);
+  --sidebar_widget_search_border: var(--theme-color-silver);
+  --sidebar_widget_heading_border_color: var(--theme-color-white);
+  --sidebar_widget_heading_border_color2: var(--theme-color1);
+  --sidebar_widget_list_icon_color: var(--theme-color2);
+
+  //form
+  --form_control_common_bg: rgba(241, 238, 246, 0.5);
+  --form_control_common_bg_focus: #fff;
+  --form_control_common_border: rgba(241, 238, 246, 0.5);
+
+  --r: 30px; /* radius */
+  --s: 50px; /* size of the inner curve*/
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%, #0000 72%) no-repeat;
+}

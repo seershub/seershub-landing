@@ -1,0 +1,92 @@
+/*
+ * shop-form.scss
+ * -----------------------------------------------
+*/
+.yith-plugins {
+  list-style: none;
+  margin-top: 10px;
+  .yith-wcqv-button {
+    background-color: #fd8c40;
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 32px;
+    i {
+      color: #fff;
+      font-size: 15px;
+    }
+  }
+}
+
+#yith-quick-view-content {
+  div.images {
+    width: 50%;
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+  }
+  div.summary {
+    padding: 10px 50px 50px;
+    width: 50%;
+    @include media-breakpoint-down(lg) {
+      padding: 10px 10px 30px;
+      width: 100%;
+    }
+  }
+  .onsale {
+    left: 25px !important;
+    top: 25px !important;
+  }
+  .woocommerce-product-gallery__wrapper {
+    margin-top: 0;
+  }
+}
+#yith-quick-view-modal {
+  .yith-wcqv-wrapper {
+    //height: auto !important;
+  }
+  .yith-wcqv-main{
+    box-shadow: none;
+    overscroll-behavior: contain;
+    &::-webkit-scrollbar {
+      width: 14px;
+      height: 18px; }
+    &::-webkit-scrollbar-thumb {
+      height: 6px;
+      border: 4px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      -webkit-border-radius: 7px;
+      background-color: rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05); }
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+      display: none; }
+    &::-webkit-scrollbar-corner {
+      background-color: transparent; }
+  }
+  #yith-quick-view-close {
+    background-color: var(--theme-color1);
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1s bnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Igog ICAgIHZpZXdCb3g9IjAgMCAzMDAgMzAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAg MCAzMDAgMzAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZmlsbD0iI2ZmZmZm ZiIgZD0iTTcuODYsMjYzLjk4bDExMi42OS0xMTMuOTlMNy44NiwzNi4wMkMtMi4zOSwyNi42My0y LjYxLDE3LjAzLDcuMjIsNy4yYzkuODEtOS44MSwxOS40MS05LjYsMjguODEsMC42NAoJCWwxMTMu OTgsMTEyLjY5TDI2My45OCw3Ljg0QzI3My4zNy0yLjQsMjgyLjk3LTIuNjEsMjkyLjgsNy4yYzku ODEsOS44Miw5LjYsMTkuNDMtMC42NCwyOC44MUwxNzkuNDYsMTQ5Ljk5bDExMi42OSwxMTMuOTkK CQljMTAuMjQsOS40LDEwLjQ1LDE5LjAxLDAuNjQsMjguODFjLTkuODIsOS44MS0xOS40Myw5LjYt MjguODEtMC42NEwxNTAuMDEsMTc5LjQ1TDM2LjAzLDI5Mi4xNmMtOS40LDEwLjI0LTE5LjAxLDEw LjQ1LTI4LjgxLDAuNjQKCQlDLTIuNjEsMjgyLjk5LTIuMzksMjczLjM4LDcuODYsMjYzLjk4eiIv Pgo8L2c+Cjwvc3ZnPg==");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 36px;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    -webkit-transition: background-color .2s ease-out;
+    -o-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    width: 36px;
+    z-index: 100;
+  }
+}

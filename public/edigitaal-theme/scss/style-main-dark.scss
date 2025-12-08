@@ -1,0 +1,16 @@
+/* --------------------------------------
+$Author: ThemeMascot
+$URL: https://themeforest.net/user/ThemeMascot
+----------------------------------------- */
+
+$heading-dark-color: #fcfcfc;
+
+// Import bootstrap variables and mixins for reference
+@import "scss-bootstrap/functions";
+@import "scss-bootstrap/variables";
+@import "scss-bootstrap/mixins";
+
+@import "scss-core/variables";
+
+// root typo
+@import "root-typography-dark";

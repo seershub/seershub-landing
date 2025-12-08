@@ -1,0 +1,60 @@
+/*
+ * shop-my-account.scss
+ * -----------------------------------------------
+*/
+.woocommerce-MyAccount-navigation {
+  .list-group {
+    list-style: none;
+    li {
+      margin-bottom: 3px;
+      padding: 10px;
+      border-radius: 5px;
+      a {
+        color: #777;
+      }
+      &.is-active {
+        background-color: #eee;
+        a {
+          color: var(--theme-color-dark);
+        }
+      }
+    }
+  }
+}
+
+.woocommerce-form-login {
+  .password-input {
+    display: block;
+    width: 100%;
+  }
+  .woocommerce-form-login__rememberme {
+    margin-left: 25px;
+  }
+  .form-row:nth-last-child(2) {
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .woocommerce-LostPassword {
+    margin-top: 15px;
+  }
+}
+.woocommerce-MyAccount-content {
+  .u-columns {
+    > div {
+      display: block;
+      width: 100%;
+    }
+  }
+}

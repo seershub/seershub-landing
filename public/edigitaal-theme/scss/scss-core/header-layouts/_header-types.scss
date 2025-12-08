@@ -1,0 +1,17 @@
+/*
+ * header-type.scss
+ * -----------------------------------------------
+*/
+
+@import "header-default";
+
+
+body {
+  [data-tm-layout="dark"] & {
+    header#header {
+      .header-nav {
+        border-top-color: $dark-layout-default-bg-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+/*
+ * blog-sidebar.scss
+ * -----------------------------------------------
+*/
+.sidebar-area .widget_search .widget-inner {
+  padding: 0;
+  background: none;
+}
+
+.has-sidebar-left {
+  @include media-breakpoint-up(lg) {
+    flex-direction: row-reverse;
+  }
+}

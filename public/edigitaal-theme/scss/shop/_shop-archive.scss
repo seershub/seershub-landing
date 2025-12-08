@@ -1,0 +1,205 @@
+/*
+ * shop-archive.scss
+ * -----------------------------------------------
+*/
+/* woocommerce css */
+.woocommerce {
+  .product {
+    .price {
+      ins {
+        text-decoration: none;
+      }
+      del {
+        color: #aaa;
+        font-size: 14px;
+        margin-right: 5px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .products {
+    .product-title {
+      margin: 3px 0 8px;
+    }
+    .product-categories {
+      color: #858791;
+      font-size: 14px;
+      a {
+        margin-right: 2px;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #858791;
+        font-size: 14px;
+        &:hover {
+          color: var(--hover-theme-color);
+        }
+      }
+    }
+    .thumb {
+      &.image-featured {
+      }
+      &.image-swap {
+        .attachment-woocommerce_thumbnail,
+        .wp-post-image {
+          position: relative;
+          z-index: 2;
+          @include transition(all 0.4s ease);
+        }
+        .product-hover-image {
+          left: 0;
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          z-index: 1;
+          opacity: 0;
+          @include transition(all 0.4s ease);
+        }
+      }
+      &.image-gallery {
+        .attachment-woocommerce_thumbnail,
+        .wp-post-image {
+          display: none;
+        }
+      }
+    }
+    .product:hover {
+      .thumb {
+        &.image-swap {
+          .attachment-woocommerce_thumbnail,
+          .wp-post-image {
+            opacity: 0;
+          }
+          .product-hover-image {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    /**
+     * Buttons
+     */
+    a.button,
+    button.button,
+    input.button,
+    #respond input#submit {
+      position: relative;
+      &.loading {
+        opacity: 0.85;
+        padding-right: 2.618em;
+
+        &::after {
+          content: "\f110";
+          font-family: "Font Awesome 5 Free";
+          vertical-align: top;
+          -webkit-font-smoothing: antialiased;
+          font-weight: 600;
+          position: absolute;
+          right: 1em;
+          -webkit-animation: spin 2s linear infinite;
+          -moz-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+      }
+
+      &.added {
+        &::after {
+          content: "\f00c";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 600;
+          margin-left: 0.53em;
+          vertical-align: bottom;
+        }
+      }
+    }
+    a.added_to_cart2 {
+      color: var(--theme-color-dark);
+      padding-top: 0.5em;
+      white-space: nowrap;
+      display: none;
+    }
+  }
+
+  /**
+   * Result Count
+   */
+  .woocommerce-result-count {
+    display: block;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    margin-right: 6px;
+    padding: 0;
+    font-weight: normal;
+    @include media-breakpoint-down(sm) {
+      float: none;
+    }
+  }
+
+  /**
+   * Ordering & Perpage Select Field
+   */
+  .woocommerce-ordering,
+  .woocommerce-perpage,
+  .variations_form {
+    select {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -o-appearance: none;
+      @include woo-dropdown-typo();
+      height: 36px;
+      background-image: url("../../images/dropdown-icon.png");
+      background-position: 100% 50%;
+      background-repeat: no-repeat;
+      background-size: 26px auto;
+      cursor: pointer;
+      padding: 0 30px 0 15px;
+    }
+  }
+  .woocommerce-ordering,
+  .woocommerce-perpage {
+    float: right;
+    margin-right: 0;
+    margin-left: 15px;
+    @include media-breakpoint-down(sm) {
+      float: none;
+      margin-left: 0;
+      margin-bottom: 10px;
+      clear: both;
+      display: block;
+    }
+  }
+  .woocommerce-perpage {
+    select,
+    .nice-select {
+      margin-left: 10px;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 10px;
+        margin-left: 0;
+      }
+    }
+  }
+  .woocommerce-ordering select {
+  }
+
+  .shop-catalog-layout-default {
+  }
+
+  .shop-catalog-layout-standard {
+  }
+  .tm-wc-archive-before-loop {
+    margin-bottom: 30px;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 60px;
+    }
+  }
+  .woocommerce-pagination {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+}
+#yith-quick-view-modal #yith-quick-view-content {
+  padding: 15px;
+}

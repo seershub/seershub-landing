@@ -1,0 +1,12 @@
+/*
+ * woosq.scss
+ * -----------------------------------------------
+*/
+.mfp-woosq {
+  .woocommerce div.product .product_title {
+    display: block;
+  }
+  .woosq-product .thumbnails .thumbnail {
+    display: flex !important;
+  }
+}

@@ -1,0 +1,44 @@
+/*
+ * pagination.scss
+ * -----------------------------------------------
+*/
+.pagination-wrapper {
+  text-align: center;
+}
+.pagination {
+  margin-top: 40px;
+  display: inline-flex;
+  > .page-item {
+    padding-left: 0 !important;
+    margin-right: 10px;
+    .page-link {
+      color: var(--headings-color);
+      border-color: #ddd;
+      background-color: var(--theme-color-light);
+      border: 0;
+      border-radius: 50%;
+      text-align: center;
+      height: 50px;
+      width: 50px;
+      display: table-cell;
+      vertical-align: middle;
+      @include media-breakpoint-down(lg) {
+        height: 45px;
+        width: 45px;
+      }
+      &:hover:not(.dots) {
+        background-color: var(--theme-color1);
+        color: var(--theme-color1-text-color);
+      }
+      &.dots {
+        background-color: transparent;
+      }
+    }
+    &.active {
+      .page-link {
+        background-color: var(--theme-color1);
+        color: var(--theme-color1-text-color);
+      }
+    }
+  }
+}

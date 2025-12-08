@@ -1,0 +1,11 @@
+/*
+ * _header-elementor-megamenu.scss
+ * -----------------------------------------------
+*/
+.menuzord-menu {
+  .tm-elementor-megamenu {
+    > ul.dropdown, > .megamenu:not(.elementor-megamenu-wrapper) {
+      display: none !important;
+    }
+  }
+}

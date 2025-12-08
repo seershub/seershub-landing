@@ -1,0 +1,51 @@
+/*
+ * border: theme-color
+ * -----------------------------------------------
+*/
+.widget .line-bottom:after,
+.widget .line-bottom:after,
+.pager.theme-colored a {
+  border: 1px solid var(--theme-color1);
+}
+
+.hr-divider {
+  border-top-color: rgba($theme-color1, 0.2) !important;
+}
+
+/* -------- Text Theme Color ---------- */
+.text-theme-colored1 {
+  color: var(--theme-color1) !important;
+}
+.text-theme-colored2 {
+  color: var(--theme-color2) !important;
+}
+.text-theme-colored3 {
+  color: var(--theme-color3) !important;
+}
+.text-theme-colored4 {
+  color: var(--theme-color4) !important;
+}
+.bg-theme-colored1 {
+  background-color: var(--theme-color1) !important;
+}
+.bg-theme-colored2 {
+  background-color: var(--theme-color2) !important;
+}
+.bg-theme-colored3 {
+  background-color: var(--theme-color3) !important;
+}
+.bg-theme-colored4 {
+  background-color: var(--theme-color4) !important;
+}
+.border-theme-colored1 {
+  border-color: var(--theme-color1) !important;
+}
+.border-theme-colored2 {
+  border-color: var(--theme-color2) !important;
+}
+.border-theme-colored3 {
+  border-color: var(--theme-color3) !important;
+}
+.border-theme-colored4 {
+  border-color: var(--theme-color4) !important;
+}

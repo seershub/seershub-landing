@@ -1,0 +1,28 @@
+:root {
+  --body-font-family: "Urbanist", sans-serif;
+  --heading-font-family: "Urbanist", sans-serif;
+  --h1-font-size: 3.8rem;
+  --h1-font-size-mob: 2.5rem;
+  --h2-font-size: 3rem;
+  --h2-font-size-mob: 2.5rem;
+  --h3-font-size: 1.95rem;
+  --h4-font-size: 1.45rem;
+  --h5-font-size: 1.125rem;
+  --h6-font-size: 0.875rem;
+  --headings-font-weight-h1: 700;
+  --headings-font-weight-h2: 700;
+  --headings-font-weight-h3: 700;
+  --headings-font-weight-h4: 700;
+  --headings-font-weight-h5: 600;
+  --headings-font-weight-h6: 600;
+  --section-title-color: var(--headings-color);
+  --section-title-font-size: 50px;
+  --section-title-line-height: 1.2em;
+  --section-title-font-family: var(--heading-font-family);
+  --section-title-font-weight: var(--headings-font-weight-h2);
+  --section-title-subtitle-color: #6d6c74;
+  --section-title-subtitle-font-size: 13px;
+  --section-title-subtitle-line-height: 1.4;
+  --section-title-subtitle-font-family: var(--heading-font-family);
+  --section-title-subtitle-font-weight: 700;
+}

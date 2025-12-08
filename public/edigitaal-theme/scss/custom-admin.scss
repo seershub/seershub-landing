@@ -1,0 +1,372 @@
+/*
+*
+*	Stylesheet for admin panel
+*	---------------------------------------
+*	Mascot Framework v1.0
+* 	Copyright ThemeMascot 2017 - http://www.thememascot.com
+*
+*/
+.text-white {
+	color: #fff;
+}
+
+/**
+ * For Widget Area icon-list
+ */
+
+.icon-list a {
+	color: #999;
+	font-size: 12px;
+	padding: 3px;
+	text-decoration: none;
+	:hover {
+		color: #222;
+	}
+}
+
+
+/**
+ * edit page sidebar metabox image
+ */
+
+#page_sidebar.postbox {
+	.rwmb-image_select-wrapper .rwmb-image-select {
+		height: 36px;
+		width: 45px;
+	}
+	.rwmb-label {
+		margin-bottom: 5px;
+	}
+}
+
+
+/**
+ * edit rwmb-meta-box
+ */
+
+.rwmb-meta-box {
+	.rwmb-tab-panels {
+		.rwmb-heading-wrapper h4 {
+			background: #5c9099;
+			color: #fff;
+			padding: 8px 5px 8px 15px;
+		}
+	}
+	.rwmb-tabs-left {
+		.rwmb-tab-panel {
+			padding: 20px;
+		}
+		.rwmb-tab-nav {
+			background: #f9f9f9;
+			a {
+				border-bottom: 1px solid #ddd;
+				color: #555;
+				padding: 10px 80px 12px 10px;
+			}
+			.rwmb-tab-active {
+				border-width: 0;
+				border-style: solid solid solid none;
+				box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.02);
+			}
+			.rwmb-tab-active a {
+				background: #fff;
+				border-right: 0;
+				color: #555;
+				font-weight: 700;
+			}
+		}
+	}
+}
+
+
+/**
+ * Redux Framework Theme Options Customization
+ */
+
+.redux-container {
+	.redux-sidebar {
+		background: #23282D;
+		.redux-group-menu {
+			li {
+				&.activeChild.hasSubSections {
+					a {
+						background: #0073aa;
+						text-shadow: 1px 1px #54595d;
+					}
+					ul.subsection li {
+						a {
+							background: #32373c;
+							text-shadow: none;
+						}
+						&.active a {
+							background: rgba(0, 0, 0, 0) !important;
+							text-shadow: 1px 1px #002e44;
+						}
+					}
+				}
+			}
+			a {
+				border-bottom: 1px solid transparent;
+				color: #fff;
+				&:hover {
+					background: #191e23;
+					color: #00b9eb;
+				}
+			}
+		}
+		.redux-group-tab-link-li.active a {
+			background: #0073AA !important;
+			color: #fff !important;
+		}
+		.dashicons-before::before {
+			font-size: 16px;
+			margin-top: 3px;
+		}
+		ul .subsection {
+			background: #32373c !important;
+			padding-bottom: 8px;
+			li a {
+				color: rgba(250, 250, 250, 0.5) !important;
+				font-size: 12px;
+				font-weight: 400 !important;
+				&:hover {
+					background: none !important;
+				}
+			}
+			.dashicons-before::before {
+				font-size: 13px;
+				margin-top: 4px;
+				vertical-align: middle;
+				width: 24px;
+			}
+		}
+		.redux-group-tab-link-a {
+			i {
+				font-size: 9px;
+			}
+			span.group_title {
+				padding-left: 25px;
+			}
+		}
+		.redux-group-tab-link-li.active a::after {
+			-moz-border-bottom-colors: none;
+			-moz-border-left-colors: none;
+			-moz-border-right-colors: none;
+			-moz-border-top-colors: none;
+			border-color: transparent #fff transparent transparent;
+			border-image: none;
+			border-style: solid;
+			border-width: 8px;
+			content: " ";
+			height: 0;
+			margin-top: -8px;
+			pointer-events: none;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			width: 0;
+		}
+	}
+	//ends .redux-sidebar
+	.redux-main .form-table tr {
+		background: #f7f7f7;
+		border-bottom: 5px solid #fff;
+	}
+	.redux-main .redux-group-tab h2 {
+		background: #0073AA;
+		color: #fff;
+		padding: 10px 20px;
+	}
+	.redux-main .redux-info-field.redux-normal {
+		background: rgba(0, 115, 170, 0.80);
+		border-color: #eee;
+		border-radius: 0;
+		margin-top: 30px;
+	}
+	.redux-main .redux-info-field .redux-info-desc {
+		color: #fff;
+	}
+	.redux-main .redux-group-tab .redux_field_th {
+		padding: 20px;
+	}
+	.redux-group-tab h3 {
+		background: rgba(0, 115, 170, 0.50);
+		color: #fff;
+		font-size: 14px;
+		margin-top: 0;
+		padding: 3px 20px 6px;
+	}
+	//ends .redux-group-tab
+	.ui-button .ui-button-text {
+		line-height: 1.2;
+		display: inline;
+	}
+	.select2-container.select2-allowclear .select2-choice abbr {
+		//display: none;
+	}
+}
+
+//ends .redux-container
+
+/* Megamenu */
+
+.mascot-mega-menu-options {
+	margin-top: 15px;
+}
+
+.menu-item-depth-0 .field-dropdownposition {
+	display: none;
+}
+
+.field-megamenu-status,
+.field-megamenu-containerwidth,
+.field-megamenu-dropdownposition,
+.field-megamenu-gridcolumnwidth,
+.field-megamenu-widgetarea,
+.mascot-megamenu-upload-bgimage.button,
+.field-megamenu-bgimage,
+.mascot-megamenu-bgimage-image {
+	display: none;
+}
+
+.menu-item-depth-0 .field-megamenu-status,
+.menu-item-depth-0.mascot-megamenu .field-megamenu-containerwidth,
+.menu-item-depth-0.mascot-megamenu .field-megamenu-dropdownposition,
+.menu-item-depth-1.mascot-megamenu .field-megamenu-gridcolumnwidth,
+.menu-item-depth-1.mascot-megamenu .field-megamenu-widgetarea,
+.menu-item-depth-2.mascot-megamenu .field-megamenu-widgetarea,
+.mascot-megamenu .field-megamenu-bgimage,
+.mascot-megamenu .mascot-megamenu-bgimage-image,
+.field-megamenu-title {
+	display: block;
+}
+
+.menu-item-depth-0 .field-megamenu-title {
+	display: none;
+}
+
+.mascot-megamenu .mascot-megamenu-bgimage-image,
+{
+	margin-top: 5px;
+	display: block !important;
+}
+
+.mascot-megamenu .mascot-megamenu-upload-bgimage {
+	display: inline-block;
+}
+
+.mascot-megamenu-bgimage-image {
+	max-width: 200px;
+}
+
+
+/* Admin tag */
+#wp-admin-bar-mascot-update-plugins .update-plugins {
+	background-color: #d54e21;
+	border-radius: 10px;
+	color: #ffffff;
+	display: inline-block;
+	font-size: 9px;
+	font-weight: 600;
+	line-height: 17px;
+	margin: 1px 0 0 2px;
+	vertical-align: middle;
+	z-index: 26;
+	span {
+		display: block;
+		padding: 0 6px;
+		line-height: 20px;
+	}
+}
+
+/* Admin tpl */
+.mascot-admin-tpl-wrapper {
+	.mascot-theme-logo {
+		background: #fff url(../../../assets/images/logo/theme-logo.png) no-repeat center;
+		border: none;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+		-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+		display: inline-block;
+		font-size: 13px;
+		height: 50px;
+		padding-top: 100px;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 0;
+		width: 160px;
+		.mascot-theme-version {
+			margin-top: 40px;
+			display: block;
+			padding: 10px 0;
+			background: #0073AA;
+			color: #fff;
+			text-align: center;
+			box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+			-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+		}
+	}
+	.mascot-status-table {
+		margin-top: 30px;
+	}
+	
+	.mascot-faq-tab {
+		margin-top: 15px;
+		background: #fff;
+		border: 1px solid #eee;
+		.heading {
+			color: #fff;
+			display: block;
+			font-size: 1em;
+			font-weight: 600;
+			margin-top: 0;
+			padding: 10px 20px;
+			background: #555;
+		}
+		.content {
+			font-size: 13px;
+			padding: 15px 20px;
+			pre {
+				font-size: 13px;
+				max-width: 100%;
+				margin: 0;
+				word-break: break-word;
+				white-space: pre-line;
+			}
+		}
+	}
+	.about-wrapper {
+		.welcome-message {
+			background-color: #fff;
+			padding: 20px;
+			margin: 30px 0 ;
+			h3 {
+				margin-top: 0;
+				small {
+					color: #555;
+					font-size: 0.8em;
+					font-weight: normal;
+				}
+			}
+			h4 {
+				margin-bottom: 0;
+			}
+			ul {
+				padding-left: 10px;
+			}
+		}
+	}
+}
+
+@media (min-width: 1120px) {
+	.ocdi__gl-item {
+		width: calc(20% - 30px);
+		margin: 0 30px 30px 0;
+	}
+}
+.ocdi__gl-item-image-container {
+	height: 300px;
+}
+.redux-container .ui-icon, .control-section-redux .ui-icon, .control-panel-redux .ui-icon, .redux-metabox .ui-icon {
+	display: none !important;
+}

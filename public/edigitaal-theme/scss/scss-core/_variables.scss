@@ -1,0 +1,135 @@
+//
+// Elementor Media Query
+// --------------------------------------------------
+
+//desktop
+$ele-breakpoint-desktop-min: 1025px;
+
+//laptop
+$ele-breakpoint-laptop-max: 1366px;
+$ele-breakpoint-laptop-min: 1201px;
+
+//tab-extra
+$ele-breakpoint-tab-extra-max: 1200px;
+$ele-breakpoint-tab-extra-min: 1025px;
+
+//tab
+$ele-breakpoint-tablet-max: 1024px;
+$ele-breakpoint-tablet-min: 768px;
+
+//mobile-extra
+$ele-breakpoint-mobile-extra-max: 880px;
+$ele-breakpoint-mobile-extra-min: 768px;
+
+//mobile
+$ele-breakpoint-mobile-max: 767px;
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$black: #000;
+$black-111: #111;
+$black-222: #222;
+$black-333: var(--theme-color-dark);
+$black-444: #444;
+$black-555: #555;
+$black-666: #666;
+$black-777: #777;
+$black-888: #888;
+$black-999: #999;
+
+$gray-dimgray: #696969;
+$gray-light: #777;
+$gray-base: #808080;
+
+$gray-darkgray: #a9a9a9;
+$gray-bbb: #bbb;
+$gray-silver: #c0c0c0;
+$gray-lightgray: #d3d3d3;
+$gray-gainsboro: #dcdcdc;
+$gray-silver-light: #f6f6f6;
+
+$gray-lighter: #eee;
+
+$gray-aaa: #aaa;
+$gray-bbb: #bbb;
+$gray-ccc: #ccc;
+$gray-ddd: #ddd;
+$gray-eee: #eee;
+
+$dark-layout-default-bg-color: #151515;
+$gray-silver-text-color: #9b9ea8;
+
+//## White colors
+$white: #fff;
+$white-base: #fff;
+$white-f1: #f1f1f1;
+$white-f2: #f2f2f2;
+$white-f3: #f3f3f3;
+$white-f4: #f4f4f4;
+$white-f5: #f5f5f5;
+$white-f6: #f6f6f6;
+$white-f7: #f7f7f7;
+$white-f8: #f8f8f8;
+$white-f9: #f9f9f9;
+$white-fa: #fafafa;
+$white-fb: #fbfbfb;
+$white-fc: #fcfcfc;
+$white-fd: #fdfdfd;
+$white-fe: #fefefe;
+
+// variables-typography
+@import "variables-typography";
+
+//== Folder Path
+//
+$icon-font-path: "../fonts/";
+$images-path: "../images/";
+
+//== Container Padding Top Bottom
+//
+$container-pt: var(--tm-container-pt);
+$container-pb: var(--tm-container-pb);
+$section-title-mb: 60px;
+
+//== Buttons
+$tm-btn-colors: ();
+$btn-default-color: #666;
+$btn-gray-color: $black-666;
+$btn-light-gray-color: #e9e9e9;
+
+$tm-btn-colors: map-merge(
+  (
+    "gray": $btn-gray-color,
+    "light-gray": $btn-light-gray-color,
+  ),
+  $tm-btn-colors
+);
+
+$btn-padding-y-xs: 0.5rem;
+$btn-padding-x-xs: 1rem;
+$btn-line-height-xs: $line-height-sm;
+$font-size-xs: ($font-size-base * 0.8);
+
+// Durations
+$fastDuration: 0.1s;
+$mediumDuration: 0.3s;
+$slowDuration: 0.5s;
+
+//-- Z-index master list
+$zindex-side-push-panel-body-overlay: -1;
+$zindex-side-push-panel-side-panel-open-body-overlay: 1111;
+$zindex-side-panel: 1112;
+$zindex-side-panel-trigger: 11;
+$zindex-vertical-header-header: 101;
+$zindex-layer-overlay-before: 0;
+$zindex-bg-video: -1;
+$zindex-bg-video-video-mbYTP_wrapper: -1;
+$zindex-scroll-to-top: 99999;
+
+$widget-margin-bottom: 35px;
+$footer-widget-margin-bottom: 45px;
+
+$ul-li-padding-left: 20px;
+$ul-li-padding-left-with-arrow: 15px;

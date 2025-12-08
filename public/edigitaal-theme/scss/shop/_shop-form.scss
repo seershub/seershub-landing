@@ -1,0 +1,29 @@
+/*
+ * shop-form.scss
+ * -----------------------------------------------
+*/
+.woocommerce {
+  .woocommerce-checkout,
+  .woocommerce-MyAccount-content,
+  .woocommerce-address-fields {
+    .form-row {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 25px;
+    }
+  }
+  .col2-set {
+    display: flex;
+    justify-content: space-between;
+    @include media-breakpoint-down(lg) {
+      flex-direction: column;
+    }
+    > div {
+      width: 48%;
+      @include media-breakpoint-down(lg) {
+        width: 100%;
+      }
+    }
+  }
+}

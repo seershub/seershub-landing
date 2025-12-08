@@ -1,0 +1,19 @@
+/*
+ * elementor.scss
+ * -----------------------------------------------
+*/
+.elementor-editor-active .elementor-widget-tm-ele-floating-objects {
+  min-height: 30px;
+  background-color: #cb9494;
+}
+//animation objects
+.tm-ele-floating-objects {
+  > .each-object {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

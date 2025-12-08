@@ -1,0 +1,84 @@
+/*
+ * container.scss
+ * -----------------------------------------------
+*/
+.container {
+  .container {
+    width: 100%;
+  }
+}
+.container,
+.container-fluid {
+  .container,
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@include media-breakpoint-up(xl) {
+  .container {
+    max-width: 1170px;
+  }
+}
+@media (min-width: 992px) {
+  body.container-970px .container {
+    width: 970px;
+  }
+  body.container-100pr .container {
+    width: 100%;
+  }
+  body.container-100pr {
+    .container,
+    .container-fluid {
+      padding-left: 40px;
+      padding-right: 40px;
+      .container,
+      .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+section {
+  position: relative;
+}
+section > .container,
+section > .container-fluid {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+body {
+  &.blog,
+  &.archive {
+    .main-content-area,
+    .sidebar-area {
+    }
+  }
+}
+body {
+  .main-content-area,
+  .sidebar-area {
+    padding-top: $container-pt;
+    padding-bottom: $container-pb;
+  }
+}
+body {
+  .main-content-area,
+  .sidebar-area {
+    padding-top: $container-pt;
+    padding-bottom: $container-pb;
+  }
+  @include media-breakpoint-down(lg) {
+    .sidebar-area {
+      padding-top: 0;
+    }
+  }
+}
+body.elementor-page:not(.single-post):not(.single-room) {
+  .main-content-area,
+  .sidebar-area {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

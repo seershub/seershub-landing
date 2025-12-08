@@ -1,0 +1,76 @@
+/*
+ * Shortcode: blockquote.scss
+ * -----------------------------------------------
+*/
+.post-excerpt blockquote:not([class*=has-]),
+.comment-content blockquote,
+.page-content blockquote,
+.post-excerpt .wp-block-quote,
+.widget_block .wp-block-quote,
+.main-content-area article .post-excerpt .wp-block-quote,
+.tm-sc-blockquote {
+  color: var(--blockquote-text-color);
+  background-color: var(--theme-color-light);
+  border-left: 2px solid #333;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 7px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  margin-bottom: 25px;
+  margin-left: 0;
+  margin-right: 0;
+  @include transition(all .3s ease);
+  &:before {
+    content: '\f10d';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    bottom: 0;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--theme-color-dark);
+    opacity: 0.07;
+    right: 30px;
+    @include transition(all .3s ease);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    @include transition(all .3s ease);
+  }
+  p {
+    margin-bottom: 15px;
+  }
+  cite {
+    @include transition(all .3s ease);
+    color: var(--blockquote-cite-color);
+    display:block;
+    a {
+      color: var(--blockquote-cite-color);
+    }
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+  &.has-text-align-right {
+    border-right: 2px solid #333;
+    border-left: 0;
+    &:before {
+      right: auto;
+      left: 30px;
+      transform: rotateX(-180deg);
+    }
+  }
+}
+.post-excerpt .elementor-element {
+  blockquote {
+    margin-bottom: 0;
+  }
+}
+.wp-block-group .wp-block-group__inner-container .wp-block-quote {
+  p:last-of-type {
+    margin-bottom: 15px;
+  }
+}

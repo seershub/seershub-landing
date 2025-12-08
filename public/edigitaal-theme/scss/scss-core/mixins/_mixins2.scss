@@ -1,0 +1,60 @@
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin vertical-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin absolute {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@mixin absolute-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@mixin absolute-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+@mixin absolute-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin Shadow {
+  box-shadow: 0 10px 60px rgba(0, 0, 0, .07);
+}

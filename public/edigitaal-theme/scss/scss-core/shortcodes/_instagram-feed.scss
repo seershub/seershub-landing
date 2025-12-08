@@ -1,0 +1,105 @@
+/*
+ * Shortcode: instagram-feed.scss
+ * -----------------------------------------------
+*/
+#sb_instagram {
+  padding-bottom: 0 !important;
+  position: relative;
+  .sbi_follow_btn {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    a {
+      display: -moz-inline-stack;
+      display: inline-block;
+      vertical-align: top;
+      zoom: 1;
+      padding: 15px 25px;
+      margin: 5px auto 0;
+      background: var(--theme-color-dark);
+      border: none;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1.5;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      transition: all 0.1s ease-in;
+      &:hover,
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  #sbi_load {
+    padding: 0 !important;
+  }
+  .sbi_photo_wrap {
+    .sbi_photo {
+      position: relative;
+      @include transition(all 0.5s ease);
+      &:before {
+        color: var(--theme-color1-text-color);
+        content: "\f16d";
+        font-family: "Font Awesome 5 Brands";
+        font-weight: 600;
+        font-size: 30px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        opacity: 0;
+        visibility: hidden;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        @include transition(all 0.3s ease-out);
+        z-index: 3;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+        background-color: rgba(var(--theme-color1-rgb), 0.8);
+        @include transition(all 0.3s ease-out);
+      }
+
+      &:hover {
+        &:before {
+          top: 50%;
+          opacity: 1;
+          visibility: visible;
+        }
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+#sb_instagram {
+  .sbi_follow_btn {
+    a {
+      color: var(--theme-color2-text-color);
+      background: rgba(var(--theme-color2-rgb), 0.99) !important;
+      box-shadow: none !important;
+      &:hover {
+        color: var(--theme-color1-text-color);
+        background: rgba(var(--theme-color1-rgb), 0.99) !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+/*
+ * blog-list.scss
+ * -----------------------------------------------
+*/
+.tm-widget-blog-list {
+  .post {
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    @media only screen and (min-width: 769px) and (max-width: 1024px)  {
+      align-items: start;
+    }
+    &:not(:last-child) {
+      margin-bottom: 13px;
+      padding-bottom: 13px;
+    }
+    .post-thumb {
+      float: left;
+      margin-right: 15px;
+      margin-top: 1px;
+      width: 75px;
+      flex-shrink: 0;
+      img {
+        border-radius: 50%;
+      }
+    }
+    .post-right {
+      overflow: hidden;
+      .post-title {
+        margin-top: 0;
+        margin-bottom: 7px;
+        a {
+          text-transform:capitalize;
+        }
+      }
+      .entry-date {
+        display: block;
+        color: var(--entry-meta-color-light);
+        font-size: 14px;
+        line-height: 12px;
+        padding: 4px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+/*
+ * header-search-form.scss
+ * -----------------------------------------------
+*/
+.top-nav-search-btn {
+  .search-icon {
+    color: $headings-nav-side-icons-color;
+    font-size: 18px;
+    line-height: 1;
+    padding: 3px;
+    @include transition( all .3s ease);
+    &:hover {
+      color: var(--hover-theme-color);
+    }
+  }
+  @media (max-width: $ele-breakpoint-tablet-max) {
+    margin-top: 12px;
+  }
+}
+.top-nav-search-form {
+  background: rgba(15, 15, 15, 0.993);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(0.9);
+  z-index: -1;
+  @include transition( all .3s ease);
+  &.active {
+    transform: scale(1);
+    z-index: 111;
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-search-inner {
+    text-align: center;
+  }
+  form {
+    margin-bottom: 0;
+  }
+  .input-group {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 3px solid rgba(256,256,256,0.1);
+  }
+  input[type="text"] {
+    -webkit-appearance: none;
+    display: inline-block;
+    padding: 15px 20px 15px 0;
+    box-shadow: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+    position: relative;
+    top: 1px;
+    color: #fff;
+    font-size: 36px;
+    width: 450px;
+    @include media-breakpoint-down(md) {
+      font-size: 26px;
+      width: 250px;
+    }
+    &::-webkit-input-placeholder {
+      color: #fff;
+    }
+    &::placeholder {
+      color: #fff;
+    }
+  }
+  button {
+    position: relative;
+    white-space: nowrap;
+    margin-left: -1px;
+    z-index: 2;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-appearance: button;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0;
+    padding: 0 0 0 20px;
+    i {
+      color: #fff;
+      font-size: 28px;
+      line-height: 0;
+      @include transition( all .3s ease);
+      @include media-breakpoint-down(md) {
+        font-size: 20px;
+      }
+      &:hover {
+        color: var(--hover-theme-color);
+      }
+    }
+  }
+  .close-search-btn {
+    color: #eee;
+    font-size: 28px;
+    line-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    &:hover {
+      color: var(--hover-theme-color);
+    }
+  }
+}
+html.html-search-block-active {
+  overflow: hidden;
+}

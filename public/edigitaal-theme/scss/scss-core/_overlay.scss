@@ -1,0 +1,25 @@
+/*
+ * overlays.scss
+ * -----------------------------------------------
+*/
+.layer-overlay {
+  position: relative;
+
+  &::before {
+    background: rgba($black-111, .50) none repeat scroll 0 0;
+    content: " ";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: $zindex-layer-overlay-before;
+  }
+}
+
+.layer-overlay {
+  z-index: 0;
+  &:before {
+    z-index: -1;
+  }
+}

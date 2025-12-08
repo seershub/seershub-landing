@@ -1,0 +1,118 @@
+.tm_cursor_mouse_helper {
+  font-size: 16px;
+  text-indent: 0;
+  --mouse-helper-width: 11px;
+  --mouse-helper-height: 11px;
+  --mouse-helper-left: 15px;
+  --mouse-helper-top: 15px;
+  border: none;
+  mix-blend-mode: exclusion;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
+  -ms-box-shadow: 0 0 0 rgba(0,0,0,0);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  -webkit-transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease, left 0.3s ease, top 0.3s ease, border-radius 0.1s ease, box-shadow 0.2s ease;
+  -ms-transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease, left 0.3s ease, top 0.3s ease, border-radius 0.1s ease, box-shadow 0.2s ease;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease, left 0.3s ease, top 0.3s ease, border-radius 0.1s ease, box-shadow 0.2s ease;
+  .tm_cursor_mouse_helper_image {
+    background-size: cover;
+    background-position: center center;
+    &:before {
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      content: ' ';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0);
+    }
+  }
+  &.tm_cursor_mouse_helper_active {
+  }
+  &.tm_cursor_mouse_helper_top {
+    &:not(.tm_cursor_mouse_helper_centered) {
+      top: var(--mouse-helper-top) !important;
+    }
+  }
+  &.tm_cursor_mouse_helper_left {
+    &:not(.tm_cursor_mouse_helper_centered) {
+      left: var(--mouse-helper-left) !important;
+    }
+  }
+  &.tm_cursor_mouse_helper_permanent {
+    opacity: 1;
+  }
+  &.tm_cursor_mouse_helper_with_image.tm_cursor_mouse_helper_with_text {
+    -webkit-box-shadow: 0 3px 46px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0 3px 46px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 46px rgba(0,0,0,0.1);
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+  }
+  &.tm_cursor_mouse_helper_with_image {
+    -webkit-box-shadow: 0 3px 46px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0 3px 46px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 46px rgba(0,0,0,0.1);
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+  }
+  &.tm_cursor_mouse_helper_active.tm_cursor_mouse_helper_with_image.tm_cursor_mouse_helper_with_text {
+    --mouse-helper-width: 288px;
+    --mouse-helper-height: 288px;
+    padding: 0;
+    -webkit-box-sizing: "border-box";
+    -ms-box-sizing: "border-box";
+    box-sizing: "border-box";
+  }
+  &.tm_cursor_mouse_helper_active.tm_cursor_mouse_helper_with_image {
+    --mouse-helper-width: 288px;
+    --mouse-helper-height: 288px;
+    padding: 0;
+    -webkit-box-sizing: "border-box";
+    -ms-box-sizing: "border-box";
+    box-sizing: "border-box";
+  }
+  &.tm_cursor_mouse_helper_with_layout {
+    --mouse-helper-width: 66px;
+    --mouse-helper-height: 66px;
+  }
+  &.tm_cursor_mouse_helper_with_layout.tm_cursor_mouse_helper_click {
+    --mouse-helper-width: 30px;
+    --mouse-helper-height: 30px;
+    overflow: visible;
+    .swiper-mouse-cursor {
+      span {
+        color: #000;
+        font-size: 14px;
+        font-weight: bold;
+        &:after {
+          transform: translateX(30px);
+        }
+        &:before {
+          transform: translateX(-30px);
+        }
+      }
+    }
+  }
+  &.tm_cursor_mouse_helper_link_active {
+    --mouse-helper-width: 80px;
+    --mouse-helper-height: 80px;
+    width: var(--mouse-helper-width);
+    height: var(--mouse-helper-height);
+    opacity: 0.08;
+  }
+}
+
+[data-mouse-helper="highlight"] {
+  color: rgba(29,29,29,0.3);
+  background-image: -webkit-radial-gradient(closest-side, #111 78%, transparent 0);
+  background-image: -o-radial-gradient(closest-side, #111 78%, transparent 0);
+  background-image: radial-gradient(closest-side, #111 78%, transparent 0); }
+  [data-mouse-helper="highlight"] .sc_typed_entry {
+    color: inherit; }

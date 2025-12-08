@@ -1,0 +1,50 @@
+// mixins loader.scss
+@mixin box-shadow($shadow...) {
+    box-shadow: $shadow;
+}
+
+@function form-control-height() {
+  @return calc(1.8rem + 32px);
+}
+// star ratings
+@mixin star-rating-function() {
+  .star-rating {
+    float: right;
+    overflow: hidden;
+    position: relative;
+    height: 1.1em;
+    line-height: 1.2;
+    font-size: 0.9em;
+    width: 5.6em;
+
+    &::before {
+      content: "\f005\f005\f005\f005\f005";
+      color: #d3ced2;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      float: left;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+
+    span {
+      overflow: hidden;
+      float: left;
+      top: 0;
+      left: 0;
+      position: absolute;
+      padding-top: 1.5em;
+    }
+
+    span::before {
+      content: "\f005\f005\f005\f005\f005";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #f1c40f;
+      top: 0;
+      position: absolute;
+      left: 0;
+    }
+  }
+}

@@ -4,181 +4,101 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
-interface FAQItem {
-  question: string;
-  answer: string;
-  category?: string;
-}
+const faqData = [
+  {
+    question: "What exactly is SeersHub?",
+    answer: "SeersHub is a skill-based competition platform, not a betting site. You compete with other users based on your sports knowledge to win from a transparent prize pool.",
+  },
+  {
+    question: "How do I get started?",
+    answer: "It's simple! 1) Connect your wallet. 2) Choose a match you want to predict. 3) Submit your prediction on-chain and compete for prizes!",
+  },
+  {
+    question: "Is this gambling?",
+    answer: "No. SeersHub has no odds, no house edge, and no chance-based mechanics. Your success depends entirely on your sports knowledge. We're classified as a skill-based competition.",
+  },
+  {
+    question: "How are prizes distributed?",
+    answer: "75-80% of all entry fees goes directly into the prize pool. Smart contracts automatically distribute USDC to top performers each week.",
+  },
+  {
+    question: "Are my funds safe?",
+    answer: "Yes. Funds are held in audited smart contracts and a multi-sig treasury. Your predictions are stored immutably on Base network.",
+  },
+  {
+    question: "Why USDC on Base?",
+    answer: "USDC is a stable, trusted currency. Base network offers extremely low fees (< $0.01) and fast transactions. Perfect for micro-payments.",
+  },
+];
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const faqData: FAQItem[] = [
-    // Platform Basics
-    {
-      question: "What exactly is Seershub?",
-      answer: "Seershub is a skill-based competition platform, not a betting site. You compete with other users based on your sports knowledge to win from a transparent prize pool.",
-      category: "Platform Basics"
-    },
-    {
-      question: "How do I get started?",
-      answer: "It's simple! 1) Connect your wallet. 2) Choose a match you want to predict. 3) Submit your prediction on-chain with a small entry fee and secure your spot on the weekly leaderboard!",
-      category: "Platform Basics"
-    },
-    {
-      question: "How does the scoring work?",
-      answer: "Scoring is based on the accuracy of your prediction and the difficulty of the match. You earn more points for correctly predicting challenging matches like derbies or finals. All rules are transparent.",
-      category: "Platform Basics"
-    },
-    {
-      question: "How are the prizes distributed?",
-      answer: "A large portion (75-80%) of all entry fees goes directly into the community prize pool. At the end of the week, top performers on the leaderboard automatically receive their share from this pool via transparent smart contracts.",
-      category: "Platform Basics"
-    },
-    // Legality & Security
-    {
-      question: "Is this a betting or gambling platform?",
-      answer: "Absolutely not. Seershub has no odds, no house edge, and no chance-based mechanics. Your success depends entirely on your sports knowledge and analytical skill. We are legally classified as a \"skill-based competition,\" similar to fantasy sports leagues.",
-      category: "Legality & Security"
-    },
-    {
-      question: "Is the platform legal?",
-      answer: "Yes. We operate legally in most jurisdictions where skill-based competitions are permitted and do not require a gambling license.",
-      category: "Legality & Security"
-    },
-    {
-      question: "Are my funds and data secure?",
-      answer: "Yes. All funds are held in audited smart contracts (to be audited before mainnet launch) and a multi-signature protected treasury. Your predictions are immutably stored on the Base network blockchain.",
-      category: "Legality & Security"
-    },
-    {
-      question: "How can I trust the match results are fair?",
-      answer: "We use decentralized oracle networks like Chainlink to verify match results. This ensures that outcomes cannot be manipulated by a single source and are completely fair.",
-      category: "Legality & Security"
-    },
-    // Financial & Technical
-    {
-      question: "Why does the platform use USDC?",
-      answer: "USDC is a trusted and transparent stablecoin pegged to the US Dollar. This ensures that the value of the prize pool is stable and not affected by market volatility.",
-      category: "Financial & Technical"
-    },
-    {
-      question: "Will I have to pay transaction (gas) fees?",
-      answer: "Yes, but thanks to the Base network, these fees are extremely low (typically less than $0.01). We are also exploring features like \"gasless\" transactions for new users.",
-      category: "Financial & Technical"
-    },
-    {
-      question: "Will I be able to pay with the BASE token?",
-      answer: "Yes! Once the BASE token is officially launched, we will activate the option to pay with BASE on our platform. We will even support the Base ecosystem by burning a portion of the protocol revenue from these payments.",
-      category: "Financial & Technical"
-    },
-  ];
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section className="py-16 sm:py-24 md:py-32 px-3 sm:px-4 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto max-w-4xl relative z-10">
-        
-        {/* Section Header */}
+    <section id="faq" className="section-padding relative overflow-hidden">
+      <div className="container-responsive relative z-10 max-w-3xl mx-auto">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                       bg-blue-500/10 border border-blue-500/30 mb-6"
-          >
-            <HelpCircle className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-semibold text-blue-400">Got Questions?</span>
-          </motion.div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <strong className="bg-[#0052FF] text-white px-3 py-1 rounded mr-2">Frequently</strong>
-            Asked Questions
+          <span className="badge-nova mb-4 inline-flex">
+            <HelpCircle className="w-3.5 h-3.5" />
+            FAQ
+          </span>
+          <h2 className="text-section-title text-white mb-4">
+            Frequently Asked{' '}
+            <span className="text-gradient-nova">Questions</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Everything you need to know about Seershub. Can't find the answer you're looking for? 
-            Feel free to reach out to our team.
+          <p className="text-white/50">
+            Everything you need to know about SeersHub.
           </p>
         </motion.div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
+        {/* Accordion */}
+        <div className="space-y-3">
           {faqData.map((faq, index) => {
             const isOpen = openIndex === index;
-            
+
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10
-                           hover:bg-white/[0.04] hover:border-blue-500/30 transition-all duration-300"
+                transition={{ delay: index * 0.05 }}
+                className="glass-card overflow-hidden"
               >
-                {/* Question Button */}
                 <button
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-3 sm:gap-4 text-left
-                             focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-2xl"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left focus:outline-none"
                 >
-                  <span className="text-base sm:text-lg md:text-xl font-semibold text-white pr-2 sm:pr-4">
+                  <span className="font-semibold text-white text-sm md:text-base">
                     {faq.question}
                   </span>
-                  
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="flex-shrink-0"
+                    transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown className={`w-6 h-6 transition-colors ${
-                      isOpen ? 'text-blue-400' : 'text-white/40'
-                    }`} />
+                    <ChevronDown className={`w-5 h-5 ${isOpen ? 'text-primary' : 'text-white/30'}`} />
                   </motion.div>
                 </button>
 
-                {/* Answer */}
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
+                      animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      transition={{ duration: 0.2 }}
                     >
-                      <div className="px-6 pb-6 pt-2">
-                        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-4" />
-                        <p className="text-white/70 leading-relaxed text-base md:text-lg">
+                      <div className="px-5 pb-4">
+                        <div className="h-px bg-white/5 mb-3" />
+                        <p className="text-white/60 text-sm leading-relaxed">
                           {faq.answer}
                         </p>
-                        
-                        {/* Category badge */}
-                        {faq.category && (
-                          <div className="mt-4">
-                            <span className="inline-flex items-center px-3 py-1 rounded-full 
-                                           bg-blue-500/10 border border-blue-500/30 text-xs text-blue-400">
-                              {faq.category}
-                            </span>
-                          </div>
-                        )}
                       </div>
                     </motion.div>
                   )}
@@ -188,35 +108,20 @@ export default function FAQ() {
           })}
         </div>
 
-        {/* Still have questions CTA */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-16 text-center"
+          transition={{ delay: 0.4 }}
+          className="text-center mt-10"
         >
-          <div className="inline-flex flex-col items-center gap-4 p-8 rounded-3xl
-                         bg-gradient-to-br from-blue-500/10 to-cyan-500/10
-                         border border-blue-500/30 backdrop-blur-sm">
-            <HelpCircle className="w-12 h-12 text-blue-400" />
-            <h3 className="text-2xl font-bold">Still have questions?</h3>
-            <p className="text-white/60 max-w-md">
-              Can't find the answer you're looking for? Our team is here to help.
-            </p>
-            <a
-              href="#waitlist"
-              className="px-8 py-3 rounded-full bg-[#0052FF] hover:bg-blue-600 
-                       text-white font-semibold transition-all duration-300
-                       inline-flex items-center gap-2 shadow-lg shadow-blue-500/20"
-            >
-              Join Waitlist & Ask
-            </a>
-          </div>
+          <p className="text-white/40 text-sm mb-3">Still have questions?</p>
+          <a href="https://x.com/seershub" target="_blank" rel="noopener noreferrer" className="btn-glass text-sm">
+            Reach out on X
+          </a>
         </motion.div>
-
       </div>
     </section>
   );
 }
-

@@ -1,0 +1,34 @@
+/*
+ * shop.scss
+ * -----------------------------------------------
+*/
+// Import bootstrap variables and mixins for reference
+@import "../scss-bootstrap/functions";
+@import "../scss-bootstrap/variables";
+@import "../scss-bootstrap/mixins";
+
+// Initialize Variables
+@import "../scss-core/mixins/transform";
+@import "../scss-core/mixins/mixins";
+@import "../scss-core/variables";
+
+
+
+$wc_sm_btn_padding:	 0.9rem 1.8rem;
+
+@import "shop-variables";
+@import "shop-archive";
+@import "shop-catalog-layouts/loader";
+@import "shop-sidebar";
+@import "shop-widgets";
+@import "shop-cart-checkout";
+@import "shop-common";
+@import "shop-checkout";
+@import "shop-my-account";
+@import "shop-css";
+@import "shop-related";
+@import "shop-form";
+@import "woosw";
+@import "woosq";
+@import "yith-wcqv";
+@import "yith-wcwl";

@@ -1,0 +1,69 @@
+/* --------------------------------------
+$Author: ThemeMascot
+$URL: https://themeforest.net/user/ThemeMascot
+
+----------------------------------------- */
+$total-theme-colors: 4;
+
+$theme-color1: #88ff2a;
+$theme-color2: #000000;
+$theme-color3: #151414;
+$theme-color4: #0d0d0d;
+
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+// text color over theme color bg
+$theme-color1-text-color: #151515;
+$theme-color2-text-color: #fff;
+$theme-color3-text-color: #fff;
+$theme-color4-text-color: #fff;
+
+//lighter darker
+$theme-color1-lighter: lighten($theme-color1, 11%);
+$theme-color1-darker: darken($theme-color1, 11%);
+$theme-color2-lighter: lighten($theme-color2, 11%);
+$theme-color2-darker: darken($theme-color2, 11%);
+$theme-color3-lighter: lighten($theme-color3, 11%);
+$theme-color3-darker: darken($theme-color3, 11%);
+$theme-color4-lighter: lighten($theme-color4, 11%);
+$theme-color4-darker: darken($theme-color4, 11%);
+
+:root {
+  --theme-color1: #{$theme-color1};
+  --theme-color1-rgb: #{hexToRGB($theme-color1)};
+  --theme-color1-lighter: #{$theme-color1-lighter};
+  --theme-color1-darker: #{$theme-color1-darker};
+  --theme-color2: #{$theme-color2};
+  --theme-color2-rgb: #{hexToRGB($theme-color2)};
+  --theme-color2-lighter: #{$theme-color2-lighter};
+  --theme-color2-darker: #{$theme-color2-darker};
+  --theme-color3: #{$theme-color3};
+  --theme-color3-rgb: #{hexToRGB($theme-color3)};
+  --theme-color3-lighter: #{$theme-color3-lighter};
+  --theme-color3-darker: #{$theme-color3-darker};
+  --theme-color4: #{$theme-color4};
+  --theme-color4-rgb: #{hexToRGB($theme-color4)};
+  --theme-color4-lighter: #{$theme-color4-lighter};
+  --theme-color4-darker: #{$theme-color4-darker};
+
+  --gradient-1: linear-gradient(90deg, #88ff2a 0%, #fff 100%);
+  --gradient-2: linear-gradient(to left, rgba(var(--theme-color1-rgb), 1) 0%, rgba(var(--theme-color1-rgb), 0.7) 100%);
+  --gradient-3: linear-gradient(180deg, var(--theme-color1) 0%, rgba(0, 0, 0, 0) 100%);
+  --gradient-4: linear-gradient(180deg, rgba(217, 244, 95, 0) 0%, rgba(217, 244, 95, 0.5) 100%);
+  --gradient-5: linear-gradient(180deg, var(--theme-color1) 0%, rgba(126, 142, 55, 0) 100%);
+  --gradient-6: linear-gradient(180deg, #0a0a0a 0%, rgba(10, 10, 10, 0.3) 45%, #0a0a0a 90%);
+  --gradient-7: linear-gradient(180deg, rgba(217, 244, 95, 0.7) 37.5%, rgba(255, 212, 212, 0) 100%);
+
+  --theme-color1-text-color: #{$theme-color1-text-color};
+  --theme-color2-text-color: #{$theme-color2-text-color};
+  --theme-color3-text-color: #{$theme-color3-text-color};
+  --theme-color4-text-color: #{$theme-color4-text-color};
+
+  --hover-theme-color: #{$theme-color1};
+  --footer-default-theme-color: var(--theme-color1);
+  --footer-default-hover-theme-color: var(--theme-color1);
+  --footer-default-text-color-on-bg-theme-color: var(--theme-color1-text-color);
+}
+@import "parts/loader";

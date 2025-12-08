@@ -1,0 +1,122 @@
+/*
+ * Shortcode: section-title.scss
+ * -----------------------------------------------
+*/
+.tm-sc-section-title {
+  &.line-left-current-theme {
+    .title-wrapper {
+      .subtitle {
+        position: relative;
+        display: inline-block;
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 43px;
+          height: 5px;
+          border-radius: 5px;
+          background: var(--gradient-1);
+          content: "";
+        }
+      }
+    }
+  }
+  &.line-left-current-theme-white {
+    .title-wrapper {
+      .subtitle {
+        position: relative;
+        display: inline-block;
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 43px;
+          height: 5px;
+          border-radius: 5px;
+          content: "";
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  &.line-right-current-theme {
+    .title-wrapper {
+      .subtitle {
+        position: relative;
+        display: inline-block;
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 43px;
+          height: 5px;
+          border-radius: 5px;
+          background: var(--gradient-1);
+          content: "";
+        }
+      }
+    }
+  }
+  &.line-right-current-theme-white {
+    .title-wrapper {
+      .subtitle {
+        position: relative;
+        display: inline-block;
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 43px;
+          height: 5px;
+          border-radius: 5px;
+          content: "";
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  &.line-center-current-theme {
+    .title-wrapper {
+      .subtitle {
+        padding-left: 45px;
+        padding-right: 45px;
+        position: relative;
+        display: inline-block;
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          width: 43px;
+          height: 5px;
+          border-radius: 5px;
+          margin: 0 auto;
+          background: var(--gradient-1);
+          content: "";
+        }
+      }
+    }
+  }
+  &.line-center-current-theme-white {
+    .title-wrapper {
+      .subtitle {
+        padding-left: 45px;
+        padding-right: 45px;
+        position: relative;
+        display: inline-block;
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          width: 43px;
+          height: 5px;
+          border-radius: 5px;
+          margin: 0 auto;
+          background: #fff;
+          content: "";
+        }
+      }
+    }
+  }
+}

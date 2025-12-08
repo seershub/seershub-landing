@@ -1,0 +1,72 @@
+/*
+ * header-top.scss
+ * -----------------------------------------------
+*/
+body:not(.elementor-editor-active) {
+  header {
+    .elementor-header-top-transparent {
+      @media (min-width: $ele-breakpoint-desktop-min) {
+        z-index: 11;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    #elementor-header-top-sticky {
+      opacity: 0;
+      z-index: -1;
+      visibility: hidden;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: block;
+      @include transform(translate(0px, -140px));
+      @include transition(all 0.4s ease-out);
+
+      &.visible {
+        opacity: 1;
+        z-index: 11;
+        visibility: visible;
+        @include transform(translate(0px, 0px));
+      }
+    }
+    #elementor-header-top-mobile {
+      @media (min-width: $ele-breakpoint-desktop-min) {
+        display: none;
+      }
+    }
+  }
+
+  &.tm-header-sticky-mobile,
+  &.tm-header-sticky-mobile-always {
+    header {
+      #elementor-header-top-mobile {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 11;
+        opacity: 1;
+        display: block;
+        visibility: visible;
+        @include transition(all 0.4s ease-out);
+        @media (min-width: $ele-breakpoint-desktop-min) {
+          opacity: 0;
+          visibility: hidden;
+          display: none;
+        }
+        &.scrolling-down {
+          position: fixed;
+          @include transform(translateY(-100%));
+        }
+        &.visible {
+          position: fixed;
+          @include transform(translateY(0));
+        }
+      }
+    }
+  }
+}

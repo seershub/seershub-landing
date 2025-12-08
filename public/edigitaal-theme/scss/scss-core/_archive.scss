@@ -1,0 +1,14 @@
+/*
+ * archive.scss
+ * -----------------------------------------------
+*/
+body.archive .main-content-area article:not(.type-post) {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+}
+
+body.archive.post-type-archive,
+body.archive.tax-product_cat {
+  .main-content-area {
+  }
+}

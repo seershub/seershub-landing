@@ -1,0 +1,33 @@
+/*
+ * Animation Theme Style
+ * -----------------------------------------------
+*/
+.spin-border-animation{
+	border-radius: 40px;
+  padding: 1px;
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
+	@include transition(all 400ms ease);
+	&:before {
+		background-image: conic-gradient(rgba(0,0,0,0), var(--theme-color1), rgba(0,0,0,0) 25%);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		content: '';
+		width: 9999px;
+		height: 9999px;
+		top: 50%;
+		left: 50%;
+		position: absolute;
+		text-align: center;
+		transform: translate(-50%, -50%) rotate(0deg);
+		z-index: -2;
+		animation: spinrotate 4s linear infinite;
+	}
+}
+
+@keyframes spinrotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}

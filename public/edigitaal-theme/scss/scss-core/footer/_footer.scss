@@ -1,0 +1,58 @@
+/*
+ * footer.scss
+ * -----------------------------------------------
+*/
+
+footer#footer {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-primary-text-color);
+  body.elementor-page & {
+    --footer-bg-color: transparent;
+  }
+  b,
+  strong {
+    color: var(--footer-primary-text-color);
+  }
+  .footer-widget-area {
+    .default-footer-padding {
+      padding-bottom: 50px;
+      padding-top: 100px;
+    }
+    .widget {
+      margin-bottom: $footer-widget-margin-bottom;
+      .widget-title {
+        color: var(footer-widget-title-color);
+        margin-bottom: 35px;
+        &.widget-title-line-bottom {
+          &:after,
+          &:before {
+            background: #666;
+          }
+
+          &:before {
+            background: rgba(240, 240, 240, 0.1);
+          }
+        }
+        &.line-bottom-theme-colored1 {
+          &:after {
+            background: var(--theme-color1);
+          }
+        }
+      }
+    }
+    .elementor-element .elementor-widget-container {
+      .widget:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Footer Inverted*/
+$inverted-footer-bg-color: #f9f9f9;
+$inverted-footer-primary-text-color: $black-666;
+$inverted-footer-link-color: $black-222;
+$inverted-footer-widget-title-color: $black-222;
+
+$inverted-footer-bottom-bg-color: $gray-eee;
+$inverted-footer-bottom-text-color: $black-666;

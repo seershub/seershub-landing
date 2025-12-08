@@ -1,0 +1,142 @@
+/*
+ * post-format.scss
+ * -----------------------------------------------
+*/
+body:not(.single) {
+  article {
+    &.format-link {
+      padding: 50px 30px;
+      background-color: var(--theme-color-light);
+      text-align: center;
+      border: 1px solid rgba(222, 222, 222, 0.3);
+      position: relative;
+      z-index: 0;
+      display: flex;
+      justify-content: center;
+      .link-content {
+        height: 100%;
+        display: table;
+        .link-content-wrapper {
+          height: 100%;
+          display: table-cell;
+          vertical-align: middle;
+          .title {
+            font-size: $archive-news-title-font-size;
+            margin-bottom: 20px;
+            line-height: 1.5;
+          }
+          .post-excerpt {
+            margin-bottom: 0;
+          }
+          .link {
+            color: #999;
+          }
+          .link-url {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+          }
+        }
+      }
+      &:after {
+        content: "";
+        background: url("../images/blog/link.png") no-repeat;
+        opacity: 0.1;
+        position: absolute;
+
+        right: 0;
+        top: 30px;
+        margin: 0 auto;
+        left: 0;
+
+        width: 100px;
+        height: 100px;
+        z-index: -1;
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+    &.format-quote {
+      background-color: var(--theme-color-light);
+      padding: 50px 30px;
+      text-align: center;
+      border: 1px solid rgba(222, 222, 222, 0.3);
+      position: relative;
+      z-index: 0;
+      display: flex;
+      justify-content: center;
+      .quote-content {
+        height: 100%;
+        display: table;
+        .quote-content-wrapper {
+          height: 100%;
+          display: table-cell;
+          vertical-align: middle;
+          blockquote {
+            border: none;
+            .title {
+              font-size: $archive-news-title-font-size;
+            }
+            .post-excerpt {
+              margin-bottom: 0;
+            }
+            .quote {
+              margin-bottom: 20px;
+              line-height: 1.5;
+            }
+            footer {
+              font-size: 0.9rem;
+              color: #999;
+            }
+            &:before {
+              color: rgba(250, 250, 250, 0.7);
+              content: "\f067";
+              display: none;
+              font-family: "Font Awesome 5 Free";
+              font-weight: 600;
+              font-size: 7rem;
+              line-height: 1;
+              opacity: 0.2;
+              position: absolute;
+              bottom: 0;
+              right: 7px;
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+      &:after {
+        content: "";
+        background: url("../images/blog/quote.png") no-repeat;
+        opacity: 0.1;
+        position: absolute;
+
+        right: 0;
+        top: 30px;
+        margin: 0 auto;
+        left: 0;
+
+        width: 100px;
+        height: 100px;
+        z-index: -1;
+        @include transition(all 0.3s ease-in-out);
+      }
+    }
+    &.format-gallery {
+      &:hover {
+      }
+    }
+  }
+}
+
+[data-tm-layout="dark"] body:not(.single) {
+  article {
+    &.format-link,
+    &.format-quote {
+      border: 1px solid rgba(39, 39, 39, 0.3);
+    }
+  }
+}

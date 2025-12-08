@@ -1,0 +1,10 @@
+/**
+ * WooCommerce CSS Variables
+ */
+
+
+@mixin woo-dropdown-typo() {
+  font-size: 14px;
+  border: 2px solid #444;
+  background-color: #fff;
+}
