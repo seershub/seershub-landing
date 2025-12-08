@@ -2,120 +2,104 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Twitter, Github, MessageCircle, ExternalLink } from 'lucide-react';
-
-const footerLinks = {
-  product: [
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Seers League', href: '#' },
-    { label: 'Pulseers', href: '#' },
-    { label: 'Demo', href: '/demo' },
-  ],
-  company: [
-    { label: 'Pitch Deck', href: '/pitch-deck' },
-    { label: 'About', href: '#' },
-    { label: 'Careers', href: '#' },
-    { label: 'Contact', href: '#' },
-  ],
-  legal: [
-    { label: 'Terms of Service', href: '#' },
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Cookie Policy', href: '#' },
-  ],
-};
-
-const socialLinks = [
-  { icon: Twitter, href: 'https://x.com/seershub', label: 'Twitter' },
-  { icon: MessageCircle, href: '#', label: 'Discord' },
-  { icon: Github, href: '#', label: 'GitHub' },
-];
+import { ArrowUpRight, Twitter, Github, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-[#0A0A0A]">
-      {/* Main Footer */}
-      <div className="container-responsive py-16 md:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Brand */}
-          <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <img
-                src="/seershub-logo.png"
-                alt="SeersHub"
-                className="w-10 h-10 object-contain"
-              />
-              <span className="text-xl font-bold font-display text-white">
-                SEERSHUB
-              </span>
-            </Link>
-            <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
-              The first skill-based sports prediction platform built on Base.
-              Fair play, transparent odds, real prizes.
-            </p>
+    <footer className="bg-black border-t border-white/5">
+      {/* CTA Section */}
+      <div className="container-main py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bento-card-neon p-10 md:p-16 rounded-[40px] text-center"
+        >
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-black mb-6">
+            Let's Talk
+          </h2>
+          <p className="text-black/60 text-lg mb-8 max-w-md mx-auto">
+            Ready to start predicting? Join our waitlist and be the first to know.
+          </p>
+          <Link href="#waitlist" className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-black/80 transition-colors">
+            Join Waitlist
+            <ArrowUpRight className="w-5 h-5" />
+          </Link>
+        </motion.div>
+      </div>
 
-            {/* Social Links */}
+      {/* Main Footer */}
+      <div className="container-main py-16 border-t border-white/5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-[#88FF2A] flex items-center justify-center">
+                <span className="text-xl">⚡</span>
+              </div>
+              <span className="text-xl font-bold text-white">SEERSHUB</span>
+            </Link>
+            <p className="text-white/40 text-sm mb-6 max-w-xs">
+              Skill-based sports predictions on Base Network. Fair, transparent, rewarding.
+            </p>
             <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all group"
-                  whileHover={{ y: -3 }}
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
-                </motion.a>
-              ))}
+              <a
+                href="https://x.com/seershub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#88FF2A] hover:text-black flex items-center justify-center transition-all"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#88FF2A] hover:text-black flex items-center justify-center transition-all"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#88FF2A] hover:text-black flex items-center justify-center transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
-          {/* Product */}
+          {/* Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Product</h4>
+            <h4 className="text-sm font-bold text-white mb-4">Product</h4>
             <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/40 hover:text-white transition-colors"
-                  >
-                    {link.label}
+              {['How It Works', 'Seers League', 'Pulseers', 'Demo'].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-sm text-white/40 hover:text-[#88FF2A] transition-colors">
+                    {item}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Company</h4>
+            <h4 className="text-sm font-bold text-white mb-4">Company</h4>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/40 hover:text-white transition-colors"
-                  >
-                    {link.label}
+              {['About', 'Pitch Deck', 'Careers', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link href={item === 'Pitch Deck' ? '/pitch-deck' : '#'} className="text-sm text-white/40 hover:text-[#88FF2A] transition-colors">
+                    {item}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Legal</h4>
+            <h4 className="text-sm font-bold text-white mb-4">Legal</h4>
             <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/40 hover:text-white transition-colors"
-                  >
-                    {link.label}
+              {['Terms', 'Privacy', 'Cookies'].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-sm text-white/40 hover:text-[#88FF2A] transition-colors">
+                    {item}
                   </Link>
                 </li>
               ))}
@@ -125,39 +109,13 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/5">
-        <div className="container-responsive py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/30 text-center md:text-left">
-              © {new Date().getFullYear()} SeersHub. All rights reserved. Built on Base Network.
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://base.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs text-white/30 hover:text-white/50 transition-colors"
-              >
-                <img
-                  src="/Base_Logo_1.png"
-                  alt="Base"
-                  className="w-4 h-4 object-contain"
-                />
-                Powered by Base
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+      <div className="container-main py-6 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/30">
+          <p>© {new Date().getFullYear()} SeersHub. All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <span>Built on</span>
+            <img src="/Base_Logo_1.png" alt="Base" className="h-4 opacity-50" />
           </div>
-        </div>
-      </div>
-
-      {/* Disclaimer */}
-      <div className="bg-white/[0.02] border-t border-white/5">
-        <div className="container-responsive py-4">
-          <p className="text-[11px] text-white/20 text-center leading-relaxed">
-            SeersHub is a skill-based prediction platform. Sports prediction involves risk. Only participate with funds you can afford to lose.
-            Not available in all jurisdictions. Please check your local laws before participating.
-          </p>
         </div>
       </div>
     </footer>

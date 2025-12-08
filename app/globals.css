@@ -1,100 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Urbanist:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================
-   SEERSHUB - EDIGITAAL-INSPIRED PREMIUM DESIGN
-   Modern Dark Theme with Neon Accents
-   ============================================ */
+/* =============================================
+   SEERSHUB - EDIGITAAL EXACT STYLE RECREATION
+   Neon Green Theme with Floating Elements
+   ============================================= */
 
 :root {
-  /* === PRIMARY - VIBRANT ORANGE/CORAL === */
-  --primary: #FF6B35;
-  --primary-light: #FF8C5A;
-  --primary-dark: #E55A2B;
-  --primary-glow: rgba(255, 107, 53, 0.4);
-  --primary-rgb: 255, 107, 53;
+  /* === NEON GREEN - PRIMARY (Edigitaal exact) === */
+  --neon: #88FF2A;
+  --neon-rgb: 136, 255, 42;
+  --neon-light: #A7FF62;
+  --neon-dark: #6AF100;
+  --neon-glow: 0 0 60px rgba(136, 255, 42, 0.4);
 
-  /* === NEON ACCENT (Edigitaal inspired) === */
-  --neon-green: #88FF2A;
-  --neon-green-rgb: 136, 255, 42;
-  --neon-green-light: #A7FF62;
-  --neon-green-dark: #6AF100;
-  --neon-glow: rgba(136, 255, 42, 0.4);
-
-  /* === SECONDARY - WARM CORAL/PINK === */
-  --secondary: #FF4D6D;
-  --secondary-light: #FF7088;
-  --secondary-dark: #E6435F;
-  --secondary-rgb: 255, 77, 109;
-
-  /* === ACCENT - GOLDEN YELLOW === */
-  --accent-gold: #FFB800;
-  --accent-amber: #FFAA00;
-
-  /* === ACCENT - ELECTRIC CYAN === */
-  --accent-cyan: #00D9FF;
-  --accent-teal: #00CED1;
-
-  /* === SUCCESS/LIVE === */
-  --success: #00E676;
-  --success-glow: rgba(0, 230, 118, 0.4);
-
-  /* === BACKGROUND - DEEP DARK (Edigitaal style) === */
-  --bg-base: #0A0A0A;
-  --bg-elevated: #0D0D0D;
+  /* === DARK BACKGROUNDS (Edigitaal exact) === */
+  --bg-black: #000000;
+  --bg-dark: #0A0A0A;
   --bg-card: #111111;
-  --bg-card-hover: #151515;
-  --bg-surface: #1A1A1A;
+  --bg-card-hover: #1A1A1A;
+  --bg-elevated: #151515;
 
   /* === TEXT === */
-  --text-primary: #FFFFFF;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-muted: rgba(255, 255, 255, 0.5);
-  --text-subtle: rgba(255, 255, 255, 0.3);
+  --text-white: #FFFFFF;
+  --text-gray: rgba(255, 255, 255, 0.6);
+  --text-muted: rgba(255, 255, 255, 0.4);
 
-  /* === BORDERS (Edigitaal style) === */
+  /* === BORDERS === */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-default: rgba(255, 255, 255, 0.1);
-  --border-accent: rgba(255, 107, 53, 0.3);
   --border-neon: rgba(136, 255, 42, 0.3);
 
-  /* === GLASSMORPHISM === */
-  --glass-bg: rgba(255, 255, 255, 0.02);
-  --glass-bg-hover: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-blur: 20px;
-
-  /* === GRADIENTS (Edigitaal style) === */
-  --gradient-nova: linear-gradient(135deg, #FF6B35 0%, #FF4D6D 50%, #FFB800 100%);
-  --gradient-neon: linear-gradient(90deg, #88FF2A 0%, #fff 100%);
-  --gradient-dark: linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.3) 45%, #0A0A0A 90%);
-  --gradient-sunset: linear-gradient(135deg, #FF6B35 0%, #FF4D6D 100%);
-
-  /* === SHADOWS & GLOWS === */
-  --glow-orange: 0 0 80px rgba(255, 107, 53, 0.3);
-  --glow-neon: 0 0 60px rgba(136, 255, 42, 0.3);
-  --glow-coral: 0 0 80px rgba(255, 77, 109, 0.25);
-  --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  --shadow-elevated: 0 10px 40px rgba(0, 0, 0, 0.4);
-
-  /* === RADIUS === */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 24px;
-  --radius-3xl: 32px;
+  /* === RADIUS (Edigitaal uses larger radius) === */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
   --radius-full: 9999px;
-
-  /* === SPACING === */
-  --section-padding: clamp(60px, 10vw, 120px);
-  --container-padding: clamp(16px, 4vw, 32px);
 }
 
-/* === BASE STYLES === */
+/* === BASE === */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -105,520 +54,391 @@ html {
 }
 
 body {
-  font-family: 'Urbanist', 'Inter', system-ui, -apple-system, sans-serif;
-  background: var(--bg-base);
-  color: var(--text-primary);
+  font-family: 'Urbanist', system-ui, sans-serif;
+  background: var(--bg-black);
+  color: var(--text-white);
   line-height: 1.6;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
-/* === DRAMATIC GRADIENT BACKGROUND === */
-.bg-nova-gradient {
-  background:
-    radial-gradient(ellipse 100% 70% at 20% 10%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 60% at 80% 20%, rgba(255, 77, 109, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 50% 80%, rgba(255, 184, 0, 0.05) 0%, transparent 50%),
-    var(--bg-base);
+/* === TYPOGRAPHY (Edigitaal style) === */
+.font-display {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
-.bg-neon-gradient {
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(136, 255, 42, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 30% 80%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-    var(--bg-base);
+.text-giant {
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
 }
 
-/* === TYPOGRAPHY === */
-@layer utilities {
-  .font-display {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  }
-
-  .font-body {
-    font-family: 'Urbanist', 'Inter', system-ui, sans-serif;
-  }
-
-  .text-hero {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: clamp(2.5rem, 10vw, 5.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-
-  .text-section-title {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
-
-  .text-card-title {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  .text-body-lg {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-  }
-
-  /* Gradient Texts */
-  .text-gradient-nova {
-    background: var(--gradient-nova);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-gradient-neon {
-    background: linear-gradient(135deg, #88FF2A 0%, #A7FF62 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-gradient-sunset {
-    background: var(--gradient-sunset);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+.text-hero {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
 }
 
-/* === GLASSMORPHISM CARDS (Enhanced) === */
-@layer utilities {
-  .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .glass-card:hover {
-    background: var(--glass-bg-hover);
-    border-color: var(--border-default);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-card);
-  }
-
-  .glass-card-neon {
-    background: linear-gradient(135deg,
-        rgba(136, 255, 42, 0.05) 0%,
-        rgba(255, 107, 53, 0.02) 50%,
-        var(--glass-bg) 100%);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(136, 255, 42, 0.15);
-    border-radius: var(--radius-2xl);
-  }
-
-  .glass-card-neon:hover {
-    border-color: rgba(136, 255, 42, 0.3);
-    box-shadow: var(--glow-neon);
-  }
-
-  .glass-card-premium {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.04) 0%,
-        rgba(255, 107, 53, 0.02) 100%);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 107, 53, 0.2);
-    box-shadow:
-      0 0 60px rgba(255, 107, 53, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .glass-effect-strong {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-  }
+.text-section {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
-/* === BUTTONS (Enhanced with Neon) === */
-@layer utilities {
-  .btn-nova {
-    position: relative;
-    background: var(--gradient-sunset);
-    color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    padding: 0.875rem 2rem;
-    border-radius: var(--radius-xl);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow:
-      0 0 30px rgba(255, 107, 53, 0.3),
-      0 4px 20px rgba(0, 0, 0, 0.3);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    overflow: hidden;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-nova::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .btn-nova:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow:
-      0 0 50px rgba(255, 107, 53, 0.5),
-      0 10px 30px rgba(0, 0, 0, 0.4);
-  }
-
-  .btn-nova:hover::before {
-    opacity: 1;
-  }
-
-  .btn-neon {
-    position: relative;
-    background: linear-gradient(135deg, #88FF2A 0%, #6AF100 100%);
-    color: #0A0A0A;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    padding: 0.875rem 2rem;
-    border-radius: var(--radius-xl);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 30px rgba(136, 255, 42, 0.3);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-neon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 50px rgba(136, 255, 42, 0.5);
-  }
-
-  .btn-glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-    padding: 0.875rem 1.75rem;
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
-  }
-
-  .btn-glass:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .btn-outline-neon {
-    background: transparent;
-    color: var(--neon-green);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-    padding: 0.875rem 1.75rem;
-    border-radius: var(--radius-xl);
-    border: 2px solid var(--neon-green);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
-  }
-
-  .btn-outline-neon:hover {
-    background: var(--neon-green);
-    color: #0A0A0A;
-    box-shadow: 0 0 30px rgba(136, 255, 42, 0.4);
-  }
+/* === NEON TEXT === */
+.text-neon {
+  color: var(--neon);
 }
 
-/* === BADGES === */
-@layer utilities {
-  .badge-nova {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.875rem;
-    border-radius: var(--radius-full);
-    background: rgba(255, 107, 53, 0.12);
-    border: 1px solid rgba(255, 107, 53, 0.25);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: #FF8C5A;
-  }
-
-  .badge-neon {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.875rem;
-    border-radius: var(--radius-full);
-    background: rgba(136, 255, 42, 0.1);
-    border: 1px solid rgba(136, 255, 42, 0.2);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: #88FF2A;
-  }
-
-  .badge-success {
-    background: rgba(0, 230, 118, 0.12);
-    border-color: rgba(0, 230, 118, 0.25);
-    color: #00E676;
-  }
-
-  .badge-gold {
-    background: rgba(255, 184, 0, 0.12);
-    border-color: rgba(255, 184, 0, 0.25);
-    color: #FFB800;
-  }
+.text-neon-glow {
+  color: var(--neon);
+  text-shadow: 0 0 40px rgba(136, 255, 42, 0.5);
 }
 
-/* === LIVE INDICATOR === */
-@layer utilities {
-  .live-dot {
-    width: 8px;
-    height: 8px;
-    background: #00E676;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #00E676, 0 0 20px #00E676;
-    animation: livePulse 2s ease-in-out infinite;
-  }
+.text-outline {
+  -webkit-text-stroke: 2px var(--neon);
+  color: transparent;
 }
 
-@keyframes livePulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.2);
-  }
+.text-outline-white {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: transparent;
 }
 
-/* === MATCH CARDS (Edigitaal style) === */
-@layer utilities {
-  .match-card {
-    position: relative;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .match-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .match-card:hover {
-    border-color: rgba(255, 107, 53, 0.3);
-    transform: translateY(-6px);
-    box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba(255, 107, 53, 0.1);
-  }
-
-  .match-card:hover::before {
-    opacity: 1;
-  }
+/* === NEON BUTTONS (Edigitaal style) === */
+.btn-neon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--neon);
+  color: #000;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--neon-glow);
 }
 
-/* === MARQUEE / TICKER === */
-@layer utilities {
-  .marquee-container {
-    overflow: hidden;
-    position: relative;
-  }
-
-  .marquee-content {
-    display: flex;
-    animation: marquee 30s linear infinite;
-    white-space: nowrap;
-  }
-
-  .marquee-content:hover {
-    animation-play-state: paused;
-  }
+.btn-neon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 80px rgba(136, 255, 42, 0.6);
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--text-white);
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* === FLOATING ANIMATION === */
+.btn-outline:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+}
+
+/* === BENTO BOX CARDS (Edigitaal exact style) === */
+.bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  border-color: var(--border-neon);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(136, 255, 42, 0.1);
+}
+
+.bento-card-neon {
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-dark) 100%);
+  border: none;
+  color: #000;
+}
+
+.bento-card-neon:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(136, 255, 42, 0.4);
+}
+
+/* === FLOATING ELEMENTS (Edigitaal signature) === */
+.floating-element {
+  position: absolute;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-slow {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+.floating-reverse {
+  animation: floatReverse 8s ease-in-out infinite;
+}
+
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(3deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-30px) rotate(5deg);
+  }
 }
 
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
 
-@keyframes rotateSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.6;
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
   }
+
   50% {
+    transform: translateY(-20px) rotate(-3deg) scale(1.05);
+  }
+}
+
+@keyframes floatReverse {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(20px) rotate(-5deg);
+  }
+}
+
+/* === ROTATING ELEMENT (Edigitaal welcome section) === */
+.rotate-continuous {
+  animation: rotateContinuous 20s linear infinite;
+}
+
+@keyframes rotateContinuous {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === CIRCLE TEXT (Rotating around element) === */
+.circle-text {
+  animation: rotateText 15s linear infinite;
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === NEON BADGE === */
+.badge-neon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(136, 255, 42, 0.1);
+  border: 1px solid rgba(136, 255, 42, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--neon);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* === LIVE DOT === */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--neon);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--neon);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
     opacity: 1;
-    box-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
   }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* === DECORATIVE SHAPES (Edigitaal style) === */
+.deco-flower {
+  width: 120px;
+  height: 120px;
+  background: url('/deco/flower.png') center/contain no-repeat;
 }
 
-@keyframes gradientMove {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.deco-circle-outline {
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--border-subtle);
+  border-radius: 50%;
 }
 
-@layer utilities {
-  .animate-float { animation: float 6s ease-in-out infinite; }
-  .animate-float-slow { animation: floatSlow 8s ease-in-out infinite; }
-  .animate-rotate-slow { animation: rotateSlow 20s linear infinite; }
-  .animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
-  .animate-shimmer { 
-    animation: shimmer 2s linear infinite;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-    background-size: 200% 100%;
+.deco-circle-neon {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--neon) 0%, transparent 70%);
+  filter: blur(40px);
+  opacity: 0.5;
+}
+
+/* === GRID GALLERY (Edigitaal bento style) === */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bento-grid-hero {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+}
+
+/* === MARQUEE (Edigitaal ticker) === */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
   }
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradientMove 6s ease infinite;
+
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-/* === SCROLLBAR (Minimal) === */
+/* === IMAGE CARDS (Edigitaal style with rounded corners) === */
+.img-card {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.img-card:hover img {
+  transform: scale(1.1);
+}
+
+/* === STATS (Edigitaal big numbers) === */
+.stat-number {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--neon);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* === CONTAINER === */
+.container-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding: 0 2rem;
+  }
+}
+
+/* === SECTION SPACING === */
+.section-gap {
+  padding: 6rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-gap {
+    padding: 10rem 0;
+  }
+}
+
+/* === SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 107, 53, 0.3);
+  background: var(--neon);
   border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 107, 53, 0.5);
-}
-
-/* === RESPONSIVE CONTAINERS === */
-@layer utilities {
-  .container-responsive {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-    width: 100%;
-  }
-
-  .section-padding {
-    padding-top: var(--section-padding);
-    padding-bottom: var(--section-padding);
-  }
-}
-
-/* === MOBILE OPTIMIZATIONS === */
-@media (max-width: 768px) {
-  :root {
-    --section-padding: 60px;
-    --container-padding: 20px;
-    --glass-blur: 12px;
-  }
-
-  .text-hero {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  .btn-nova, .btn-neon, .btn-glass {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9375rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .text-hero {
-    font-size: 2rem;
-  }
-  
-  .glass-card {
-    border-radius: var(--radius-lg);
-  }
 }
 
 /* === SELECTION === */
 ::selection {
-  background: rgba(255, 107, 53, 0.3);
+  background: rgba(136, 255, 42, 0.3);
   color: white;
-}
-
-/* === FOCUS STATES (Accessibility) === */
-:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
 }
 
 /* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

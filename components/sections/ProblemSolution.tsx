@@ -1,91 +1,71 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { X, Check, ArrowRight } from 'lucide-react';
+import { X, Check, ArrowUpRight } from 'lucide-react';
 
 const problems = [
-  { text: 'Platforms control your funds', sub: 'No self-custody' },
-  { text: 'High fees reduce winnings', sub: 'Up to 15% commission' },
-  { text: 'Zero transparency', sub: 'Hidden algorithms' },
-  { text: 'Slow withdrawals', sub: '3-7 days wait' },
+  'Platforms control your funds',
+  'High fees up to 15%',
+  'Zero transparency',
+  'Slow 3-7 day withdrawals',
 ];
 
 const solutions = [
-  { text: 'Non-custodial wallets', sub: 'You control your funds' },
-  { text: 'Minimal platform fees', sub: 'Less than 3% on Base' },
-  { text: 'Open smart contracts', sub: 'Fully auditable on-chain' },
-  { text: 'Instant USDC payouts', sub: 'Seconds, not days' },
+  'Non-custodial wallets',
+  'Less than 3% fees',
+  'Open smart contracts',
+  'Instant USDC payouts',
 ];
 
 export default function ProblemSolution() {
   return (
-    <section className="section-padding relative overflow-hidden">
-      <div className="container-responsive relative z-10">
-        {/* Section Header */}
+    <section className="section-gap bg-black relative overflow-hidden">
+      {/* Floating Elements */}
+      <motion.div
+        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        className="absolute top-20 right-[10%] text-6xl opacity-50"
+      >
+        🌿
+      </motion.div>
+
+      <div className="container-main relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16"
         >
-          <span className="badge-nova mb-4 inline-flex">
-            <X className="w-3.5 h-3.5" />
-            The Old Way is Broken
-          </span>
-          <h2 className="text-section-title text-white mb-4">
-            Why{' '}
-            <span className="text-gradient-nova">Decentralize</span>
-            {' '}Sports Betting?
+          <h2 className="font-display text-section text-white mb-4">
+            Why <span className="text-[#88FF2A]">Decentralize?</span>
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto">
-            Traditional platforms have failed bettors. We're building something better with blockchain.
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
+            Traditional platforms have failed. We're building better.
           </p>
         </motion.div>
 
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+        {/* Two Column Grid */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Problem Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative p-6 md:p-8 rounded-2xl overflow-hidden group"
-            style={{
-              background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.06) 0%, rgba(127, 29, 29, 0.04) 100%)',
-              border: '1px solid rgba(239, 68, 68, 0.15)',
-            }}
+            className="bento-card p-8 border-red-500/20"
           >
-            {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center border border-red-500/30">
-                <X className="w-5 h-5 text-red-400" />
+              <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+                <X className="w-6 h-6 text-red-500" />
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">The Problem</h3>
-                <span className="text-xs text-red-400/70">Centralized Platforms</span>
-              </div>
+              <h3 className="text-xl font-bold">The Problem</h3>
             </div>
-
-            {/* List */}
             <ul className="space-y-4">
-              {problems.map((item, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
-                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-red-500/5 transition-colors"
-                >
-                  <div className="w-5 h-5 rounded-md bg-red-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <X className="w-3 h-3 text-red-400" />
-                  </div>
-                  <div>
-                    <span className="text-white font-medium text-sm">{item.text}</span>
-                    <p className="text-white/30 text-xs mt-0.5">{item.sub}</p>
-                  </div>
-                </motion.li>
+              {problems.map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <X className="w-4 h-4 text-red-500 flex-shrink-0" />
+                  <span className="text-white/70">{item}</span>
+                </li>
               ))}
             </ul>
           </motion.div>
@@ -95,61 +75,24 @@ export default function ProblemSolution() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative p-6 md:p-8 rounded-2xl overflow-hidden group"
-            style={{
-              background: 'linear-gradient(135deg, rgba(136, 255, 42, 0.06) 0%, rgba(0, 230, 118, 0.04) 100%)',
-              border: '1px solid rgba(136, 255, 42, 0.15)',
-            }}
+            className="bento-card-neon p-8"
           >
-            {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-neon/20 flex items-center justify-center border border-neon/30">
-                <Check className="w-5 h-5 text-neon" />
+              <div className="w-12 h-12 rounded-xl bg-black/20 flex items-center justify-center">
+                <Check className="w-6 h-6 text-black" />
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">SeersHub Solution</h3>
-                <span className="text-xs text-neon/70">Decentralized on Base</span>
-              </div>
+              <h3 className="text-xl font-bold text-black">SeersHub Solution</h3>
             </div>
-
-            {/* List */}
             <ul className="space-y-4">
-              {solutions.map((item, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: 15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
-                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-neon/5 transition-colors"
-                >
-                  <div className="w-5 h-5 rounded-md bg-neon/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-neon" />
-                  </div>
-                  <div>
-                    <span className="text-white font-medium text-sm">{item.text}</span>
-                    <p className="text-white/30 text-xs mt-0.5">{item.sub}</p>
-                  </div>
-                </motion.li>
+              {solutions.map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <Check className="w-4 h-4 text-black flex-shrink-0" />
+                  <span className="text-black/70">{item}</span>
+                </li>
               ))}
             </ul>
           </motion.div>
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <a href="#waitlist" className="btn-outline-neon inline-flex items-center gap-2">
-            Experience the Difference
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );

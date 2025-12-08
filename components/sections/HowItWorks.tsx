@@ -2,96 +2,89 @@
 
 import { motion } from 'framer-motion';
 import { Wallet, Target, Trophy, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 const steps = [
   {
     icon: Wallet,
     number: '01',
     title: 'Connect Wallet',
-    description: 'Create your account and connect your Web3 wallet to Base Network. Quick and secure.',
-    color: 'from-primary to-orange-400',
+    description: 'Link your Web3 wallet to Base Network',
   },
   {
     icon: Target,
     number: '02',
     title: 'Make Predictions',
-    description: 'Browse live matches, analyze odds, and place skill-based predictions using USDC.',
-    color: 'from-secondary to-pink-400',
+    description: 'Choose matches and predict outcomes',
   },
   {
     icon: Trophy,
     number: '03',
-    title: 'Win Rewards',
-    description: 'Smart contracts instantly distribute USDC to winners. No delays, no middlemen.',
-    color: 'from-neon to-emerald-400',
+    title: 'Win USDC',
+    description: 'Correct predictions earn instant rewards',
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent" />
+    <section id="how-it-works" className="section-gap bg-black relative overflow-hidden">
+      {/* Floating decorations */}
+      <motion.div
+        animate={{ y: [0, -25, 0], rotate: [0, -10, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        className="absolute top-32 left-[5%] text-5xl opacity-40"
+      >
+        💸
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 20, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="absolute bottom-32 right-[8%] text-5xl opacity-40"
+      >
+        🏆
+      </motion.div>
 
-      <div className="container-responsive relative z-10">
-        {/* Section Header */}
+      <div className="container-main relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16"
         >
-          <span className="badge-nova mb-4 inline-flex">How It Works</span>
-          <h2 className="text-section-title text-white mb-4">
-            Get Started in{' '}
-            <span className="text-gradient-nova">3 Simple Steps</span>
+          <h2 className="font-display text-section text-white mb-4">
+            How It <span className="text-[#88FF2A]">Works</span>
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto">
-            Join thousands of sports enthusiasts making predictions on Base Network.
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
+            Three simple steps to start winning
           </p>
         </motion.div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                className="relative"
-              >
-                {/* Connector Line */}
-                {index < 2 && (
-                  <div className="hidden md:block absolute top-16 left-full w-full h-px bg-gradient-to-r from-white/10 to-transparent z-0" />
-                )}
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`bento-card p-8 text-center ${index === 1 ? 'md:-translate-y-8' : ''}`}
+            >
+              {/* Number */}
+              <div className="text-6xl font-black text-[#88FF2A]/20 mb-4">
+                {step.number}
+              </div>
 
-                <div className="glass-card p-6 md:p-8 text-center relative z-10 h-full">
-                  {/* Number */}
-                  <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center">
-                    <span className="text-sm font-bold text-white/30">{step.number}</span>
-                  </div>
+              {/* Icon */}
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-[#88FF2A]/10 flex items-center justify-center mb-6">
+                <step.icon className="w-8 h-8 text-[#88FF2A]" />
+              </div>
 
-                  {/* Icon */}
-                  <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center`}>
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold font-display text-white mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-white/50 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+              {/* Content */}
+              <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+              <p className="text-white/50 text-sm">{step.description}</p>
+            </motion.div>
+          ))}
         </div>
 
         {/* CTA */}
@@ -99,15 +92,12 @@ export default function HowItWorks() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="text-center mt-12"
         >
-          <Link
-            href="#waitlist"
-            className="btn-nova inline-flex items-center gap-2"
-          >
-            Start Predicting Now
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <a href="#waitlist" className="btn-neon">
+            Start Predicting
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </motion.div>
       </div>
     </section>

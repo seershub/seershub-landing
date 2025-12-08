@@ -6,28 +6,24 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqData = [
   {
-    question: "What exactly is SeersHub?",
-    answer: "SeersHub is a skill-based competition platform, not a betting site. You compete with other users based on your sports knowledge to win from a transparent prize pool.",
+    question: "What is SeersHub?",
+    answer: "SeersHub is a skill-based prediction platform - not betting. Compete using sports knowledge to win from prize pools.",
   },
   {
-    question: "How do I get started?",
-    answer: "It's simple! 1) Connect your wallet. 2) Choose a match you want to predict. 3) Submit your prediction on-chain and compete for prizes!",
+    question: "How do I start?",
+    answer: "1) Connect wallet 2) Pick a match 3) Make predictions 4) Win USDC if you're right!",
   },
   {
     question: "Is this gambling?",
-    answer: "No. SeersHub has no odds, no house edge, and no chance-based mechanics. Your success depends entirely on your sports knowledge. We're classified as a skill-based competition.",
+    answer: "No. No house edge, no odds manipulation. Pure skill competition like fantasy sports.",
   },
   {
     question: "How are prizes distributed?",
-    answer: "75-80% of all entry fees goes directly into the prize pool. Smart contracts automatically distribute USDC to top performers each week.",
+    answer: "75-80% of entries go to prize pool. Smart contracts auto-distribute to top performers.",
   },
   {
-    question: "Are my funds safe?",
-    answer: "Yes. Funds are held in audited smart contracts and a multi-sig treasury. Your predictions are stored immutably on Base network.",
-  },
-  {
-    question: "Why USDC on Base?",
-    answer: "USDC is a stable, trusted currency. Base network offers extremely low fees (< $0.01) and fast transactions. Perfect for micro-payments.",
+    question: "Why Base Network?",
+    answer: "Ultra-low fees (<$0.01), fast transactions, trusted by Coinbase.",
   },
 ];
 
@@ -35,8 +31,11 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="section-padding relative overflow-hidden">
-      <div className="container-responsive relative z-10 max-w-3xl mx-auto">
+    <section id="faq" className="section-gap bg-black relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[400px] bg-[#88FF2A]/5 rounded-full blur-[150px]" />
+
+      <div className="container-main relative z-10 max-w-3xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,45 +43,35 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="badge-nova mb-4 inline-flex">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="badge-neon mb-6 inline-flex">
+            <HelpCircle className="w-4 h-4" />
             FAQ
-          </span>
-          <h2 className="text-section-title text-white mb-4">
-            Frequently Asked{' '}
-            <span className="text-gradient-nova">Questions</span>
+          </div>
+          <h2 className="font-display text-section text-white">
+            Questions<span className="text-[#88FF2A]">?</span>
           </h2>
-          <p className="text-white/50">
-            Everything you need to know about SeersHub.
-          </p>
         </motion.div>
 
         {/* Accordion */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           {faqData.map((faq, index) => {
             const isOpen = openIndex === index;
-
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="glass-card overflow-hidden"
+                className="bento-card overflow-hidden"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left focus:outline-none"
+                  className="w-full p-5 flex items-center justify-between text-left"
                 >
-                  <span className="font-semibold text-white text-sm md:text-base">
-                    {faq.question}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronDown className={`w-5 h-5 ${isOpen ? 'text-primary' : 'text-white/30'}`} />
+                  <span className="font-semibold text-white">{faq.question}</span>
+                  <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
+                    <ChevronDown className={`w-5 h-5 ${isOpen ? 'text-[#88FF2A]' : 'text-white/30'}`} />
                   </motion.div>
                 </button>
 
@@ -92,13 +81,10 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
                     >
-                      <div className="px-5 pb-4">
-                        <div className="h-px bg-white/5 mb-3" />
-                        <p className="text-white/60 text-sm leading-relaxed">
-                          {faq.answer}
-                        </p>
+                      <div className="px-5 pb-5">
+                        <div className="h-px bg-white/5 mb-4" />
+                        <p className="text-white/60 text-sm leading-relaxed">{faq.answer}</p>
                       </div>
                     </motion.div>
                   )}
@@ -107,20 +93,6 @@ export default function FAQ() {
             );
           })}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-10"
-        >
-          <p className="text-white/40 text-sm mb-3">Still have questions?</p>
-          <a href="https://x.com/seershub" target="_blank" rel="noopener noreferrer" className="btn-glass text-sm">
-            Reach out on X
-          </a>
-        </motion.div>
       </div>
     </section>
   );
