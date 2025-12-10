@@ -12,6 +12,16 @@ import VaultOverview from '@/components/dashboard/VaultOverview';
 import EcosystemApps from '@/components/dashboard/EcosystemApps';
 import { Activity, Users, DollarSign, Zap, Trophy, Target } from 'lucide-react';
 
+const activityData = [
+  { name: 'Mon', value: 120 },
+  { name: 'Tue', value: 180 },
+  { name: 'Wed', value: 140 },
+  { name: 'Thu', value: 200 },
+  { name: 'Fri', value: 230 },
+  { name: 'Sat', value: 190 },
+  { name: 'Sun', value: 210 },
+];
+
 export default function Home() {
   const tabs = [
     { label: 'Home', href: '/', active: true },
@@ -78,7 +88,7 @@ export default function Home() {
         <div className="space-y-6">
           {/* Revenue Chart */}
           <ChartCard title="Platform Activity" dropdown="Year" delay={0.4}>
-            <AreaChartComponent />
+            <AreaChartComponent data={activityData} />
           </ChartCard>
           
           {/* Vault Overview */}
