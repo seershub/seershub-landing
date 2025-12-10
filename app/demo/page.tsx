@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useAccount } from 'wagmi';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import UserProfile from '@/components/demo/UserProfile';
 import MatchCard from '@/components/demo/MatchCard';
 import PredictionModal from '@/components/demo/PredictionModal';
@@ -15,7 +16,7 @@ import PrizeVault from '@/components/demo/PrizeVault';
 import ProfileView from '@/components/demo/ProfileView';
 import UserComments from '@/components/demo/UserComments';
 import WalletConnectOptions from '@/components/WalletConnectOptions';
-import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { ChevronRight, Zap, Trophy, BarChart3, User } from 'lucide-react';
 import { MOCK_MATCHES, MatchData } from '@/lib/mockData';
 
 interface PredictionData {
@@ -43,162 +44,188 @@ export default function DemoPage() {
     setUserPredictions(prev => new Map(prev).set(matchId, predictionData));
   };
 
+  const tabs = [
+    { label: 'Home', href: '/' },
+    { label: 'Pitch Deck', href: '/pitch-deck' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Waitlist', href: '/waitlist' },
+  ];
+
+  const demoTabs = [
+    { id: 'matches' as TabType, label: 'Live Matches', icon: Zap, count: MOCK_MATCHES.length },
+    { id: 'profile' as TabType, label: 'My Profile', icon: User },
+    { id: 'leaderboard' as TabType, label: 'Leaderboard', icon: Trophy },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#000814] text-white">
-      <header className="sticky top-0 z-40 border-b border-white/10 backdrop-blur bg-[#000814]/70">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/" className="text-white/70 hover:text-white transition flex items-center gap-1.5 sm:gap-2">
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="text-sm sm:text-base">Back</span>
-            </Link>
-            <span className="text-white/40 hidden sm:inline">/</span>
-            <span className="font-semibold text-sm sm:text-base hidden sm:inline">Demo</span>
+    <DashboardLayout title="Platform Demo" tabs={tabs}>
+      {/* Testnet Badge */}
+      <div className="mb-4 flex justify-center">
+        <span className="badge badge-info">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse mr-1" />
+          Base Sepolia Testnet
+        </span>
+      </div>
+      {/* Demo Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="glass-card p-6 mb-6"
+      >
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <h1 className="text-2xl font-bold">
+                <span className="text-gradient">Seershub</span> Demo
+              </h1>
+              <span className="px-2 py-1 rounded-lg text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                Base Sepolia
+              </span>
+            </div>
+            <p className="text-[var(--text-muted)] text-sm max-w-xl">
+              Test on-chain predictions, leaderboard, and activity feed. This demo runs on Base Sepolia testnet.
+            </p>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3 text-xs">
-            <span className="px-1.5 py-1 sm:px-2 rounded-full bg-[#0052FF]/10 border border-[#0052FF]/30 text-[#00D4FF] text-[10px] sm:text-xs">
-              <span className="hidden sm:inline">Base Sepolia</span>
-              <span className="sm:hidden">Sepolia</span>
+          
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--glass-bg)] border border-[var(--glass-border)]">
+              Glass Morphism
             </span>
-            <span className="px-1.5 py-1 sm:px-2 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs">vDemo</span>
+            <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--glass-bg)] border border-[var(--glass-border)]">
+              Wagmi + Viem
+            </span>
+            <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--glass-bg)] border border-[var(--glass-border)]">
+              RainbowKit
+            </span>
           </div>
         </div>
-      </header>
+      </motion.div>
 
-      <main className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 space-y-8 sm:space-y-10">
-        {/* Hero */}
-        <section className="grid gap-4 sm:gap-6 md:grid-cols-3 items-stretch">
-          {/* Left: Title */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="md:col-span-2 p-5 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-white/10 bg-white/[0.03] backdrop-blur">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-[#0052FF] to-[#00D4FF] bg-clip-text text-transparent">Seershub</span>
-              <br />Base Builder Demo
-            </h1>
-            <p className="text-white/70 mt-2 sm:mt-3 text-sm sm:text-base">Video submission–ready demo showcasing on-chain predictions, leaderboard, activity feed, and beautiful UI built for Base.</p>
-            <div className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-5">
-              <Badge>Glass Morphism</Badge>
-              <Badge>Framer Motion</Badge>
-              <Badge>Wagmi + Viem</Badge>
-              <Badge>RainbowKit</Badge>
-            </div>
+      {/* User Profile Card */}
+      <div className="grid lg:grid-cols-3 gap-6 mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="lg:col-span-2"
+        >
+          <UserProfile />
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          <PlatformStats />
+        </motion.div>
+      </div>
+
+      {!isConnected && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <WalletConnectOptions />
+        </motion.div>
+      )}
+
+      {isConnected && (
+        <>
+          {/* Tab Navigation */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide"
+          >
+            {demoTabs.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium transition-all whitespace-nowrap text-sm ${
+                  activeTab === tab.id
+                    ? 'bg-[var(--accent-primary)] text-black'
+                    : 'bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-secondary)] hover:bg-[var(--glass-bg-hover)]'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+                {tab.count && (
+                  <span className={`px-1.5 py-0.5 rounded-md text-xs ${
+                    activeTab === tab.id ? 'bg-black/20 text-white' : 'bg-white/10'
+                  }`}>
+                    {tab.count}
+                  </span>
+                )}
+              </button>
+            ))}
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <UserProfile />
-          </motion.div>
-        </section>
-
-        {!isConnected && <WalletConnectOptions />}
-
-        {isConnected && (
-          <>
-            {/* Tab Navigation */}
-            <div className="mb-6 sm:mb-8 -mx-4 sm:mx-0 px-4 sm:px-0">
-              <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                {[
-                  { id: 'matches' as TabType, label: '🏟️ Live Matches', shortLabel: 'Matches', count: MOCK_MATCHES.length },
-                  { id: 'profile' as TabType, label: '👤 My Profile', shortLabel: 'Profile', count: null },
-                  { id: 'leaderboard' as TabType, label: '🏆 Leaderboard', shortLabel: 'Leaders', count: null }
-                ].map(tab => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold transition-all whitespace-nowrap text-sm sm:text-base ${
-                      activeTab === tab.id
-                        ? 'bg-[#0052FF] text-white shadow-lg shadow-[#0052FF]/30'
-                        : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10'
-                    }`}
+          {/* Tab Content */}
+          {activeTab === 'matches' && (
+            <>
+              {/* Matches Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                {MOCK_MATCHES.map((match, index) => (
+                  <motion.div
+                    key={match.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 + index * 0.05 }}
                   >
-                    <span className="hidden sm:inline">{tab.label}</span>
-                    <span className="sm:hidden">{tab.shortLabel}</span>
-                    {tab.count && (
-                      <span className="ml-2 px-2 py-0.5 bg-white/20 rounded-full text-xs">
-                        {tab.count}
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Tab Content */}
-            {activeTab === 'matches' && (
-              <>
-                <SectionHeader title="🔥 Live Matches" subtitle="Predict upcoming games on Base" />
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  {MOCK_MATCHES.map((match) => (
                     <MatchCard 
-                      key={match.id} 
                       match={match} 
                       onPredict={setSelectedMatch}
                       isPredicted={userPredictions.has(match.id)}
                       predictionData={userPredictions.get(match.id)}
                     />
-                  ))}
-                </div>
+                  </motion.div>
+                ))}
+              </div>
 
-                <div className="grid lg:grid-cols-3 gap-6 mb-8">
-                  <div className="lg:col-span-2">
-                    <SectionHeader title="🏆 Top Predictors" subtitle="Leaderboard rankings" />
-                    <div className="mt-4">
-                      <Leaderboard />
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <SectionHeader title="💰 Prize Vault" subtitle="USDC rewards" />
-                      <div className="mt-4">
-                        <PrizeVault />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid lg:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <SectionHeader title="📊 Platform Stats" subtitle="On-chain metrics" />
-                    <div className="mt-4">
-                      <PlatformStats />
-                    </div>
-                  </div>
+              {/* Bottom Section */}
+              <div className="grid lg:grid-cols-3 gap-6 mb-6">
+                <div className="lg:col-span-2 space-y-6">
+                  <Leaderboard />
                   <UserComments />
                 </div>
-
-                <div className="mb-8">
-                  <ActivityFeed />
-                </div>
-
-                <Achievements />
-              </>
-            )}
-
-            {activeTab === 'profile' && (
-              <div className="grid lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2">
-                  <ProfileView />
-                </div>
                 <div className="space-y-6">
+                  <PrizeVault />
                   <Achievements />
-                  <PlatformStats />
                 </div>
               </div>
-            )}
 
-            {activeTab === 'leaderboard' && (
-              <div className="grid lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2">
-                  <Leaderboard />
-                </div>
-                <div className="space-y-6">
-                  <PlatformStats />
-                  <ActivityFeed />
-                </div>
+              <ActivityFeed />
+            </>
+          )}
+
+          {activeTab === 'profile' && (
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <ProfileView />
               </div>
-            )}
-          </>
-        )}
-      </main>
+              <div className="space-y-6">
+                <Achievements />
+                <PlatformStats />
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'leaderboard' && (
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <Leaderboard />
+              </div>
+              <div className="space-y-6">
+                <PlatformStats />
+                <ActivityFeed />
+              </div>
+            </div>
+          )}
+        </>
+      )}
 
       {/* Prediction Modal */}
       <PredictionModal 
@@ -206,29 +233,6 @@ export default function DemoPage() {
         onClose={() => setSelectedMatch(null)}
         onSuccess={handlePredictionSuccess}
       />
-    </div>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="px-3 py-1 rounded-full text-xs bg-white/5 border border-white/10 inline-flex items-center gap-2">
-      {children}
-    </span>
-  );
-}
-
-
-function SectionHeader({ title, subtitle }: { title: string; subtitle?: string; }) {
-  return (
-    <div className="flex items-end justify-between">
-      <div>
-        <h2 className="text-2xl md:text-3xl font-bold">{title}</h2>
-        {subtitle ? <p className="text-white/60 mt-1">{subtitle}</p> : null}
-      </div>
-      <Link href="#" className="text-white/60 hover:text-white text-sm inline-flex items-center gap-1">
-        Learn more <ChevronRight className="w-4 h-4" />
-      </Link>
-    </div>
+    </DashboardLayout>
   );
 }
