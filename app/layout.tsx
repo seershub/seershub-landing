@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta-sans",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Seershub - Web3 Sports Prediction Platform",
@@ -19,10 +32,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
+      <body className="antialiased font-body bg-background text-foreground">
         <Providers>
+<<<<<<< HEAD
           {children}
+=======
+          <Header />
+          <main>
+            {children}
+          </main>
+>>>>>>> 468314e551d397265c7bdd65cd444c3cb387c4a4
         </Providers>
       </body>
     </html>
