@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-<<<<<<< HEAD
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
   Target,

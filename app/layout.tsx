@@ -35,14 +35,7 @@ export default function RootLayout({
     <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
       <body className="antialiased font-body bg-background text-foreground">
         <Providers>
-<<<<<<< HEAD
           {children}
-=======
-          <Header />
-          <main>
-            {children}
-          </main>
->>>>>>> 468314e551d397265c7bdd65cd444c3cb387c4a4
         </Providers>
       </body>
     </html>
