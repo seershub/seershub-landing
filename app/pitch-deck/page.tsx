@@ -52,22 +52,7 @@ export default function PitchDeckPage() {
 function Hero() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-      <div className="glass-card border-2 border-[var(--glass-border)] p-6 relative overflow-hidden mb-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)]/10 via-transparent to-[var(--accent-primary)]/10 opacity-60" />
-        <div className="relative z-10 flex flex-col items-center gap-3">
-          <div className="relative overflow-hidden max-h-40">
-            <Image
-              src="/seershub-logo.png"
-              alt="Seershub"
-              width={200}
-              height={80}
-              className="object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.3)]"
-              priority
-            />
-          </div>
-          <p className="text-xs text-white/40">The On-Chain Fandom Ecosystem</p>
-        </div>
-      </div>
+
 
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 mb-6">
         <Rocket className="w-4 h-4 text-[var(--accent-primary)]" />
@@ -375,8 +360,8 @@ function ProblemItem({ title, description }: { title: string; description: strin
 function PillarCard({ title, badge, icon, desc, job, badgeColor }: { title: string; badge: string; icon: React.ReactNode; desc: string; job: string; badgeColor: 'cyan' | 'green' | 'amber' }) {
   const colorClass =
     badgeColor === 'cyan' ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30' :
-    badgeColor === 'green' ? 'bg-green-500/10 text-green-400 border-green-500/30' :
-    'bg-amber-500/10 text-amber-400 border-amber-500/30';
+      badgeColor === 'green' ? 'bg-green-500/10 text-green-400 border-green-500/30' :
+        'bg-amber-500/10 text-amber-400 border-amber-500/30';
 
   return (
     <div className="glass-card p-6 rounded-2xl border border-[var(--glass-border)] h-full">

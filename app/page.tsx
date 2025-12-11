@@ -90,7 +90,7 @@ export default function Home() {
           <ChartCard title="Platform Activity" dropdown="Year" delay={0.4}>
             <AreaChartComponent data={activityData} />
           </ChartCard>
-          
+
           {/* Vault Overview */}
           <VaultOverview />
         </div>
@@ -105,13 +105,13 @@ export default function Home() {
       {/* Bottom Row */}
       <div className="bento-grid-bottom" id="matches">
         <FeaturedMatch />
-        
+
         <ChartCard title="Vault Distribution" actions={false} delay={0.6}>
-          <DonutChart 
+          <DonutChart
             data={[
-              { name: 'Prize Pool', value: 80, color: '#f59e0b' },
-              { name: 'Treasury', value: 15, color: '#d97706' },
-              { name: 'Operations', value: 5, color: '#92400e' },
+              { name: 'Prize Pool', value: 80, color: '#f59e0b', amount: '$36,184' },
+              { name: 'Treasury', value: 15, color: '#d97706', amount: '$6,784' },
+              { name: 'Operations', value: 5, color: '#92400e', amount: '$2,262' },
             ]}
             centerValue="80%"
             centerLabel="Prize Pool"

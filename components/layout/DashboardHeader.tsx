@@ -29,9 +29,9 @@ export default function DashboardHeader({ title = 'Dashboard', tabs = defaultTab
         >
           <Menu className="w-5 h-5" />
         </button>
-        
+
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex w-10 h-10 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] items-center justify-center">
+          <div className="flex w-10 h-10 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] items-center justify-center">
             <Grid3X3 className="w-5 h-5 text-[var(--accent-primary)]" />
           </div>
           <h1 className="text-white flex items-center gap-2">{title}</h1>
@@ -66,7 +66,7 @@ export default function DashboardHeader({ title = 'Dashboard', tabs = defaultTab
           <span className="sm:hidden">Play</span>
           <ExternalLink className="w-4 h-4" />
         </motion.a>
-        
+
         {/* User Avatar */}
         <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center">
           <User className="w-4 h-4 text-black" />

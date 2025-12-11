@@ -29,8 +29,11 @@ export default function FeaturedMatch() {
       className="glass-card overflow-hidden relative"
     >
       {/* Demo Badge */}
-      <div className="absolute top-4 right-4 z-10">
-        <span className="badge badge-info text-xs">Example</span>
+      {/* Demo Badge Ribbon */}
+      <div className="absolute top-0 right-0 w-24 h-24 overflow-hidden pointer-events-none z-20">
+        <div className="absolute top-[20px] right-[-30px] w-32 bg-[var(--accent-primary)] text-black text-[10px] font-bold py-1 text-center transform rotate-45 shadow-lg border-b border-black/20">
+          /DEMO
+        </div>
       </div>
 
       {/* Header */}
@@ -45,7 +48,7 @@ export default function FeaturedMatch() {
             </div>
           </div>
         </div>
-        
+
         <motion.button
           whileHover={{ scale: 1.05 }}
           className="w-9 h-9 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center hover:border-[var(--accent-primary)] transition-colors"
@@ -132,7 +135,7 @@ export default function FeaturedMatch() {
               <span className="text-green-500 font-medium">{match.entryFee} USDC</span>
             </div>
           </div>
-          
+
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
