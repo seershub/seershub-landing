@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface Deposit {
   id: number;
@@ -21,20 +22,20 @@ export default function LiveDepositStream() {
     '/avatar/b35e3ae275ce74427ca3e8690d55b945.png',
     '/avatar/ca7158ba2cf3398875dd67933e6da3f8.png',
   ];
-  
+
   const [deposits, setDeposits] = useState<Deposit[]>([
     { id: 1, user: 'CryptoKing', amount: 10, prediction: 'Liverpool Win', time: 'Just now' },
     { id: 2, user: 'SportsFan42', amount: 5, prediction: 'Barcelona Win', time: '12s ago' },
     { id: 3, user: 'PredictorPro', amount: 3, prediction: 'Draw', time: '28s ago' },
     { id: 4, user: 'BlockchainFan', amount: 5, prediction: 'Chelsea Win', time: '45s ago' },
   ]);
-  
+
   // Simulate new deposits
   useEffect(() => {
     const names = ['CryptoWhale', 'PredictMaster', 'Web3Pro', 'ChainKing', 'USDCLover'];
     const predictions = ['Liverpool Win', 'Barcelona Win', 'Draw', 'Real Madrid Win', 'Bayern Win'];
     const amounts = [3, 5, 10];
-    
+
     let idCounter = 5; // Start from 5 since we have 4 initial deposits
     const interval = setInterval(() => {
       const newDeposit: Deposit = {
@@ -44,18 +45,18 @@ export default function LiveDepositStream() {
         prediction: predictions[Math.floor(Math.random() * predictions.length)],
         time: 'Just now'
       };
-      
+
       setDeposits(prev => [newDeposit, ...prev.slice(0, 3)]); // Keep only 4 items max
     }, 8000); // New deposit every 8s
-    
+
     return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <div className="bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 
                     backdrop-blur-xl rounded-3xl border border-white/10 p-4 md:p-6 
                     flex flex-col">
-      
+
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
@@ -71,7 +72,7 @@ export default function LiveDepositStream() {
         </div>
         <span className="text-xs text-white/40">Real-time</span>
       </div>
-      
+
       {/* Deposit stream */}
       <div className="space-y-3">
         <AnimatePresence mode="popLayout">
@@ -93,20 +94,22 @@ export default function LiveDepositStream() {
               >
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
               </motion.div>
-              
+
               {/* Deposit card */}
               <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/10 
                               p-3 md:p-4 hover:bg-white/[0.06] hover:border-blue-500/30 
                               transition-all duration-300">
-                
+
                 <div className="flex items-start gap-3">
                   {/* NFT Avatar */}
                   <div className="relative flex-shrink-0">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden border-2 border-blue-500/30
                                     shadow-[0_0_20px_rgba(0,82,255,0.3)]">
-                      <img
+                      <Image
                         src={avatars[(deposit.id - 1) % avatars.length]}
                         alt={deposit.user}
+                        width={48}
+                        height={48}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -114,7 +117,7 @@ export default function LiveDepositStream() {
                     <span className="absolute -bottom-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full 
                                    border-2 border-neutral-900" />
                   </div>
-                  
+
                   {/* Info */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
@@ -125,16 +128,16 @@ export default function LiveDepositStream() {
                         {deposit.time}
                       </span>
                     </div>
-                    
+
                     <div className="text-xs text-white/50 mb-2 truncate">
                       {deposit.prediction}
                     </div>
-                    
+
                     {/* Amount badge */}
                     <div className="inline-flex items-center gap-2 px-2.5 md:px-3 py-1 md:py-1.5 rounded-lg
                                     bg-gradient-to-r from-blue-500/20 to-cyan-500/20
                                     border border-blue-500/40">
-                      <img
+                      <Image
                         src="/usdc-logo.png"
                         width={14}
                         height={14}
@@ -152,7 +155,7 @@ export default function LiveDepositStream() {
           ))}
         </AnimatePresence>
       </div>
-      
+
       {/* Stream summary */}
       <div className="mt-4 pt-4 border-t border-white/10">
         <div className="flex items-center justify-between text-sm">

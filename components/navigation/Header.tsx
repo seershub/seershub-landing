@@ -3,13 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-<<<<<<< HEAD
-import { motion } from 'framer-motion';
-import { Menu, ExternalLink } from 'lucide-react';
-import Sidebar from './Sidebar';
-=======
 import { Menu, X, ArrowUpRight } from 'lucide-react';
->>>>>>> 468314e551d397265c7bdd65cd444c3cb387c4a4
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -18,12 +12,8 @@ const navLinks = [
 ];
 
 export default function Header() {
-<<<<<<< HEAD
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-=======
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
->>>>>>> 468314e551d397265c7bdd65cd444c3cb387c4a4
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -34,132 +24,6 @@ export default function Header() {
   return (
     <>
       <motion.header
-<<<<<<< HEAD
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="fixed top-0 left-0 right-0 z-50 
-                   glass-strong rounded-b-2xl mx-2 sm:mx-4 mt-2
-                   border border-white/10"
-      >
-        <nav className="container-responsive h-16 sm:h-20 flex items-center justify-between relative px-4 sm:px-6">
-          
-          {/* Left: Menu Button + Logo */}
-          <div className="flex items-center gap-4">
-            {/* Menu Button - Visible on all screens */}
-            <motion.button
-              onClick={() => setIsSidebarOpen(true)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2.5 rounded-xl glass hover:glass-strong transition-all
-                       border border-white/10 hover:border-primary-500/30
-                       group"
-              aria-label="Open menu"
-            >
-              <Menu className="w-5 h-5 text-white/70 group-hover:text-primary-500 transition-colors" />
-            </motion.button>
-            
-            {/* Logo */}
-            <Link href="/" className="flex items-center hover:opacity-95 transition-all duration-300 
-                                       hover:scale-105 relative z-10 group">
-              <div className="relative">
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/30 to-accent-cyan/30 
-                                blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <Image 
-                  src="/seershub-logo.png" 
-                  alt="Seershub" 
-                  width={400} 
-                  height={100}
-                  className="h-10 sm:h-12 md:h-14 w-auto relative"
-                  style={{
-                    filter: 'brightness(1.2) contrast(1.1) drop-shadow(0 0 15px rgba(0, 82, 255, 0.5))'
-                  }}
-                  priority
-                />
-              </div>
-            </Link>
-          </div>
-
-          {/* Center: Navigation Links (Desktop only) */}
-          <div className="hidden lg:flex items-center gap-6">
-            <Link 
-              href="/" 
-              className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
-            >
-              Home
-            </Link>
-            
-            <Link 
-              href="/demo" 
-              className="relative group"
-            >
-              <div className="flex items-center gap-2 px-3 py-2 rounded-xl glass hover:glass-strong
-                            border border-accent-cyan/20 hover:border-accent-cyan/40 transition-all duration-300">
-                <span className="text-sm font-medium text-accent-cyan">🎮 Demo</span>
-                <span className="w-2 h-2 bg-accent-cyan rounded-full animate-pulse"></span>
-              </div>
-            </Link>
-            
-            <Link 
-              href="/pitch-deck" 
-              className="text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:scale-105"
-            >
-              Pitch Deck
-            </Link>
-          </div>
-
-          {/* Right: Social + CTA */}
-          <div className="flex items-center gap-3">
-            {/* Social Links - Desktop only */}
-            <div className="hidden md:flex items-center gap-1">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-white/40 hover:text-primary-500 transition-all duration-200 
-                           rounded-lg hover:bg-white/5 hover:scale-110"
-                  aria-label={social.label}
-                  title={social.label}
-                >
-                  <social.icon />
-                </a>
-              ))}
-            </div>
-
-            {/* Divider */}
-            <div className="hidden md:block w-px h-6 bg-white/10" />
-
-            {/* Launch App Button */}
-            <motion.a 
-              href="https://league.seershub.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 
-                       bg-gradient-to-r from-green-500 to-emerald-500 
-                       text-white text-sm font-semibold rounded-xl 
-                       hover:shadow-[0_0_25px_rgba(34,197,94,0.4)]
-                       transition-all duration-300"
-            >
-              <span className="hidden sm:inline">Launch App</span>
-              <span className="sm:hidden">Play</span>
-              <ExternalLink className="w-4 h-4" />
-            </motion.a>
-          </div>
-        </nav>
-      </motion.header>
-
-      {/* Sidebar */}
-      <Sidebar 
-        isOpen={isSidebarOpen} 
-        onClose={() => setIsSidebarOpen(false)} 
-      />
-=======
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'
@@ -246,7 +110,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
->>>>>>> 468314e551d397265c7bdd65cd444c3cb387c4a4
     </>
   );
 }
