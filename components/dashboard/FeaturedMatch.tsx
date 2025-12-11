@@ -62,21 +62,21 @@ export default function FeaturedMatch() {
       <div className="p-6">
         {/* Scoreboard Layout */}
         <div className="space-y-4">
-          {/* Teams Row */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
+          {/* Teams Row - Mobile Grid / Desktop Flex */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
             {/* Home Team */}
-            <div className="flex items-center gap-4 flex-1">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center flex-shrink-0">
-                <TeamLogo team={match.homeTeamId} size={40} />
+            <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 flex-1 w-full md:w-auto">
+              <div className="w-16 h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0">
+                <TeamLogo team={match.homeTeamId} size={48} />
               </div>
-              <div>
-                <h4 className="font-bold text-lg">{match.homeTeam}</h4>
+              <div className="text-center md:text-left">
+                <h4 className="font-bold text-lg leading-tight">{match.homeTeam}</h4>
                 <p className="text-xs text-[var(--text-muted)]">Home</p>
               </div>
             </div>
 
-            {/* Score Display (if live) */}
-            <div className="px-6">
+            {/* VS / Score - Centered */}
+            <div className="px-0 md:px-6 py-2 md:py-0">
               {match.homeScore !== null && match.awayScore !== null ? (
                 <div className="flex items-center gap-3">
                   <span className="text-3xl font-bold">{match.homeScore}</span>
@@ -84,7 +84,7 @@ export default function FeaturedMatch() {
                   <span className="text-3xl font-bold">{match.awayScore}</span>
                 </div>
               ) : (
-                <div className="w-14 h-14 rounded-full bg-[var(--glass-bg)] border-2 border-[var(--accent-primary)]/30 
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[var(--glass-bg)] border-2 border-[var(--accent-primary)]/30 
                               flex items-center justify-center
                               shadow-[0_0_30px_var(--accent-glow)]">
                   <span className="text-sm font-bold text-[var(--accent-primary)]">VS</span>
@@ -93,13 +93,13 @@ export default function FeaturedMatch() {
             </div>
 
             {/* Away Team */}
-            <div className="flex items-center gap-4 flex-1 justify-end">
-              <div>
-                <h4 className="font-bold text-lg text-right">{match.awayTeam}</h4>
-                <p className="text-xs text-[var(--text-muted)] text-right">Away</p>
+            <div className="flex flex-col-reverse md:flex-row items-center gap-3 md:gap-4 flex-1 justify-end w-full md:w-auto">
+              <div className="text-center md:text-right">
+                <h4 className="font-bold text-lg leading-tight">{match.awayTeam}</h4>
+                <p className="text-xs text-[var(--text-muted)]">Away</p>
               </div>
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center flex-shrink-0">
-                <TeamLogo team={match.awayTeamId} size={40} />
+              <div className="w-16 h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0">
+                <TeamLogo team={match.awayTeamId} size={48} />
               </div>
             </div>
           </div>
