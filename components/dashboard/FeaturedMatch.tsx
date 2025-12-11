@@ -63,11 +63,11 @@ export default function FeaturedMatch() {
         {/* Scoreboard Layout */}
         <div className="space-y-4">
           {/* Teams Row */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
             {/* Home Team */}
             <div className="flex items-center gap-4 flex-1">
-              <div className="w-16 h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center">
-                <TeamLogo team={match.homeTeamId} size={56} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center flex-shrink-0">
+                <TeamLogo team={match.homeTeamId} size={40} />
               </div>
               <div>
                 <h4 className="font-bold text-lg">{match.homeTeam}</h4>
@@ -98,8 +98,8 @@ export default function FeaturedMatch() {
                 <h4 className="font-bold text-lg text-right">{match.awayTeam}</h4>
                 <p className="text-xs text-[var(--text-muted)] text-right">Away</p>
               </div>
-              <div className="w-16 h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center">
-                <TeamLogo team={match.awayTeamId} size={56} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] p-2 flex items-center justify-center flex-shrink-0">
+                <TeamLogo team={match.awayTeamId} size={40} />
               </div>
             </div>
           </div>
