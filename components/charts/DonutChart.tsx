@@ -6,6 +6,7 @@ interface DataItem {
   name: string;
   value: number;
   color: string;
+  [key: string]: any;
 }
 
 interface DonutChartProps {
@@ -21,8 +22,8 @@ const defaultData: DataItem[] = [
   { name: 'Operations', value: 5, color: '#b45309' },
 ];
 
-export default function DonutChart({ 
-  data = defaultData, 
+export default function DonutChart({
+  data = defaultData,
   height = 250,
   centerValue = '80%',
   centerLabel = 'Prize Pool'
@@ -58,7 +59,7 @@ export default function DonutChart({
           />
         </PieChart>
       </ResponsiveContainer>
-      
+
       {/* Center Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center">
@@ -72,8 +73,8 @@ export default function DonutChart({
         {data.map((item, index) => (
           <div key={index} className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div 
-                className="w-3 h-3 rounded-full" 
+              <div
+                className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: item.color }}
               />
               <span className="text-sm text-[var(--text-secondary)]">{item.name}</span>

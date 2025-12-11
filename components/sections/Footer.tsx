@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, Twitter, Github, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
@@ -114,7 +115,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} SeersHub. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <span>Built on</span>
-            <img src="/Base_Logo_1.png" alt="Base" className="h-4 opacity-50" />
+            <Image src="/Base_Logo_1.png" alt="Base" width={20} height={16} className="h-4 w-auto opacity-50" />
           </div>
         </div>
       </div>

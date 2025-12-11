@@ -21,6 +21,7 @@ interface DataPoint {
   name: string
   value: number
   color?: string
+  [key: string]: any
 }
 
 interface DonutChartProps {
@@ -50,7 +51,7 @@ export function DonutChart({
   centerValue = "80%"
 }: DonutChartProps) {
   const isMobile = useIsMobile()
-  
+
   // Seershub colors
   const chartPalette = [
     "#0052FF", // Primary Blue

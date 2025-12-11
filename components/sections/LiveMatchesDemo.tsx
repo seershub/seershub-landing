@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Clock, Users, Trophy } from 'lucide-react';
+import Image from 'next/image';
 
 const matches = [
   {
@@ -88,12 +89,14 @@ export default function LiveMatchesDemo() {
                   {/* Home */}
                   <div className="flex flex-col items-center gap-3 flex-1">
                     <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform">
-                      <img
+                      <Image
                         src={match.homeLogo}
                         alt={match.homeTeam}
+                        width={48}
+                        height={48}
                         className="w-12 h-12 object-contain"
-                        onError={(e) => {
-                          e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚽</text></svg>';
+                        onError={(e: any) => {
+                          e.currentTarget.style.display = 'none';
                         }}
                       />
                     </div>
@@ -108,12 +111,14 @@ export default function LiveMatchesDemo() {
                   {/* Away */}
                   <div className="flex flex-col items-center gap-3 flex-1">
                     <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform">
-                      <img
+                      <Image
                         src={match.awayLogo}
                         alt={match.awayTeam}
+                        width={48}
+                        height={48}
                         className="w-12 h-12 object-contain"
-                        onError={(e) => {
-                          e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚽</text></svg>';
+                        onError={(e: any) => {
+                          e.currentTarget.style.display = 'none';
                         }}
                       />
                     </div>
