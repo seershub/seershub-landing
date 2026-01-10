@@ -38,6 +38,7 @@
     "node_modules",
     "scripts/**/*",
     "contracts/**/*",
-    "test/**/*"
+    "test/**/*",
+    "public/**/*"
   ]
 }

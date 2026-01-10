@@ -1,219 +1,219 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ArrowUpRight, Play } from 'lucide-react';
 import Link from 'next/link';
-import { Check } from 'lucide-react';
-import { usePerformanceMode } from '@/hooks/usePerformanceMode';
+import Image from 'next/image';
 
 export default function Hero() {
-  const { shouldReduceAnimations } = usePerformanceMode();
-  
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 py-16 sm:py-20">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 gradient-subtle" />
-      
-      {/* Animated grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.15]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}
-      />
-      
-      {/* Radial gradient spotlight */}
-      <div className="absolute inset-0 gradient-radial" />
-      
-      {/* Decorative Soccer Ball - Behind "Predict" */}
+    <section className="relative min-h-screen bg-black overflow-hidden">
+      {/* Background Gradient Orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-[#88FF2A] rounded-full opacity-10 blur-[150px]" />
+        <div className="absolute bottom-40 right-20 w-80 h-80 bg-[#88FF2A] rounded-full opacity-5 blur-[120px]" />
+      </div>
+
+      {/* Floating Decorative Elements */}
       <motion.div
-        className="absolute top-1/2 left-[5%] md:left-[15%] lg:left-[20%] -translate-y-1/2 z-[1] pointer-events-none"
-        animate={shouldReduceAnimations ? {} : { 
-          rotate: [0, 360],
-          scale: [1, 1.08, 1]
-        }}
-        transition={shouldReduceAnimations ? {} : { 
-          rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-          scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-        }}
+        animate={{ y: [0, -30, 0], rotate: [0, 10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-32 right-[15%] w-24 h-24 md:w-32 md:h-32"
       >
-        <div className="text-[15rem] md:text-[25rem] lg:text-[35rem] opacity-[0.08]" style={{
-          filter: 'blur(2px) drop-shadow(0 0 60px rgba(0, 82, 255, 0.4))'
-        }}>
-          ⚽
-        </div>
+        <div className="w-full h-full rounded-full border-2 border-[#88FF2A]/30" />
       </motion.div>
-      
-      {/* Content */}
-      <div className="relative z-10 container-responsive py-20 sm:py-24 md:py-32 text-center">
-        
-        {/* Badge - Balanced & Modern - Mobile Optimized */}
+
+      <motion.div
+        animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        className="absolute bottom-40 left-[10%] text-6xl"
+      >
+        🌸
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, -15, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        className="absolute top-1/3 left-[5%] w-16 h-16 bg-[#88FF2A]/20 rounded-full blur-xl"
+      />
+
+      {/* Main Content */}
+      <div className="container-main relative z-10 pt-24 md:pt-32 pb-20">
+        {/* Top Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full 
-                     bg-gradient-to-r from-primary-500/10 to-accent-cyan/10 
-                     border border-primary-500/30 backdrop-blur-md mb-6 sm:mb-8
-                     hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(0,82,255,0.25)]
-                     transition-all duration-300
-                     shadow-[0_0_20px_rgba(0,82,255,0.15)]"
+          className="flex justify-center mb-8"
         >
-          {/* Animated "B" Icon */}
-          <div className="relative flex-shrink-0">
-            <motion.div
-              animate={shouldReduceAnimations ? {} : { 
-                rotate: [0, 360],
-                scale: [1, 1.08, 1]
-              }}
-              transition={shouldReduceAnimations ? {} : { 
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-cyan 
-                         flex items-center justify-center shadow-[0_0_12px_rgba(0,82,255,0.5)]"
-            >
-              <span className="text-white text-xs sm:text-sm font-bold">B</span>
-            </motion.div>
-            {/* Pulse ring */}
-            <motion.div
-              animate={shouldReduceAnimations ? {} : { 
-                scale: [1, 1.4, 1],
-                opacity: [0.4, 0, 0.4]
-              }}
-              transition={shouldReduceAnimations ? {} : { 
-                duration: 2,
-                repeat: Infinity
-              }}
-              className="absolute inset-0 rounded-full border-2 border-primary-500"
-            />
+          <div className="badge-neon">
+            <span className="live-dot" />
+            LIVE ON BASE NETWORK
           </div>
-          
-          {/* Text + Logo Group - Aligned - Mobile Optimized */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="text-sm sm:text-base font-medium text-white tracking-wide">
-              Built on
-            </span>
-            
-            {/* Base Logo - Same Height as Text */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="relative flex items-center"
-            >
-              <img 
-                src="/Base_Logo_1.png" 
-                alt="Base" 
-                className="h-[14px] sm:h-[18px] w-auto object-contain"
-                style={{
-                  filter: 'brightness(1.15) contrast(1.05) drop-shadow(0 2px 8px rgba(0, 82, 255, 0.4))'
-                }}
-              />
-            </motion.div>
-            
-            <span className="text-sm sm:text-base font-medium text-white tracking-wide">
-              Network
-            </span>
-          </div>
-          
-          {/* Sparkle */}
-          <motion.div
-            animate={{ 
-              rotate: [0, 180, 360],
-              scale: [1, 1.15, 1],
-              opacity: [0.7, 1, 0.7]
-            }}
-            transition={shouldReduceAnimations ? {} : { 
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="text-accent-cyan text-sm sm:text-base flex-shrink-0"
-          >
-            ✨
-          </motion.div>
         </motion.div>
-        
-        {/* MASSIVE headline - Mobile Optimized */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+
+        {/* Giant Typography - Edigitaal Style */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6"
+          className="text-center mb-12"
         >
-          Predict Sports.
-          <br />
-          <span className="bg-gradient-to-r from-primary-500 to-accent-cyan bg-clip-text text-transparent">
-            Win On-Chain.
-          </span>
-        </motion.h1>
-        
-        {/* Subheadline - Mobile Optimized */}
+          <h1 className="font-display">
+            <span className="block text-hero text-white mb-2">Predict</span>
+            <span className="block text-hero text-outline mb-2">Sports.</span>
+            <span className="block text-hero text-[#88FF2A]">Win On-Chain.</span>
+          </h1>
+        </motion.div>
+
+        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4 sm:px-0"
+          className="text-center text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-12"
         >
-          Skill-based sports prediction competitions on Base. 
-          Transparent, verifiable, and rewarding. No gambling, pure strategy.
+          The first skill-based sports prediction platform on Base.
+          No chance-based gambling — your knowledge against others.
         </motion.p>
-        
+
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
-          <Link href="#waitlist" className="btn-primary group">
+          <Link href="#waitlist" className="btn-neon">
             Join Waitlist
-            <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
+            <ArrowUpRight className="w-5 h-5" />
           </Link>
-          
-          <Link href="/pitch-deck" className="btn-secondary group">
-            📄 Pitch Deck
-            <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
+          <Link href="/pitch-deck" className="btn-outline">
+            <Play className="w-4 h-4" />
+            Watch Demo
           </Link>
         </motion.div>
-        
-        {/* Trust indicators - Mobile Optimized */}
+
+        {/* Bento Grid - Edigitaal Style */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-white/50 px-4"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
         >
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-            <span>Audited Contracts</span>
+          {/* Large Feature Card */}
+          <div className="col-span-2 row-span-2 bento-card-neon p-8 flex flex-col justify-between min-h-[320px]">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-black/20 flex items-center justify-center mb-6">
+                <span className="text-2xl">⚽</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">Seers League</h3>
+              <p className="text-black/70">Free weekly competitions with real USDC prizes. Prove your skills.</p>
+            </div>
+            <div className="flex items-center justify-between mt-6">
+              <span className="text-sm font-semibold bg-black/10 px-4 py-2 rounded-full">Weekly Prizes</span>
+              <ArrowUpRight className="w-6 h-6" />
+            </div>
           </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-            <span>Non-Custodial</span>
+
+          {/* Stats Card */}
+          <div className="bento-card p-6 flex flex-col justify-center">
+            <span className="stat-number">10K+</span>
+            <span className="stat-label mt-2">Active Users</span>
           </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-            <span>10,000+ Predictions</span>
+
+          {/* Stats Card 2 */}
+          <div className="bento-card p-6 flex flex-col justify-center">
+            <span className="stat-number">$50K</span>
+            <span className="stat-label mt-2">Monthly Prizes</span>
+          </div>
+
+          {/* Image Card */}
+          <div className="bento-card img-card aspect-square">
+            <Image
+              src="/hero-match.png"
+              alt="Match Preview"
+              width={400}
+              height={400}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="text-sm font-semibold text-white">Live Matches</span>
+            </div>
+          </div>
+
+          {/* Platform Card */}
+          <div className="bento-card p-6 flex flex-col justify-between">
+            <div className="w-10 h-10 rounded-lg bg-[#88FF2A]/10 flex items-center justify-center mb-4">
+              <span className="text-xl">🎯</span>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-1">Pulseers</h4>
+              <p className="text-sm text-white/50">Free entry. Predict & compete.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Rotating Logo Section (Edigitaal welcome style) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+          className="relative flex justify-center mt-20"
+        >
+          <div className="relative w-40 h-40 md:w-56 md:h-56">
+            {/* Rotating Circle Text */}
+            <svg
+              className="absolute inset-0 w-full h-full circle-text"
+              viewBox="0 0 200 200"
+            >
+              <defs>
+                <path
+                  id="circlePath"
+                  d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"
+                />
+              </defs>
+              <text fill="rgba(255,255,255,0.3)" fontSize="12" fontWeight="600" letterSpacing="4">
+                <textPath href="#circlePath">
+                  SEERSHUB • PREDICT • WIN • BASE NETWORK • SKILL BASED •
+                </textPath>
+              </text>
+            </svg>
+
+            {/* Center Logo */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-[#88FF2A] flex items-center justify-center shadow-[0_0_60px_rgba(136,255,42,0.5)]"
+              >
+                <span className="text-4xl md:text-5xl">⚡</span>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
-      
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
-          <motion.div
-            animate={shouldReduceAnimations ? {} : { y: [0, 12, 0] }}
-            transition={shouldReduceAnimations ? {} : { duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 bg-white/50 rounded-full mt-2"
-          />
+
+      {/* Marquee Ticker */}
+      <div className="absolute bottom-0 left-0 right-0 py-4 bg-[#88FF2A]">
+        <div className="marquee-container">
+          <div className="marquee-content">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center">
+                {['PREDICT SPORTS', 'WIN USDC', 'SEERS LEAGUE', 'ON BASE', 'SKILL BASED', 'FAIR PLAY', 'TRANSPARENT'].map((text, j) => (
+                  <span key={j} className="inline-flex items-center gap-6 px-8 text-sm font-bold text-black uppercase tracking-widest">
+                    {text}
+                    <span className="w-2 h-2 rounded-full bg-black/30" />
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
